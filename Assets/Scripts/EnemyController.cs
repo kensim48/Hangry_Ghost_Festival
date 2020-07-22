@@ -19,10 +19,12 @@ public class EnemyController : MonoBehaviour
     public float startTimeBtwShots;
     // public GameObject projectile;
     private Vector2 _originalPosition;
+    Rigidbody2D rb2d;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
         timeBtwShots = startTimeBtwShots;
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -68,11 +70,13 @@ public class EnemyController : MonoBehaviour
     void Shoot()
     {
         // Create bullet at fire point
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position,transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
-        bulletrb.AddForce(new Vector2(player.position.x * bulletForce,player.position.y * bulletForce) , ForceMode2D.Impulse);
+        bulletrb.velocity = rb2d.velocity + (new Vector2(transform.right.x, transform.right.y) * bulletForce);
+        // bulletrb.AddForce(transform.right * bulletForce);
+
         // bulletrb.AddForce(new Vector2(bulletForce,0), ForceMode2D.Impulse);
-        
+
     }
 
     void RotateBody()
