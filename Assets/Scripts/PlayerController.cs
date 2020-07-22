@@ -72,6 +72,10 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.RightArmMovement.canceled += ctx => rightRotationActive = false;
     }
 
+    void Update()
+    {
+        transform.rotation = transform.rotation;
+    }
     void FixedUpdate()
     {
         if (arm1 != arm1Last)
