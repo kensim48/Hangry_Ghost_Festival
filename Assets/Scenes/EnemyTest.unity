@@ -473,9 +473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111c3dc2c08c76d4bb1406374e8d749d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  stoppingDistance: 2.35
-  retreatDistance: 1
+  speed: 1
+  stoppingDistance: 2
+  retreatDistance: 5
   player: {fileID: 103211910}
   SwordPrefab: {fileID: 693807043}
 --- !u!4 &601656020
