@@ -24,16 +24,21 @@ public class PlayerController : MonoBehaviour
     Quaternion leftAim;
     Quaternion rightAim;
     public float rotateSpeed = 10;
-    bool lockdownToggle = false;
     public ArmsClass[] armsList;
+    public GameObject[] destroyableArmsList;
     public int arm1;
     private int arm1Last;
     public int arm2;
     private int arm2Last;
     public float maxSpeed;//Replace with your max speed
+    private bool arm1ExplosiveArmed = false;
+    private bool arm2ExplosiveArmed = false;
+
+    private Quaternion lastRotation;
 
     void Awake()
     {
+        lastRotation = transform.rotation;
         arm1Last = arm1;
         arm2Last = arm2;
         leftArm = Instantiate(armsList[arm1]);
@@ -54,8 +59,6 @@ public class PlayerController : MonoBehaviour
             rightSwingSpeed = 0.0f;
         };
         controls.Gameplay.RightTrigger.canceled += ctx => rightBoosterForce = false;
-        controls.Gameplay.RightShoulder.performed += ctx => lockdownToggle = !lockdownToggle;
-        // controls.Gameplay.RightShoulder.performed += ctx => ;
         controls.Gameplay.LeftArmMovement.performed += ctx =>
         {
             leftMove = ctx.ReadValue<Vector2>();
@@ -70,10 +73,29 @@ public class PlayerController : MonoBehaviour
             rightSwingSpeed = 0.0f;
         };
         controls.Gameplay.RightArmMovement.canceled += ctx => rightRotationActive = false;
+        controls.Gameplay.LeftPrime.performed += ctx => arm1ExplosiveArmed = !arm1ExplosiveArmed;
+        controls.Gameplay.RightPrime.performed += ctx => arm2ExplosiveArmed = !arm2ExplosiveArmed;
     }
 
+    void Update()
+    {
+        transform.rotation = lastRotation;
+    }
     void FixedUpdate()
     {
+        leftAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-leftMove.x, leftMove.y, 0)));
+        rightAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-rightMove.x, rightMove.y, 0)));
+        if (rightRotationActive) rightArm.transform.rotation = Quaternion.RotateTowards(rightArm.transform.rotation, rightAim, rotateSpeed);
+        if (leftRotationActive) leftArm.transform.rotation = Quaternion.RotateTowards(leftArm.transform.rotation, leftAim, rotateSpeed);
+
+        if (leftBoosterForce && arm1ExplosiveArmed)
+        {
+            GameObject destroyableArm = Instantiate(destroyableArmsList[arm1]);
+            destroyableArm.transform.position = transform.position;
+            destroyableArm.transform.rotation = leftArm.transform.rotation;
+            arm1 = 0;
+            arm1ExplosiveArmed = false;
+        }
         if (arm1 != arm1Last)
         {
             Destroy(leftArm.gameObject);
@@ -90,23 +112,16 @@ public class PlayerController : MonoBehaviour
             rightArm.transform.parent = transform;
             arm2Last = arm2;
         }
-        leftAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-leftMove.x, leftMove.y, 0)));
-        rightAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-rightMove.x, rightMove.y, 0)));
-        if (rightRotationActive) rightArm.transform.rotation = Quaternion.RotateTowards(rightArm.transform.rotation, rightAim, rotateSpeed);
-        if (leftRotationActive) leftArm.transform.rotation = Quaternion.RotateTowards(leftArm.transform.rotation, leftAim, rotateSpeed);
         if (leftBoosterForce)
         {
             leftArm.Attack();
-            // if notlocked
-            if (!lockdownToggle) leftArm.Move();
+            leftArm.Move();
         }
         if (rightBoosterForce)
         {
             rightArm.Attack();
-            // if notlocked
-            if (!lockdownToggle) rightArm.Move();
+            rightArm.Move();
         }
-        if (lockdownToggle) rb.velocity = Vector2.zero;
         if (rb.velocity.magnitude > maxSpeed)
         {
             print("toofast");

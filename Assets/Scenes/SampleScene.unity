@@ -459,9 +459,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 60
   armsList:
+  - {fileID: 524235655514336494, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
   - {fileID: 3634362618982557625, guid: c0f081466bfbc884594b6c04d051a38b, type: 3}
   - {fileID: 1831679515076659607, guid: da24708f33d7aa4449e33db795089855, type: 3}
   - {fileID: 2052817310018002644, guid: 68aa5fa9537090a40bb1966f3b46d460, type: 3}
+  destroyableArmsList:
+  - {fileID: 4350072235751897452, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
+  - {fileID: 4350072235751897452, guid: a1fe52c138009304790a61560ff9cb8f, type: 3}
   arm1: 1
   arm2: 2
   maxSpeed: 5

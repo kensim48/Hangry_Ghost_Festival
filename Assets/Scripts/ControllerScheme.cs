@@ -65,6 +65,22 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""LeftPrime"",
+                    ""type"": ""Button"",
+                    ""id"": ""10b988f7-eac2-4c7a-b155-4db2de9d54f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightPrime"",
+                    ""type"": ""Button"",
+                    ""id"": ""09e92b99-4c82-4328-9bb2-49a98ddb6f3c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -133,6 +149,28 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                     ""action"": ""RightShoulder"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7627470-94b3-4fd3-a5b4-f8cf91010b18"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftPrime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26da40ee-c462-4efc-bdb9-2a2bf4a1f178"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightPrime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -147,6 +185,8 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
         m_Gameplay_RightTrigger = m_Gameplay.FindAction("RightTrigger", throwIfNotFound: true);
         m_Gameplay_LeftShoulder = m_Gameplay.FindAction("LeftShoulder", throwIfNotFound: true);
         m_Gameplay_RightShoulder = m_Gameplay.FindAction("RightShoulder", throwIfNotFound: true);
+        m_Gameplay_LeftPrime = m_Gameplay.FindAction("LeftPrime", throwIfNotFound: true);
+        m_Gameplay_RightPrime = m_Gameplay.FindAction("RightPrime", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -202,6 +242,8 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_RightTrigger;
     private readonly InputAction m_Gameplay_LeftShoulder;
     private readonly InputAction m_Gameplay_RightShoulder;
+    private readonly InputAction m_Gameplay_LeftPrime;
+    private readonly InputAction m_Gameplay_RightPrime;
     public struct GameplayActions
     {
         private @ControllerScheme m_Wrapper;
@@ -212,6 +254,8 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
         public InputAction @RightTrigger => m_Wrapper.m_Gameplay_RightTrigger;
         public InputAction @LeftShoulder => m_Wrapper.m_Gameplay_LeftShoulder;
         public InputAction @RightShoulder => m_Wrapper.m_Gameplay_RightShoulder;
+        public InputAction @LeftPrime => m_Wrapper.m_Gameplay_LeftPrime;
+        public InputAction @RightPrime => m_Wrapper.m_Gameplay_RightPrime;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -239,6 +283,12 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                 @RightShoulder.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightShoulder;
                 @RightShoulder.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightShoulder;
                 @RightShoulder.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightShoulder;
+                @LeftPrime.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftPrime;
+                @LeftPrime.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftPrime;
+                @LeftPrime.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftPrime;
+                @RightPrime.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightPrime;
+                @RightPrime.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightPrime;
+                @RightPrime.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightPrime;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -261,6 +311,12 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                 @RightShoulder.started += instance.OnRightShoulder;
                 @RightShoulder.performed += instance.OnRightShoulder;
                 @RightShoulder.canceled += instance.OnRightShoulder;
+                @LeftPrime.started += instance.OnLeftPrime;
+                @LeftPrime.performed += instance.OnLeftPrime;
+                @LeftPrime.canceled += instance.OnLeftPrime;
+                @RightPrime.started += instance.OnRightPrime;
+                @RightPrime.performed += instance.OnRightPrime;
+                @RightPrime.canceled += instance.OnRightPrime;
             }
         }
     }
@@ -273,5 +329,7 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
         void OnRightTrigger(InputAction.CallbackContext context);
         void OnLeftShoulder(InputAction.CallbackContext context);
         void OnRightShoulder(InputAction.CallbackContext context);
+        void OnLeftPrime(InputAction.CallbackContext context);
+        void OnRightPrime(InputAction.CallbackContext context);
     }
 }
