@@ -32,8 +32,11 @@ public class PlayerController : MonoBehaviour
     private int arm2Last;
     public float maxSpeed;//Replace with your max speed
 
+    private Quaternion lastRotation;
+
     void Awake()
     {
+        lastRotation = transform.rotation;
         arm1Last = arm1;
         arm2Last = arm2;
         leftArm = Instantiate(armsList[arm1]);
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = transform.rotation;
+        transform.rotation = lastRotation;
     }
     void FixedUpdate()
     {
