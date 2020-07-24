@@ -467,7 +467,7 @@ MonoBehaviour:
   - {fileID: 4350072235751897452, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
   - {fileID: 4350072235751897452, guid: a1fe52c138009304790a61560ff9cb8f, type: 3}
   arm1: 1
-  arm2: 2
+  arm2: 3
   maxSpeed: 5
 --- !u!50 &1608269855
 Rigidbody2D:
