@@ -39,7 +39,6 @@ public class ArmsBomb : ArmsClass
         rb.AddForce(boosterForce * amplifierBoosterMultiplier);
         m_Animator.ResetTrigger("moveOff");
         m_Animator.SetTrigger("moveOn");
-
     }
 
     public void FixedUpdate()
