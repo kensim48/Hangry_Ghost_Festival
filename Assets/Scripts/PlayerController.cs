@@ -11,10 +11,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rbLeftArm;
     private ArmsClass leftArm;
     private ArmsClass rightArm;
-    private GameObject leftBooster;
-    private GameObject rightBooster;
-    GameObject boosterTrail;
-    GameObject amplifierLine;
     bool leftBoosterForce;
     bool rightBoosterForce;
     bool leftRotationActive;
@@ -33,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed;//Replace with your max speed
     private bool arm1ExplosiveArmed = false;
     private bool arm2ExplosiveArmed = false;
+    public GameObject mainBase;
+    public GameObject cameraAngle;
 
     private Quaternion lastRotation;
 
@@ -45,6 +43,7 @@ public class PlayerController : MonoBehaviour
         leftArm.transform.parent = transform;
         rightArm = Instantiate(armsList[arm2]);
         rightArm.transform.parent = transform;
+        rightArm.transform.rotation = mainBase.transform.rotation;
         controls = new ControllerScheme();
         rb = GetComponent<Rigidbody2D>();
         controls.Gameplay.LeftTrigger.performed += ctx =>
@@ -75,6 +74,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.RightArmMovement.canceled += ctx => rightRotationActive = false;
         controls.Gameplay.LeftPrime.performed += ctx => arm1ExplosiveArmed = !arm1ExplosiveArmed;
         controls.Gameplay.RightPrime.performed += ctx => arm2ExplosiveArmed = !arm2ExplosiveArmed;
+        mainBase.transform.rotation = cameraAngle.transform.rotation;
     }
 
     void Update()
@@ -85,8 +85,24 @@ public class PlayerController : MonoBehaviour
     {
         leftAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-leftMove.x, leftMove.y, 0)));
         rightAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-rightMove.x, rightMove.y, 0)));
-        if (rightRotationActive) rightArm.transform.rotation = Quaternion.RotateTowards(rightArm.transform.rotation, rightAim, rotateSpeed);
-        if (leftRotationActive) leftArm.transform.rotation = Quaternion.RotateTowards(leftArm.transform.rotation, leftAim, rotateSpeed);
+        if (rightRotationActive)
+        {
+            rightArm.transform.rotation = Quaternion.RotateTowards(rightArm.transform.rotation, rightAim, rotateSpeed);
+            rightArm.transform.eulerAngles = new Vector3(
+     rightArm.transform.eulerAngles.x + cameraAngle.transform.eulerAngles.x,
+     rightArm.transform.eulerAngles.y,
+     rightArm.transform.eulerAngles.z
+    );
+        }
+        if (leftRotationActive)
+        {
+            leftArm.transform.rotation = Quaternion.RotateTowards(leftArm.transform.rotation, leftAim, rotateSpeed);
+            leftArm.transform.eulerAngles = new Vector3(
+leftArm.transform.eulerAngles.x + cameraAngle.transform.eulerAngles.x,
+leftArm.transform.eulerAngles.y,
+leftArm.transform.eulerAngles.z
+);
+        }
 
         if (leftBoosterForce && arm1ExplosiveArmed)
         {
@@ -109,6 +125,7 @@ public class PlayerController : MonoBehaviour
             Destroy(rightArm.gameObject);
             rightArm = Instantiate(armsList[arm2]);
             rightArm.transform.position = transform.position;
+            rightArm.transform.rotation = mainBase.transform.rotation;
             rightArm.transform.parent = transform;
             arm2Last = arm2;
         }
