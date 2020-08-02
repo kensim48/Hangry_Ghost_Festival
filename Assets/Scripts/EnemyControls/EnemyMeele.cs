@@ -11,6 +11,7 @@ public class EnemyMeele : EnemyBase
     public void Start()
     {
         base.Start();
+        speed++;
     }
 
     // Update is called once per frame
