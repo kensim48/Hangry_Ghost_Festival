@@ -52,6 +52,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "RightPrime",
+                    "type": "Button",
+                    "id": "c9603813-ddf2-4f14-b0b9-28c83256705f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftPrime",
+                    "type": "Button",
+                    "id": "3d862ec6-5093-4475-be1a-7154ca57e39b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -118,6 +134,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7e78129-2520-4bd0-83dd-ea658659c354",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPrime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f3fbe1f-619a-4e8c-bfe4-20661c53a6e3",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftPrime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
