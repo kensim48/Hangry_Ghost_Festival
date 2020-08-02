@@ -8,6 +8,9 @@ public class detectionDoor : MonoBehaviour
 
     private RoomTemplates templates;
 
+    public delegate void NotifyRoomEnter();
+    public static event NotifyRoomEnter notifyRoomEnter;
+
     void Start()
     {
         playerDetected = false;
@@ -20,6 +23,11 @@ public class detectionDoor : MonoBehaviour
             playerDetected = true;
             foreach (var obj in templates.doors)
                 obj.SetActive(true);
+            if (notifyRoomEnter != null) 
+            {
+                notifyRoomEnter();
+                Debug.Log("Event death sent");
+            }
         }
 
     }
