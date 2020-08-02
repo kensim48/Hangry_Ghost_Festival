@@ -1,64 +1,73 @@
 fileFormatVersion: 2
-guid: 73764dbba8b563f458fd312a41f6d602
+guid: 35bc5da682f221b4cb2d8e798718b3a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6177787214406556867
-    second: chinese map_floor1
+      213: 1813696397511105724
+    second: chinese map sprites 1_0
   - first:
-      213: -1880015094318010780
-    second: chinese map_walldeco1
+      213: -843495819215028287
+    second: chinese map sprites 1_1
   - first:
-      213: -2092425012702704148
-    second: chinese map_walldeco2
+      213: 6532592383866215350
+    second: chinese map sprites 1_2
   - first:
-      213: -1090927804993124909
-    second: chinese map_walldeco3
+      213: 7088253890689620854
+    second: chinese map sprites 1_3
   - first:
-      213: -6749106164030804869
-    second: chinese map_wall1
+      213: -26625338228612508
+    second: chinese map sprites 1_4
   - first:
-      213: 7737772651493481794
-    second: chinese map_wall2
+      213: 3164009227893439484
+    second: chinese map sprites 1_5
   - first:
-      213: 3413824021984767057
-    second: chinese map_table1
+      213: -6485333793185983690
+    second: chinese map sprites 1_6
   - first:
-      213: -2391984094385851978
-    second: chinese map_table2
+      213: 7847947824960769522
+    second: chinese map sprites 1_7
   - first:
-      213: 9115045354692892381
-    second: chinese map_chair1
+      213: 8947491992831013553
+    second: chinese map sprites 1_8
   - first:
-      213: 4988726457883979956
-    second: chinese map_chair2
+      213: 8168783040141749938
+    second: chinese map sprites 1_9
   - first:
-      213: -1348776471819058130
-    second: chinese map_tabledeco1
+      213: 9024820048623204546
+    second: chinese map sprites 1_10
   - first:
-      213: 234636328060088990
-    second: chinese map_tabledeco2
+      213: -6740276285089730078
+    second: chinese map sprites 1_11
   - first:
-      213: 4928863004593730848
-    second: chinese map_tabledeco3
+      213: -7828305516651909187
+    second: chinese map sprites 1_12
   - first:
-      213: 1481523253162067297
-    second: chinese map_tabledeco4
+      213: 1947355019875297173
+    second: chinese map sprites 1_13
   - first:
-      213: 5841834727239459683
-    second: chinese map_14
+      213: 9072748276512261374
+    second: chinese map sprites 1_14
   - first:
-      213: -6639389758339269124
-    second: chinese map_chair4
+      213: -8311082794613047365
+    second: chinese map sprites 1_15
   - first:
-      213: -5672396747886682943
-    second: chinese map_chair3
+      213: 4822482735582768669
+    second: chinese map sprites 1_16
   - first:
-      213: -7838687640869105764
-    second: chinese map_tabledeco5
+      213: 7355538927818989332
+    second: chinese map sprites 1_17
   - first:
-      213: 4146145140891718132
-    second: chinese map_tabledeco6
+      213: 103842728604960820
+    second: chinese map sprites 1_18
+  - first:
+      213: -5528710691924778453
+    second: chinese map sprites 1_19
+  - first:
+      213: -6617087932435970905
+    second: chinese map sprites 1_20
+  - first:
+      213: -9152256442049664525
+    second: chinese map sprites 1_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -144,7 +153,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chinese map_floor1
+      name: chinese map sprites 1_0
       rect:
         serializedVersion: 2
         x: 7
@@ -158,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cc17ac7db8ebb550800000000000000
-      internalID: 6177787214406556867
+      spriteID: cbc1e00a34b8b2910800000000000000
+      internalID: 1813696397511105724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_walldeco1
+      name: chinese map sprites 1_1
       rect:
         serializedVersion: 2
         x: 48
@@ -179,14 +188,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46e6dc28b38d8e5e0800000000000000
-      internalID: -1880015094318010780
+      spriteID: 1cf392e750d4b44f0800000000000000
+      internalID: -843495819215028287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_walldeco2
+      name: chinese map sprites 1_2
       rect:
         serializedVersion: 2
         x: 104
@@ -200,14 +209,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ced86be798636f2e0800000000000000
-      internalID: -2092425012702704148
+      spriteID: 6bb94c6792e68aa50800000000000000
+      internalID: 6532592383866215350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_walldeco3
+      name: chinese map sprites 1_3
       rect:
         serializedVersion: 2
         x: 122
@@ -221,14 +230,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d5c9cbf0fe3cd0f0800000000000000
-      internalID: -1090927804993124909
+      spriteID: 67bd550cb598e5260800000000000000
+      internalID: 7088253890689620854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_wall1
+      name: chinese map sprites 1_4
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 257
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462ebdc556861aff0800000000000000
+      internalID: -26625338228612508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_5
       rect:
         serializedVersion: 2
         x: 7
@@ -242,14 +272,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7c6b8db3bb5652a0800000000000000
-      internalID: -6749106164030804869
+      spriteID: cfb75ae01a1d8eb20800000000000000
+      internalID: 3164009227893439484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_wall2
+      name: chinese map sprites 1_6
       rect:
         serializedVersion: 2
         x: 48
@@ -263,14 +293,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24d5005ea37126b60800000000000000
-      internalID: 7737772651493481794
+      spriteID: 633105f96477ff5a0800000000000000
+      internalID: -6485333793185983690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_table1
+      name: chinese map sprites 1_7
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 155
+        width: 64
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd069277f289ec60800000000000000
+      internalID: 7847947824960769522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_8
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 155
+        width: 16
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b23857cf80eb2c70800000000000000
+      internalID: 8947491992831013553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_9
       rect:
         serializedVersion: 2
         x: 13
@@ -284,14 +356,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ce81c5cd6506f20800000000000000
-      internalID: 3413824021984767057
+      spriteID: 2be62ea15e85d5170800000000000000
+      internalID: 8168783040141749938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_table2
+      name: chinese map sprites 1_10
       rect:
         serializedVersion: 2
         x: 85
@@ -305,14 +377,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b13fb1b327fdced0800000000000000
-      internalID: -2391984094385851978
+      spriteID: 2c87208c40a9e3d70800000000000000
+      internalID: 9024820048623204546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_chair1
+      name: chinese map sprites 1_11
       rect:
         serializedVersion: 2
         x: 15
@@ -326,14 +398,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd65b0ed4752f7e70800000000000000
-      internalID: 9115045354692892381
+      spriteID: 2e1bc332e6ab572a0800000000000000
+      internalID: -6740276285089730078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_chair2
+      name: chinese map sprites 1_12
       rect:
         serializedVersion: 2
         x: 33
@@ -347,14 +419,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b074c338448b3540800000000000000
-      internalID: 4988726457883979956
+      spriteID: dbf6bb6db954c5390800000000000000
+      internalID: -7828305516651909187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_tabledeco1
+      name: chinese map sprites 1_13
       rect:
         serializedVersion: 2
         x: 56
@@ -368,14 +440,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2402dbe1fe284de0800000000000000
-      internalID: -1348776471819058130
+      spriteID: 597ad33b215660b10800000000000000
+      internalID: 1947355019875297173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_tabledeco2
+      name: chinese map sprites 1_14
       rect:
         serializedVersion: 2
         x: 76
@@ -389,14 +461,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e927c694f78914300800000000000000
-      internalID: 234636328060088990
+      spriteID: ef40d0eec70e8ed70800000000000000
+      internalID: 9072748276512261374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_tabledeco3
+      name: chinese map sprites 1_15
       rect:
         serializedVersion: 2
         x: 85
@@ -410,14 +482,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 025bf57d9c6d66440800000000000000
-      internalID: 4928863004593730848
+      spriteID: bbf7a387b3a19ac80800000000000000
+      internalID: -8311082794613047365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_tabledeco4
+      name: chinese map sprites 1_16
       rect:
         serializedVersion: 2
         x: 99
@@ -431,14 +503,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 165c43f9c8d6f8410800000000000000
-      internalID: 1481523253162067297
+      spriteID: d1e6dd55f76ece240800000000000000
+      internalID: 4822482735582768669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_14
+      name: chinese map sprites 1_17
       rect:
         serializedVersion: 2
         x: 100
@@ -452,14 +524,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36326a9abbd521150800000000000000
-      internalID: 5841834727239459683
+      spriteID: 41f553cfeaf141660800000000000000
+      internalID: 7355538927818989332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_chair4
+      name: chinese map sprites 1_18
       rect:
         serializedVersion: 2
         x: 16
@@ -473,18 +545,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfd32d811362cd3a0800000000000000
-      internalID: -6639389758339269124
+      spriteID: 4388107596ce07100800000000000000
+      internalID: 103842728604960820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_chair3
+      name: chinese map sprites 1_19
       rect:
         serializedVersion: 2
         x: 33
-        y: 33
+        y: 32
         width: 16
         height: 20
       alignment: 0
@@ -494,14 +566,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cc122126399741b0800000000000000
-      internalID: -5672396747886682943
+      spriteID: b226be50be21643b0800000000000000
+      internalID: -5528710691924778453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_tabledeco5
+      name: chinese map sprites 1_20
       rect:
         serializedVersion: 2
         x: 58
@@ -515,14 +587,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9f80cc2f13673390800000000000000
-      internalID: -7838687640869105764
+      spriteID: 7a441a395916b24a0800000000000000
+      internalID: -6617087932435970905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chinese map_tabledeco6
+      name: chinese map sprites 1_21
       rect:
         serializedVersion: 2
         x: 85
@@ -536,8 +608,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f11016d9011a8930800000000000000
-      internalID: 4146145140891718132
+      spriteID: 3f96956b147acf080800000000000000
+      internalID: -9152256442049664525
       vertices: []
       indices: 
       edges: []
