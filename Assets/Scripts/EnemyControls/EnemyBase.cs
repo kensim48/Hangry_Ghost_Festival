@@ -22,6 +22,8 @@ public class EnemyBase : MonoBehaviour
     public int health;
     public bool isHit = false;
     public bool isAttack = false;
+    public float startTime;
+    public float waitTime = 1f;
 
     #endregion
 
@@ -43,6 +45,7 @@ public class EnemyBase : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -78,7 +81,27 @@ public class EnemyBase : MonoBehaviour
 
                 break;
 
-            case 1: //Hit
+            case 1: //if Hit by food
+                // TODO: if collision detected, to enter this state
+                if (Time.time - startTime > waitTime)
+                {
+                    if (health <= 0)
+                    {
+                        // Check if player is death first, if yes, set to Death state
+                        currentState = 4; // death
+
+                    }
+                    else
+                    {
+                        health = health - 1;
+                    }
+                    print("On Collision: " + health.ToString());
+                    startTime = Time.time;
+                } else{
+                    isHit = false;
+                    currentState = 0;
+                }
+
                 break;
 
             case 2: //Retreat
@@ -90,15 +113,29 @@ public class EnemyBase : MonoBehaviour
                 {
                     isAttack = false;
                     currentState = 0;
-                    chasePatrolState = 1;
                 }
                 break;
 
             case 4: //Death
+                // TODO: Add death event trigger here to signal to room enemy is isDead
+                isDead = true;
+                Destroy(gameObject);
                 break;
 
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Projectile")
+        {
+            currentState = 1; // Hit state
+            isHit = true;
+            print("On Collision with projectile");
+        }
+
+    }
+
 
     public void moveEnemy()
     {
