@@ -38,4 +38,13 @@ public class RoomTemplates : MonoBehaviour
             waitTime -= Time.deltaTime;
         }
     }
+
+    void Start()
+    {
+        detectionDoor.notifyRoomEnter += updatePlayerDeath;
+    }
+
+    void updatePlayerDeath(){
+        Debug.Log("Event death recieved");
+    }
 }
