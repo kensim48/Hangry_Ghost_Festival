@@ -25,6 +25,8 @@ public class EnemyBase : MonoBehaviour
     public float startTime;
     public float waitTime = 1f;
 
+    public GameObject coin;
+
     #endregion
 
     enum ChasePatrolStates
@@ -122,6 +124,7 @@ public class EnemyBase : MonoBehaviour
             case 4: //Death
                 // TODO: Add death event trigger here to signal to room enemy is isDead
                 isDead = true;
+                Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
                 Destroy(gameObject);
                 break;
 
