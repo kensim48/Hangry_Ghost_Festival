@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public float retreatDistance; // When enmy will back away from target
     public Transform player;
 
-    public Vector3 offset = new Vector3(5, 5, 0);
+    // public Vector3 offset = new Vector3(5, 5, 0);
 
     // Shooting
     public Transform firePoint;
@@ -20,11 +20,13 @@ public class EnemyController : MonoBehaviour
     // public GameObject projectile;
     private Vector2 _originalPosition;
     Rigidbody2D rb2d;
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
         timeBtwShots = startTimeBtwShots;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -32,14 +34,14 @@ public class EnemyController : MonoBehaviour
     {
         _originalPosition = transform.position;
         // check distance (enemies position, players position) > stopping distance
-        if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+        if (Vector3.Distance(transform.position, player.position) > stoppingDistance)
         {
             //move towards player - MOvTowards is sim to Lerp but has maxDistanceDelta (if -ve, pushes away from target)
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime); //The speed*Time.delta time prevents faster computer from having faster enemies
+            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime); //The speed*Time.delta time prevents faster computer from having faster enemies
             RotateBody();
 
         }
-        else if (Vector2.Distance(transform.position, player.transform.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
+        else if (Vector3.Distance(transform.position, player.transform.position) < stoppingDistance && Vector3.Distance(transform.position, player.position) > retreatDistance)
         {
             transform.position = this.transform.position;
             RotateBody();
@@ -47,7 +49,7 @@ public class EnemyController : MonoBehaviour
         else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
         {
             //if enemy is too close
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
             RotateBody();
         }
 
@@ -81,8 +83,7 @@ public class EnemyController : MonoBehaviour
 
     void RotateBody()
     {
-        Vector2 direction = player.position - transform.position;
-
+        Vector3 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
