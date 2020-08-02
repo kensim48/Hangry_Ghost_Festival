@@ -236,7 +236,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ac1b7d89defe414299b070d7cd125e1, type: 3}
   m_Name: 
@@ -292,13 +292,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0.23988633, y: -0, z: -0, w: 0.970801}
+  m_LocalPosition: {x: 0, y: -6.26, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -27.760002, y: 0, z: 0}
 --- !u!1 &1066113860
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,12 +459,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 60
   armsList:
+  - {fileID: 524235655514336494, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
   - {fileID: 3634362618982557625, guid: c0f081466bfbc884594b6c04d051a38b, type: 3}
   - {fileID: 1831679515076659607, guid: da24708f33d7aa4449e33db795089855, type: 3}
   - {fileID: 2052817310018002644, guid: 68aa5fa9537090a40bb1966f3b46d460, type: 3}
+  destroyableArmsList:
+  - {fileID: 4350072235751897452, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
+  - {fileID: 4350072235751897452, guid: a1fe52c138009304790a61560ff9cb8f, type: 3}
   arm1: 1
-  arm2: 2
+  arm2: 3
   maxSpeed: 5
+  mainBase: {fileID: 1066113860}
+  cameraAngle: {fileID: 519420028}
 --- !u!50 &1608269855
 Rigidbody2D:
   serializedVersion: 4

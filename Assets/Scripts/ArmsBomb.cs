@@ -26,8 +26,6 @@ public class ArmsBomb : ArmsClass
     }
     public override void Attack()
     {
-        // Vector2 boosterForce = (Vector2)(transform.rotation * Quaternion.Euler(0, 0, -90) * Vector2.right);
-        // rb.AddForce(boosterForce * amplifierBoosterMultiplier);
         isMoving = true;
         if (chargeLevel <= maxCharge) chargeLevel += chargeRate;
         chargeState = (int)Mathf.Floor(chargeLevel / (maxCharge / 3));
@@ -41,7 +39,6 @@ public class ArmsBomb : ArmsClass
         rb.AddForce(boosterForce * amplifierBoosterMultiplier);
         m_Animator.ResetTrigger("moveOff");
         m_Animator.SetTrigger("moveOn");
-
     }
 
     public void FixedUpdate()
@@ -53,7 +50,7 @@ public class ArmsBomb : ArmsClass
             for (; chargeState > 0; chargeState--)
             {
                 indicators[chargeState - 1].SetActive(false);
-                Rigidbody2D bomb = Instantiate(bombSingle, spawnPoints[chargeState - 1].position, Quaternion.identity) as Rigidbody2D;
+                Rigidbody2D bomb = Instantiate(bombSingle, spawnPoints[chargeState - 1].position, transform.rotation) as Rigidbody2D;
                 bomb.AddForce(spawnPoints[chargeState - 1].up * bombThrust);
             }
             chargeLevel = 0;
