@@ -25,6 +25,8 @@ public class EnemyBase : MonoBehaviour
     public float startTime;
     public float waitTime = 1f;
 
+    public GameObject coin;
+
     #endregion
 
     enum ChasePatrolStates
@@ -85,6 +87,7 @@ public class EnemyBase : MonoBehaviour
                 // TODO: if collision detected, to enter this state
                 if (Time.time - startTime > waitTime)
                 {
+                    startTime = Time.time;
                     if (health <= 0)
                     {
                         // Check if player is death first, if yes, set to Death state
@@ -93,11 +96,13 @@ public class EnemyBase : MonoBehaviour
                     }
                     else
                     {
-                        health = health - 1;
+                        health--;
                     }
                     print("On Collision: " + health.ToString());
-                    startTime = Time.time;
-                } else{
+
+                }
+                else
+                {
                     isHit = false;
                     currentState = 0;
                 }
@@ -119,6 +124,7 @@ public class EnemyBase : MonoBehaviour
             case 4: //Death
                 // TODO: Add death event trigger here to signal to room enemy is isDead
                 isDead = true;
+                Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
                 Destroy(gameObject);
                 break;
 
