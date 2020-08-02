@@ -60,22 +60,19 @@ public class EnemyBase : MonoBehaviour
 
                     case 1: // Patrol
                         // For Patrol logic, if player is not within the range, will stay  & withn distance to shoot
-                        if(Vector3.Distance(transform.position, player.position) < patrolDistance && Vector3.Distance(transform.position, player.position) < shootingDistance){
+                        if (Vector3.Distance(transform.position, player.position) < patrolDistance && Vector3.Distance(transform.position, player.position) < shootingDistance)
+                        {
                             moveEnemy();
                             // Enter Attack States
+                            currentState = 3;
                             isAttack = true;
-                        } 
-                        else if (Vector3.Distance(transform.position, player.position) < patrolDistance && Vector3.Distance(transform.position, player.position) > shootingDistance){
+                        }
+                        else if (Vector3.Distance(transform.position, player.position) < patrolDistance)
+                        {
+                            isAttack = false;
                             moveEnemy();
-                            isAttack = false;
                         }
-                        //Check if Player is within range to shoot
-                        else if(Vector3.Distance(transform.position, player.position) < shootingDistance){
-                            isAttack = true;
-                        } else{
-                            isAttack = false;
-                        }
-                        
+
                         break;
                 }
 
@@ -88,7 +85,13 @@ public class EnemyBase : MonoBehaviour
                 break;
 
             case 3: //Attack
-
+                    //Check if Player is beyond shooting distance, stop attacking
+                if (Vector3.Distance(transform.position, player.position) > shootingDistance)
+                {
+                    isAttack = false;
+                    currentState = 0;
+                    chasePatrolState = 1;
+                }
                 break;
 
             case 4: //Death
