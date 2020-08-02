@@ -13,6 +13,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject closedRoom;
 
     public List<GameObject> rooms;
+    public List<GameObject> doors;
 
     public float waitTime;
     private bool spawnedBoss;
@@ -36,5 +37,14 @@ public class RoomTemplates : MonoBehaviour
         {
             waitTime -= Time.deltaTime;
         }
+    }
+
+    void Start()
+    {
+        detectionDoor.notifyRoomEnter += updatePlayerDeath;
+    }
+
+    void updatePlayerDeath(){
+        Debug.Log("Event death recieved");
     }
 }

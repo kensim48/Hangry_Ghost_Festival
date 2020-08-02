@@ -1,0 +1,632 @@
+fileFormatVersion: 2
+guid: 35bc5da682f221b4cb2d8e798718b3a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1813696397511105724
+    second: chinese map sprites 1_0
+  - first:
+      213: -843495819215028287
+    second: chinese map sprites 1_1
+  - first:
+      213: 6532592383866215350
+    second: chinese map sprites 1_2
+  - first:
+      213: 7088253890689620854
+    second: chinese map sprites 1_3
+  - first:
+      213: -26625338228612508
+    second: chinese map sprites 1_4
+  - first:
+      213: 3164009227893439484
+    second: chinese map sprites 1_5
+  - first:
+      213: -6485333793185983690
+    second: chinese map sprites 1_6
+  - first:
+      213: 7847947824960769522
+    second: chinese map sprites 1_7
+  - first:
+      213: 8947491992831013553
+    second: chinese map sprites 1_8
+  - first:
+      213: 8168783040141749938
+    second: chinese map sprites 1_9
+  - first:
+      213: 9024820048623204546
+    second: chinese map sprites 1_10
+  - first:
+      213: -6740276285089730078
+    second: chinese map sprites 1_11
+  - first:
+      213: -7828305516651909187
+    second: chinese map sprites 1_12
+  - first:
+      213: 1947355019875297173
+    second: chinese map sprites 1_13
+  - first:
+      213: 9072748276512261374
+    second: chinese map sprites 1_14
+  - first:
+      213: -8311082794613047365
+    second: chinese map sprites 1_15
+  - first:
+      213: 4822482735582768669
+    second: chinese map sprites 1_16
+  - first:
+      213: 7355538927818989332
+    second: chinese map sprites 1_17
+  - first:
+      213: 103842728604960820
+    second: chinese map sprites 1_18
+  - first:
+      213: -5528710691924778453
+    second: chinese map sprites 1_19
+  - first:
+      213: -6617087932435970905
+    second: chinese map sprites 1_20
+  - first:
+      213: -9152256442049664525
+    second: chinese map sprites 1_21
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: chinese map sprites 1_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 259
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc1e00a34b8b2910800000000000000
+      internalID: 1813696397511105724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 258
+        width: 52
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf392e750d4b44f0800000000000000
+      internalID: -843495819215028287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 258
+        width: 16
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bb94c6792e68aa50800000000000000
+      internalID: 6532592383866215350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 258
+        width: 16
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bd550cb598e5260800000000000000
+      internalID: 7088253890689620854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_4
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 257
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462ebdc556861aff0800000000000000
+      internalID: -26625338228612508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 155
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb75ae01a1d8eb20800000000000000
+      internalID: 3164009227893439484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 155
+        width: 64
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633105f96477ff5a0800000000000000
+      internalID: -6485333793185983690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_7
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 155
+        width: 64
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd069277f289ec60800000000000000
+      internalID: 7847947824960769522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_8
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 155
+        width: 16
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b23857cf80eb2c70800000000000000
+      internalID: 8947491992831013553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_9
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 86
+        width: 59
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2be62ea15e85d5170800000000000000
+      internalID: 8168783040141749938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_10
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 106
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c87208c40a9e3d70800000000000000
+      internalID: 9024820048623204546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_11
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 56
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1bc332e6ab572a0800000000000000
+      internalID: -6740276285089730078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_12
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 58
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf6bb6db954c5390800000000000000
+      internalID: -7828305516651909187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_13
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 67
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 597ad33b215660b10800000000000000
+      internalID: 1947355019875297173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_14
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 68
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef40d0eec70e8ed70800000000000000
+      internalID: 9072748276512261374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_15
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 67
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf7a387b3a19ac80800000000000000
+      internalID: -8311082794613047365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_16
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 69
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e6dd55f76ece240800000000000000
+      internalID: 4822482735582768669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_17
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 67
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41f553cfeaf141660800000000000000
+      internalID: 7355538927818989332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4388107596ce07100800000000000000
+      internalID: 103842728604960820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_19
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 32
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b226be50be21643b0800000000000000
+      internalID: -5528710691924778453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_20
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 38
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a441a395916b24a0800000000000000
+      internalID: -6617087932435970905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chinese map sprites 1_21
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 38
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f96956b147acf080800000000000000
+      internalID: -9152256442049664525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

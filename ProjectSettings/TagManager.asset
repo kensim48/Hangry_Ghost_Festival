@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Rooms
+  - ClosedRoom
+  - SpawnPoint
+  - EnemySpawn
+  - EnemyTemplate
   layers:
   - Default
   - TransparentFX
@@ -40,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: floor
+    uniqueID: 2080368537
     locked: 0
