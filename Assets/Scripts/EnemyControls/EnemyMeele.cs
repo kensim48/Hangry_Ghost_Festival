@@ -11,7 +11,7 @@ public class EnemyMeele : EnemyBase
     public void Start()
     {
         base.Start();
-        speed++;
+        chasePatrolState = 0; // chase
     }
 
     // Update is called once per frame

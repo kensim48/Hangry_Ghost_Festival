@@ -278,7 +278,7 @@ MonoBehaviour:
   destroyableArmsList: []
   arm1: 1
   arm2: 2
-  maxSpeed: 5
+  maxSpeed: 20
   mainBase: {fileID: 527495868}
   cameraAngle: {fileID: 629123210}
 --- !u!4 &142369920
@@ -565,6 +565,8 @@ MonoBehaviour:
   speed: 10
   stoppingDistance: 8
   retreatDistance: 2
+  patrolDistance: 20
+  shootingDistance: 6
   player: {fileID: 142369920}
   rb2d: {fileID: 0}
   currentState: 0
@@ -572,6 +574,7 @@ MonoBehaviour:
   isDead: 0
   health: 0
   isHit: 0
+  isAttack: 0
   firePoint: {fileID: 160786529}
   bulletPrefab: {fileID: 6985139326041681966, guid: 3fb39703e2d283e439c67d4a72bef281,
     type: 3}
@@ -609,6 +612,8 @@ MonoBehaviour:
   speed: 1
   stoppingDistance: 2
   retreatDistance: 5
+  patrolDistance: 0
+  shootingDistance: 0
   player: {fileID: 142369920}
   rb2d: {fileID: 0}
   currentState: 0
@@ -616,6 +621,7 @@ MonoBehaviour:
   isDead: 0
   health: 0
   isHit: 0
+  isAttack: 0
   SwordPrefab: {fileID: 693807043}
 --- !u!4 &601656020
 Transform:
