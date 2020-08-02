@@ -2,24 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyBase: MonoBehaviour
 {
-    public float speed;
+     public float speed;
     public float stoppingDistance; // The higher the value, the further away it will stop 
     public float retreatDistance; // When enmy will back away from target
     public Transform player;
 
-    // public Vector3 offset = new Vector3(5, 5, 0);
 
-    // Shooting
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-    public float bulletForce = 20f;
-    private float timeBtwShots;
-    public float startTimeBtwShots;
+    
     // public GameObject projectile;
-    private Vector2 _originalPosition;
-    Rigidbody2D rb2d;
+    private Vector3 _originalPosition;
+    public Rigidbody2D rb2d;
 
     public int currentState; //current state in state machine
     public int chasePatrolState;
@@ -34,20 +28,21 @@ public class EnemyController : MonoBehaviour
         Retreat,
         Attack,
         Death,
+
+
     }
     
-    void Start()
+    public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
-        timeBtwShots = startTimeBtwShots;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
 
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+
         _originalPosition = transform.position;
         // check distance (enemies position, players position) > stopping distance
         if (Vector3.Distance(transform.position, player.position) > stoppingDistance)
@@ -69,35 +64,11 @@ public class EnemyController : MonoBehaviour
             RotateBody();
         }
 
-        if (timeBtwShots <= 0)
-        {
-
-            Shoot();
-            RotateBody();
-            // Instantiate(projectile,transform.position , Quaternion.identity);// at the enemies position
-            timeBtwShots = startTimeBtwShots;
-        }
-        else
-        {
-            RotateBody();
-            timeBtwShots -= Time.deltaTime; // like a count down, once zero, spawn the projectile
-        }
 
     }
 
-    void Shoot()
-    {
-        // Create bullet at fire point
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
-        Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
-        bulletrb.velocity = rb2d.velocity + (new Vector2(transform.right.x, transform.right.y) * bulletForce);
-        // bulletrb.AddForce(transform.right * bulletForce);
 
-        // bulletrb.AddForce(new Vector2(bulletForce,0), ForceMode2D.Impulse);
-
-    }
-
-    void RotateBody()
+    public void RotateBody()
     {
         Vector3 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -111,10 +82,6 @@ public class EnemyController : MonoBehaviour
 
 
 
-
-
-
     #endregion
 
 }
-

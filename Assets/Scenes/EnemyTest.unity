@@ -296,6 +296,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &160786529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3971843297789338119, guid: e0218dd09d9fae94282dc9fed3060401,
+    type: 3}
+  m_PrefabInstance: {fileID: 1999610829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &441828564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -538,6 +544,39 @@ Transform:
   m_Father: {fileID: 142369920}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &546891376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6061509424790405248, guid: e0218dd09d9fae94282dc9fed3060401,
+    type: 3}
+  m_PrefabInstance: {fileID: 1999610829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &546891377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546891376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304e2af61c643da4db51737526c01011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  stoppingDistance: 8
+  retreatDistance: 2
+  player: {fileID: 142369920}
+  rb2d: {fileID: 0}
+  currentState: 0
+  chasePatrolState: 0
+  isDead: 0
+  health: 0
+  isHit: 0
+  firePoint: {fileID: 160786529}
+  bulletPrefab: {fileID: 6985139326041681966, guid: 3fb39703e2d283e439c67d4a72bef281,
+    type: 3}
+  bulletForce: 50
+  startTimeBtwShots: 2
 --- !u!1 &601656018
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +609,13 @@ MonoBehaviour:
   speed: 1
   stoppingDistance: 2
   retreatDistance: 5
-  player: {fileID: 103211910}
+  player: {fileID: 142369920}
+  rb2d: {fileID: 0}
+  currentState: 0
+  chasePatrolState: 0
+  isDead: 0
+  health: 0
+  isHit: 0
   SwordPrefab: {fileID: 693807043}
 --- !u!4 &601656020
 Transform:
@@ -1459,23 +1504,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1882524349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7133733538754041090}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111c3dc2c08c76d4bb1406374e8d749d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  stoppingDistance: 2.35
-  retreatDistance: 1
-  player: {fileID: 103211910}
-  SwordPrefab: {fileID: 693807043}
 --- !u!1001 &1999610829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1638,7 +1666,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6061509424790405255, guid: e0218dd09d9fae94282dc9fed3060401, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e0218dd09d9fae94282dc9fed3060401, type: 3}
 --- !u!1 &7133733538754041090
 GameObject:
@@ -1652,7 +1681,6 @@ GameObject:
   - component: {fileID: 7133733538754041091}
   - component: {fileID: 8679364316073622359}
   - component: {fileID: 7697388292390768386}
-  - component: {fileID: 1882524349}
   - component: {fileID: 7133733538754041093}
   m_Layer: 0
   m_Name: Sword Enemy
