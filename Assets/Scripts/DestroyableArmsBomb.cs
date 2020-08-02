@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyableArmsBooster : MonoBehaviour
+public class DestroyableArmsBomb : MonoBehaviour
 {
     private Rigidbody2D rb;
     // Start is called before the first frame update
+    public Rigidbody2D bombSingle;
+
     public int thrust;
     private float startTime;
-    public GameObject player;
-    private float zRotation;
-    private float zSpeed = 0;
-    public float zAccel;
-    public float zMaxSpeed;
     void Start()
     {
         rb = transform.GetComponent<Rigidbody2D>();
         startTime = Time.time;
-        zRotation = transform.rotation.z;
     }
 
     // Update is called once per frame
@@ -25,15 +21,14 @@ public class DestroyableArmsBooster : MonoBehaviour
     {
         if (Time.time - startTime < 1f)
             rb.AddForce(thrust * transform.up);
-        else if (Time.time - startTime < 20f)
-        {
-            // rb.velocity = Vector3.zero;
-            transform.rotation = Quaternion.Euler(-30f, 0, zRotation);
-            zRotation += zSpeed;
-            if (zSpeed < zMaxSpeed)
-                zSpeed += zAccel;
-        }
         else
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Rigidbody2D bombs = Instantiate(bombSingle, transform.position, transform.rotation) as Rigidbody2D;
+                bombs.AddForce(new Vector3(Random.Range(-5000.0f, 5000.0f), Random.Range(-5000.0f, 5000.0f), 0));
+            }
             Destroy(gameObject);
+        }
     }
 }

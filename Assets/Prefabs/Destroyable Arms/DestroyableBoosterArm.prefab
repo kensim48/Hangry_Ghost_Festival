@@ -211,6 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 10
+  player: {fileID: 0}
+  zAccel: 0.1
+  zMaxSpeed: 15
 --- !u!50 &6326011279266711476
 Rigidbody2D:
   serializedVersion: 4
@@ -224,7 +227,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
