@@ -42,8 +42,6 @@ public class PlayerController : MonoBehaviour
     // Assist in locking of player body's rotation
     private Quaternion lastRotation;
 
-    private Quaternion lastRotation;
-
     void Awake()
     {
 

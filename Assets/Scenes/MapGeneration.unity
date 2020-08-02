@@ -178,9 +178,12 @@ MonoBehaviour:
   - {fileID: 3634362618982557625, guid: c0f081466bfbc884594b6c04d051a38b, type: 3}
   - {fileID: 1831679515076659607, guid: da24708f33d7aa4449e33db795089855, type: 3}
   - {fileID: 2052817310018002644, guid: 68aa5fa9537090a40bb1966f3b46d460, type: 3}
+  destroyableArmsList: []
   arm1: 1
   arm2: 2
   maxSpeed: 5
+  mainBase: {fileID: 1446829450}
+  cameraAngle: {fileID: 1332222419}
 --- !u!4 &60246792
 Transform:
   m_ObjectHideFlags: 0
@@ -408,7 +411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446829450}
-  m_LocalRotation: {x: -0.24699889, y: 0, z: 0, w: 0.96901584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.23, z: -0.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -416,7 +419,7 @@ Transform:
   - {fileID: 1943324089}
   m_Father: {fileID: 60246792}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -28.6, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529000539
 GameObject:
   m_ObjectHideFlags: 0
