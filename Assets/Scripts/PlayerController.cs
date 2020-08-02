@@ -54,8 +54,10 @@ public class PlayerController : MonoBehaviour
         arm2Last = arm2;
         leftArm = Instantiate(armsList[arm1]);
         leftArm.transform.parent = transform;
+        leftArm.transform.position = transform.position;
         rightArm = Instantiate(armsList[arm2]);
         rightArm.transform.parent = transform;
+        rightArm.transform.position = transform.position;
 
         // Getting rigidbody of Player
         rb = GetComponent<Rigidbody2D>();
