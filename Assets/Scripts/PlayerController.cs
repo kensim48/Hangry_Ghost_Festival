@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         leftArm.transform.position = transform.position;
         rightArm = Instantiate(armsList[arm2]);
         rightArm.transform.parent = transform;
-        leftArm.transform.position = transform.position;
+        rightArm.transform.position = transform.position;
 
         // Getting rigidbody of Player
         rb = GetComponent<Rigidbody2D>();

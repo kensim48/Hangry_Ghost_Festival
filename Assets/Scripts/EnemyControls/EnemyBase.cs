@@ -85,6 +85,7 @@ public class EnemyBase : MonoBehaviour
                 // TODO: if collision detected, to enter this state
                 if (Time.time - startTime > waitTime)
                 {
+                    startTime = Time.time;
                     if (health <= 0)
                     {
                         // Check if player is death first, if yes, set to Death state
@@ -93,11 +94,13 @@ public class EnemyBase : MonoBehaviour
                     }
                     else
                     {
-                        health = health - 1;
+                        health--;
                     }
                     print("On Collision: " + health.ToString());
-                    startTime = Time.time;
-                } else{
+
+                }
+                else
+                {
                     isHit = false;
                     currentState = 0;
                 }
