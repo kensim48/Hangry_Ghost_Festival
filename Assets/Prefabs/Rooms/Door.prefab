@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2437586053859652004}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,12 +186,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.5
+  m_EdgeRadius: 0.3
   m_Points:
-  - {x: -1.5151784, y: 0.69949746}
-  - {x: -1.5463777, y: 1.9881477}
-  - {x: 1.5196897, y: 2.008235}
-  - {x: 1.49262, y: 0.8348846}
+  - {x: -2.3498974, y: 1.3322791}
+  - {x: -1.5768569, y: 2.9437504}
+  - {x: 1.4058965, y: 3.1505902}
+  - {x: 2.6394234, y: 1.3100286}
 --- !u!114 &8039375753629071646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetected: 0
+  roomNum: 0
+  eneSP: {fileID: 0}
 --- !u!1 &6722237758816386229
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48d79034cca58d49b2414bcda45a03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trans: {x: 0, y: 0, z: 0}
 --- !u!1 &8323574167668369604
 GameObject:
   m_ObjectHideFlags: 0
