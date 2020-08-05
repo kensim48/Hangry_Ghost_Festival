@@ -15,7 +15,13 @@ public class RoomSpawner : MonoBehaviour {
 	private int rand;
 	public bool spawned = false;
 
-	public float waitTime = 10f;
+	private float waitTime = 10f;
+
+	public GameObject test;
+
+	public bool test1;
+
+	public bool test2;
 
 	void Start(){
 		Destroy(gameObject, waitTime);
@@ -48,6 +54,9 @@ public class RoomSpawner : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
+		// test = other.gameObject;
+		// test1 = other.GetComponent<RoomSpawner>().spawned;
+		// test2 = spawned;
 		if(other.CompareTag("SpawnPoint")){
 			if(other.GetComponent<RoomSpawner>().spawned == false && spawned == false){
 				Instantiate(templates.closedRoom, transform.position, Quaternion.identity);

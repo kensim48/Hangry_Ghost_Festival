@@ -24,10 +24,13 @@ public class EnemyBase : MonoBehaviour
     public bool isAttack = false;
     public float startTime;
     public float waitTime = 1f;
-
     public GameObject coin;
 
     #endregion
+
+    public delegate void NotifyEnemyDeath();
+    public static event NotifyEnemyDeath notifyDeath;
+
 
     enum ChasePatrolStates
     {
@@ -126,6 +129,9 @@ public class EnemyBase : MonoBehaviour
                 isDead = true;
                 Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
                 Destroy(gameObject);
+                if (notifyDeath != null){
+                    notifyDeath();
+                } 
                 break;
 
         }
