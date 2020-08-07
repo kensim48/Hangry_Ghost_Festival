@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class detectionDoor : MonoBehaviour
 {
@@ -25,7 +26,13 @@ public class detectionDoor : MonoBehaviour
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         enemyTemp = GameObject.FindGameObjectWithTag("EnemyTemplate").GetComponent<EnemyTemplates>();
         addroom = transform.parent.parent.parent.GetComponent<AddRoom>();
-        eneSP = transform.parent.parent.parent.GetChild(3).gameObject;
+        try {
+            eneSP = transform.parent.parent.parent.GetChild(3).gameObject;
+        }
+        catch (Exception e) {
+            print("error");
+        }   
+        // eneSP = transform.parent.parent.parent.GetChild(3).gameObject;
         roomNum = addroom.roomNumber;
     }
 

@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186910146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.07, y: 4.62, z: -0.41}
+  m_LocalPosition: {x: -2.97, y: 3.58, z: -0.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -486,7 +486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312797625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6499998, y: 4.5160003, z: -0.40999997}
+  m_LocalPosition: {x: 0.6499998, y: 3.55, z: -0.40999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -517,12 +517,12 @@ Transform:
   m_GameObject: {fileID: 404808437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 500, y: 500, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1116279562}
   - {fileID: 1529968961}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1116279561
 PrefabInstance:
@@ -685,7 +685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256889328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7800002, y: 4.566, z: -0.40999997}
+  m_LocalPosition: {x: -0.67, y: 3.56, z: -0.40999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -791,7 +791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332222419}
   m_LocalRotation: {x: -0.26564023, y: 0, z: 0, w: 0.9640723}
-  m_LocalPosition: {x: 0, y: -17.1, z: -32.85}
+  m_LocalPosition: {x: 0, y: -19.16, z: -32.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1305,7 +1305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 454904152680413335, guid: 6e8c5b8c062e5594889e33c828f99db2, type: 3}
+  - {fileID: 202615448723021585, guid: ec7a903aa7dab3749bd411808e4be0ea, type: 3}
+  - {fileID: 3875883624159337139, guid: 09f47fd83f0fbb7409410d0e7b718bb6, type: 3}
 --- !u!4 &1645441542
 Transform:
   m_ObjectHideFlags: 0
@@ -1382,8 +1383,8 @@ MonoBehaviour:
   destroyableArmsList:
   - {fileID: 4350072235751897452, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
   - {fileID: 4350072235751897452, guid: a1fe52c138009304790a61560ff9cb8f, type: 3}
-  arm1: 4
-  arm2: 1
+  arm1: 1
+  arm2: 4
   maxSpeed: 5
   mainBase: {fileID: 295529866}
   cameraAngle: {fileID: 1332222419}
@@ -1644,7 +1645,7 @@ PrefabInstance:
     - target: {fileID: 1762107576496227244, guid: 683bb6364ffbfeb4792319bde005fc3e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1762107576496227244, guid: 683bb6364ffbfeb4792319bde005fc3e,
         type: 3}
