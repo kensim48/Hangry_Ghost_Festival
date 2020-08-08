@@ -79,7 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  stoppingDistance: 0.5
+  change: {x: 0, y: 0, z: 0}
+  facingLeft: 0
+  animator: {fileID: 7367048186363688243}
+  stoppingDistance: 0
   retreatDistance: 0
   patrolDistance: 0
   shootingDistance: 0
@@ -95,6 +98,7 @@ MonoBehaviour:
   waitTime: 1
   coin: {fileID: 1178975936131227297, guid: 2f4bf5e3f74a06b4b8a2fc0bfe999792, type: 3}
   SwordPrefab: {fileID: 3875883624318597026}
+  startTimeBtwAtks: 0
 --- !u!58 &5950471311405915197
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -110,7 +114,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.19731082
+  m_Radius: 0.24691343
 --- !u!95 &7367048186363688243
 Animator:
   serializedVersion: 3
@@ -424,7 +428,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6253805834181035363}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -452,7 +456,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.15542245
+  m_Radius: 0.2234515
 --- !u!95 &6253805834181035364
 Animator:
   serializedVersion: 3

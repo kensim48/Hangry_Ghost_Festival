@@ -1310,11 +1310,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3875883624159337138, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1918755366}
     - target: {fileID: 3875883624159337139, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
         type: 3}
       propertyPath: m_Name
@@ -1614,7 +1609,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.12354684
+  m_Radius: 0.104
 --- !u!58 &1859162695
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1630,13 +1625,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.10492292
---- !u!95 &1918755366 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7367048186363688243, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1546948189}
-  m_PrefabAsset: {fileID: 0}
+  m_Radius: 0.1235468
 --- !u!1001 &1961283362
 PrefabInstance:
   m_ObjectHideFlags: 0

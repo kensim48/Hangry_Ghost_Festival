@@ -33,13 +33,13 @@ public class EnemyProjectile : EnemyBase
             if (timeBtwShots <= 0)
             {
                 Shoot();
-                //RotateBody();
+                RotateBody();
                 // Instantiate(projectile,transform.position , Quaternion.identity);// at the enemies position
                 timeBtwShots = startTimeBtwShots;
             }
             else
             {
-                //RotateBody();
+                RotateBody();
                 timeBtwShots -= Time.deltaTime; // like a count down, once zero, spawn the projectile
             }
         }
