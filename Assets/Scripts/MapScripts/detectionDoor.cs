@@ -26,12 +26,12 @@ public class detectionDoor : MonoBehaviour
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         enemyTemp = GameObject.FindGameObjectWithTag("EnemyTemplate").GetComponent<EnemyTemplates>();
         addroom = transform.parent.parent.parent.GetComponent<AddRoom>();
-        try {
-            eneSP = transform.parent.parent.parent.GetChild(3).gameObject;
-        }
-        catch (Exception e) {
-            print("error");
-        }   
+        // try {
+        //     eneSP = transform.parent.parent.parent.GetChild(3).gameObject;
+        // }
+        // catch (Exception e) {
+        //     print("error");
+        // }   
         // eneSP = transform.parent.parent.parent.GetChild(3).gameObject;
         roomNum = addroom.roomNumber;
     }
