@@ -81,6 +81,22 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""WeaponSwapLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1e245cf-600d-4624-88f5-e5a20b00496b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""WeaponSwapRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""96eaf2a8-3988-477e-9bdf-237386f22872"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -171,6 +187,28 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                     ""action"": ""RightPrime"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7ad82ae-6635-49e8-b45f-5727fd9547e1"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwapLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d51c44e-262f-4cda-a141-8a44db4014de"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwapRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +225,8 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
         m_Gameplay_RightShoulder = m_Gameplay.FindAction("RightShoulder", throwIfNotFound: true);
         m_Gameplay_LeftPrime = m_Gameplay.FindAction("LeftPrime", throwIfNotFound: true);
         m_Gameplay_RightPrime = m_Gameplay.FindAction("RightPrime", throwIfNotFound: true);
+        m_Gameplay_WeaponSwapLeft = m_Gameplay.FindAction("WeaponSwapLeft", throwIfNotFound: true);
+        m_Gameplay_WeaponSwapRight = m_Gameplay.FindAction("WeaponSwapRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -244,6 +284,8 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_RightShoulder;
     private readonly InputAction m_Gameplay_LeftPrime;
     private readonly InputAction m_Gameplay_RightPrime;
+    private readonly InputAction m_Gameplay_WeaponSwapLeft;
+    private readonly InputAction m_Gameplay_WeaponSwapRight;
     public struct GameplayActions
     {
         private @ControllerScheme m_Wrapper;
@@ -256,6 +298,8 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
         public InputAction @RightShoulder => m_Wrapper.m_Gameplay_RightShoulder;
         public InputAction @LeftPrime => m_Wrapper.m_Gameplay_LeftPrime;
         public InputAction @RightPrime => m_Wrapper.m_Gameplay_RightPrime;
+        public InputAction @WeaponSwapLeft => m_Wrapper.m_Gameplay_WeaponSwapLeft;
+        public InputAction @WeaponSwapRight => m_Wrapper.m_Gameplay_WeaponSwapRight;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -289,6 +333,12 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                 @RightPrime.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightPrime;
                 @RightPrime.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightPrime;
                 @RightPrime.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRightPrime;
+                @WeaponSwapLeft.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeaponSwapLeft;
+                @WeaponSwapLeft.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeaponSwapLeft;
+                @WeaponSwapLeft.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeaponSwapLeft;
+                @WeaponSwapRight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeaponSwapRight;
+                @WeaponSwapRight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeaponSwapRight;
+                @WeaponSwapRight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeaponSwapRight;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -317,6 +367,12 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
                 @RightPrime.started += instance.OnRightPrime;
                 @RightPrime.performed += instance.OnRightPrime;
                 @RightPrime.canceled += instance.OnRightPrime;
+                @WeaponSwapLeft.started += instance.OnWeaponSwapLeft;
+                @WeaponSwapLeft.performed += instance.OnWeaponSwapLeft;
+                @WeaponSwapLeft.canceled += instance.OnWeaponSwapLeft;
+                @WeaponSwapRight.started += instance.OnWeaponSwapRight;
+                @WeaponSwapRight.performed += instance.OnWeaponSwapRight;
+                @WeaponSwapRight.canceled += instance.OnWeaponSwapRight;
             }
         }
     }
@@ -331,5 +387,7 @@ public class @ControllerScheme : IInputActionCollection, IDisposable
         void OnRightShoulder(InputAction.CallbackContext context);
         void OnLeftPrime(InputAction.CallbackContext context);
         void OnRightPrime(InputAction.CallbackContext context);
+        void OnWeaponSwapLeft(InputAction.CallbackContext context);
+        void OnWeaponSwapRight(InputAction.CallbackContext context);
     }
 }

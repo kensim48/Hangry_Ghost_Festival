@@ -41,7 +41,12 @@ public class PlayerController : MonoBehaviour
     public GameObject cameraAngle;
     // Assist in locking of player body's rotation
     private Quaternion lastRotation;
-
+    public GameObject inventoryBarSlots;
+    public GameObject inventoryBarSlotSelector1;
+    public GameObject inventoryBarSlotSelector2;
+    public int[] weaponInventory;
+    public int weaponSlot1;
+    public int weaponSlot2;
     void Awake()
     {
 
@@ -176,6 +181,10 @@ leftArm.transform.eulerAngles.z
             print("Player is too fast, limiting speed");
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
+
+        // Inventory code
+        inventoryBarSlotSelector1.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot1).position;
+        inventoryBarSlotSelector2.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot2).position;
     }
 
     // Control scheme functions
