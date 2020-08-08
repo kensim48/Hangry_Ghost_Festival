@@ -78,7 +78,7 @@ public class RoomTemplates : MonoBehaviour
 
     void updatePlayerDeath(){
         Debug.Log("Event death recieved");
-        numEnemies -=1;
+        numEnemies -= 1;
         if(numEnemies == 0){
             foreach (var obj in doors)
                 {
