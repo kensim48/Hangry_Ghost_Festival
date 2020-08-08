@@ -9,6 +9,8 @@ public class detectionDoor : MonoBehaviour
 
     public int roomNum;
 
+    private int rand;
+
     private RoomTemplates templates;
 
     private EnemyTemplates enemyTemp;
@@ -25,7 +27,7 @@ public class detectionDoor : MonoBehaviour
         playerDetected = false;
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         enemyTemp = GameObject.FindGameObjectWithTag("EnemyTemplate").GetComponent<EnemyTemplates>();
-        addroom = transform.parent.parent.parent.GetComponent<AddRoom>();
+        addroom = transform.parent.parent.parent.GetComponent<AddRoom>(); //reference to addroom script at base room
         // try {
         //     eneSP = transform.parent.parent.parent.GetChild(3).gameObject;
         // }
@@ -59,8 +61,10 @@ public class detectionDoor : MonoBehaviour
         foreach (Transform child in eneSP.transform)
         {
             var pos = child.position;
+            // rand = UnityEngine.Random.Range(0, enemyTemp.enemies.Length);
             Instantiate(enemyTemp.enemies[0],new Vector3(pos.x,pos.y, -1f),enemyTemp.enemies[0].transform.rotation);
             Debug.Log("Enemies Spawned");
+            templates.numEnemies += 1;
         }
     }
 }

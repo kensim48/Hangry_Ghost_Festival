@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -18,10 +19,14 @@ public class RoomTemplates : MonoBehaviour
 
     public List<int> roomCleared;
 
+    public int numEnemies;
+
     public float waitTime;
     private bool spawnedBoss;
     public GameObject boss;
     private int count = 0;
+
+    private int i=0;
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -56,6 +61,7 @@ public class RoomTemplates : MonoBehaviour
                     spawnedBoss = true;
                 }
             }
+            EnemyBase.notifyDeath += updatePlayerDeath;
         }
         else
         {
@@ -65,17 +71,27 @@ public class RoomTemplates : MonoBehaviour
 
     void Start()
     {
-        EnemyBase.notifyDeath += updatePlayerDeath;
+        // EnemyBase.notifyDeath += updatePlayerDeath;
         roomCleared.Add(0);
         roomCleared.Add(1);
     }
 
     void updatePlayerDeath(){
         Debug.Log("Event death recieved");
-        foreach (var obj in doors)
-            {
-                Debug.Log("door");
-                obj.SetActive(false);
-            }
+        numEnemies -= 1;
+        if(numEnemies == 0){
+            foreach (var obj in doors)
+                {
+                    Debug.Log("door" + i.ToString());
+                    try{
+                        obj.SetActive(false);
+                    }
+                    catch (Exception e) {
+                        // print(obj);
+                        print("Door error");
+                    }
+                    i++;
+                }
+        }
     }
 }
