@@ -30,6 +30,10 @@ public class RoomTemplates : MonoBehaviour
 
     private int i=0;
 
+    public GameObject item;
+
+    public Vector3 trans;
+
     public int test =1;
     void FixedUpdate()
     {
@@ -99,6 +103,7 @@ public class RoomTemplates : MonoBehaviour
                     }
                     i++;
                 }
+            Instantiate(item, new Vector3(trans.x, trans.y, -1), transform.rotation);
         }
     }
 }
