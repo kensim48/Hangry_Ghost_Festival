@@ -65,12 +65,17 @@ public class RoomTemplates : MonoBehaviour
 
     void Start()
     {
-        detectionDoor.notifyRoomEnter += updatePlayerDeath;
+        EnemyBase.notifyDeath += updatePlayerDeath;
         roomCleared.Add(0);
         roomCleared.Add(1);
     }
 
     void updatePlayerDeath(){
         Debug.Log("Event death recieved");
+        foreach (var obj in doors)
+            {
+                Debug.Log("door");
+                obj.SetActive(false);
+            }
     }
 }
