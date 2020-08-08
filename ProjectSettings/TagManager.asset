@@ -11,6 +11,8 @@ TagManager:
   - EnemyTemplate
   - Projectile
   - Door
+  - Coin_1
+  - Wall
   layers:
   - Default
   - TransparentFX
