@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     // Note: Due to some changes, arm1 and leftarm are used interchangeably, same for arm2 and right arm
@@ -41,7 +42,19 @@ public class PlayerController : MonoBehaviour
     public GameObject cameraAngle;
     // Assist in locking of player body's rotation
     private Quaternion lastRotation;
-
+    public GameObject inventoryBarSlots;
+    public GameObject inventoryBarSlotSelector1;
+    public GameObject inventoryBarSlotSelector2;
+    public int[] weaponInventory;
+    public int weaponSlot1;
+    public int weaponSlot2;
+    public int maxWeaponSlot = 8;
+    private bool isLeftSelected = false;
+    private bool isRightSelected = false;
+    private int weaponSelectionCounter = 0;
+    private int weaponSelectionCountereMax = 7;
+    public GameObject weaponSpriteLayer;
+    public Sprite[] weaponSpriteList;
     void Awake()
     {
 
@@ -58,6 +71,11 @@ public class PlayerController : MonoBehaviour
         rightArm = Instantiate(armsList[arm2]);
         rightArm.transform.parent = transform;
         rightArm.transform.position = transform.position;
+        // Initial inventory UI setup
+        inventoryBarSlotSelector1.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot1).position;
+        inventoryBarSlotSelector2.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot2).position;
+
+        refreshWeaponSprites();
 
         // Getting rigidbody of Player
         rb = GetComponent<Rigidbody2D>();
@@ -87,7 +105,10 @@ public class PlayerController : MonoBehaviour
         };
         controls.Gameplay.RightArmMovement.canceled += ctx => rightRotationActive = false;
         controls.Gameplay.LeftPrime.performed += ctx => arm1ExplosiveArmed = !arm1ExplosiveArmed;
-        controls.Gameplay.RightPrime.performed += ctx => arm2ExplosiveArmed = !arm2ExplosiveArmed;
+        controls.Gameplay.WeaponSwapLeft.performed += ctx => isLeftSelected = true;
+        controls.Gameplay.WeaponSwapLeft.canceled += ctx => isLeftSelected = false;
+        controls.Gameplay.WeaponSwapRight.performed += ctx => isRightSelected = true;
+        controls.Gameplay.WeaponSwapRight.canceled += ctx => isRightSelected = false;
     }
 
     void Update()
@@ -100,48 +121,6 @@ public class PlayerController : MonoBehaviour
         // Getting aim of left and right analogue sticks
         leftAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-leftMove.x, leftMove.y, 0)));
         rightAim = Quaternion.Euler(Vector3.forward * GetAngle(new Vector3(-rightMove.x, rightMove.y, 0)));
-        // Only rotate if analogue stick is actively pressed
-        if (rightRotationActive)
-        {
-            // Rotation of arm to be that of analogue
-            rightArm.transform.rotation = Quaternion.RotateTowards(rightArm.transform.rotation, rightAim, rotateSpeed);
-            // Modification of rotation to compensate for camera tilt
-            rightArm.transform.eulerAngles = new Vector3(
-     rightArm.transform.eulerAngles.x + cameraAngle.transform.eulerAngles.x,
-     rightArm.transform.eulerAngles.y,
-     rightArm.transform.eulerAngles.z
-    );
-        }
-        if (leftRotationActive)
-        {
-            // Rotation of arm to be that of analogue
-            leftArm.transform.rotation = Quaternion.RotateTowards(leftArm.transform.rotation, leftAim, rotateSpeed);
-            // Modification of rotation to compensate for camera tilt
-            leftArm.transform.eulerAngles = new Vector3(
-leftArm.transform.eulerAngles.x + cameraAngle.transform.eulerAngles.x,
-leftArm.transform.eulerAngles.y,
-leftArm.transform.eulerAngles.z
-);
-        }
-        // Run this part if the explosive toggle is set (clicking of sticks)
-        if (leftBoosterForce && arm1ExplosiveArmed)
-        {
-            // Create a new object of the Destroyable arm section, and place it in the exact postion of the current arm
-            GameObject destroyableArm = Instantiate(destroyableArmsList[arm1]);
-            destroyableArm.transform.position = transform.position;
-            destroyableArm.transform.rotation = leftArm.transform.rotation;
-            // Destroy current arm
-            arm1 = 0;
-            arm1ExplosiveArmed = false;
-        }
-        if (rightBoosterForce && arm2ExplosiveArmed)
-        {
-            GameObject destroyableArm = Instantiate(destroyableArmsList[arm2]);
-            destroyableArm.transform.position = transform.position;
-            destroyableArm.transform.rotation = rightArm.transform.rotation;
-            arm2 = 0;
-            arm2ExplosiveArmed = false;
-        }
         // Checking for changes in arms
         if (arm1 != arm1Last)
         {
@@ -159,23 +138,112 @@ leftArm.transform.eulerAngles.z
             rightArm.transform.parent = transform;
             arm2Last = arm2;
         }
-        // Runs attack and move if trigger is clicked in
-        if (leftBoosterForce)
+        // Inventory code
+        if (isLeftSelected || isRightSelected)
         {
-            leftArm.Attack();
-            leftArm.Move();
+            if (weaponSelectionCounter > weaponSelectionCountereMax)
+            {
+                if (isLeftSelected)
+                {
+                    int orig_weaponSlot1 = weaponSlot1;
+                    if (rightMove.x > 0.5f)
+                    {
+                        weaponSlot1 += weaponSlot1 + 1 == weaponSlot2 ? 2 : 1;
+                        weaponSlot1 = weaponSlot1 < maxWeaponSlot ? weaponSlot1 : orig_weaponSlot1;
+                    }
+                    else if (rightMove.x < -0.5f)
+                    {
+                        weaponSlot1 -= weaponSlot1 - 1 == weaponSlot2 ? 2 : 1;
+                        weaponSlot1 = weaponSlot1 >= 0 ? weaponSlot1 : orig_weaponSlot1;
+                    }
+                }
+                else if (isRightSelected)
+                {
+                    int orig_weaponSlot2 = weaponSlot2;
+                    if (rightMove.x > 0.5f)
+                    {
+                        weaponSlot2 += weaponSlot2 + 1 == weaponSlot1 ? 2 : 1;
+                        weaponSlot2 = weaponSlot2 < maxWeaponSlot ? weaponSlot2 : orig_weaponSlot2;
+                    }
+                    else if (rightMove.x < -0.5f)
+                    {
+                        weaponSlot2 -= weaponSlot2 - 1 == weaponSlot1 ? 2 : 1;
+                        weaponSlot2 = weaponSlot2 >= 0 ? weaponSlot2 : orig_weaponSlot2;
+                    }
+                }
+                inventoryBarSlotSelector1.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot1).position;
+                inventoryBarSlotSelector2.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot2).position;
+                arm1 = weaponInventory[weaponSlot1];
+                arm2 = weaponInventory[weaponSlot2];
+                weaponSelectionCounter = 0;
+            }
+            weaponSelectionCounter++;
         }
-        if (rightBoosterForce)
+        else
         {
-            rightArm.Attack();
-            rightArm.Move();
+            weaponSelectionCounter = weaponSelectionCountereMax;
+            // Only rotate if analogue stick is actively pressed
+            if (rightRotationActive)
+            {
+                // Rotation of arm to be that of analogue
+                rightArm.transform.rotation = Quaternion.RotateTowards(rightArm.transform.rotation, rightAim, rotateSpeed);
+                // Modification of rotation to compensate for camera tilt
+                rightArm.transform.eulerAngles = new Vector3(
+         rightArm.transform.eulerAngles.x + cameraAngle.transform.eulerAngles.x,
+         rightArm.transform.eulerAngles.y,
+         rightArm.transform.eulerAngles.z
+        );
+            }
+            if (leftRotationActive)
+            {
+                // Rotation of arm to be that of analogue
+                leftArm.transform.rotation = Quaternion.RotateTowards(leftArm.transform.rotation, leftAim, rotateSpeed);
+                // Modification of rotation to compensate for camera tilt
+                leftArm.transform.eulerAngles = new Vector3(
+    leftArm.transform.eulerAngles.x + cameraAngle.transform.eulerAngles.x,
+    leftArm.transform.eulerAngles.y,
+    leftArm.transform.eulerAngles.z
+    );
+            }
+            // Run this part if the explosive toggle is set (clicking of sticks)
+            if (leftBoosterForce && arm1ExplosiveArmed)
+            {
+                // Create a new object of the Destroyable arm section, and place it in the exact postion of the current arm
+                GameObject destroyableArm = Instantiate(destroyableArmsList[arm1]);
+                destroyableArm.transform.position = transform.position;
+                destroyableArm.transform.rotation = leftArm.transform.rotation;
+                // Destroy current arm
+                arm1 = 0;
+                arm1ExplosiveArmed = false;
+            }
+            if (rightBoosterForce && arm2ExplosiveArmed)
+            {
+                GameObject destroyableArm = Instantiate(destroyableArmsList[arm2]);
+                destroyableArm.transform.position = transform.position;
+                destroyableArm.transform.rotation = rightArm.transform.rotation;
+                arm2 = 0;
+                arm2ExplosiveArmed = false;
+            }
+
+            // Runs attack and move if trigger is clicked in
+            if (leftBoosterForce)
+            {
+                leftArm.Attack();
+                leftArm.Move();
+            }
+            if (rightBoosterForce)
+            {
+                rightArm.Attack();
+                rightArm.Move();
+            }
+            // Speed limiter
+            if (rb.velocity.magnitude > maxSpeed)
+            {
+                print("Player is too fast, limiting speed");
+                rb.velocity = rb.velocity.normalized * maxSpeed;
+            }
         }
-        // Speed limiter
-        if (rb.velocity.magnitude > maxSpeed)
-        {
-            print("Player is too fast, limiting speed");
-            rb.velocity = rb.velocity.normalized * maxSpeed;
-        }
+
     }
 
     // Control scheme functions
@@ -201,7 +269,11 @@ leftArm.transform.eulerAngles.z
             return Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg;
         }
     }
-
+    public void refreshWeaponSprites()
+    {
+        for (int i = 0; i < 8; i++)
+            weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
+    }
     void OnTriggerEnter2D(Collider2D other){
 		if(other.CompareTag("Coin_1")){
 			Debug.Log("Coin touch");
