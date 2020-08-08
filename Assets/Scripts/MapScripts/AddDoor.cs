@@ -9,7 +9,6 @@ public class AddDoor : MonoBehaviour
 	public Vector3 trans;
 
 	void Start(){
-
 		templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
 		templates.doors.Add(this.gameObject);
         gameObject.SetActive(false);

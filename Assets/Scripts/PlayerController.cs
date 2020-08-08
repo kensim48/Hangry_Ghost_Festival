@@ -202,10 +202,10 @@ leftArm.transform.eulerAngles.z
         }
     }
 
-    // void OnTriggerEnter2D(Collider2D other){
-	// 	if(other.CompareTag("Coin_1")){
-	// 		Debug.Log("Coin touch");
-    //         Destroy(other.gameObject);
-	// 	}
-	// }
+    void OnTriggerEnter2D(Collider2D other){
+		if(other.CompareTag("Coin_1")){
+			Debug.Log("Coin touch");
+            Destroy(other.gameObject);
+		}
+	}
 }
