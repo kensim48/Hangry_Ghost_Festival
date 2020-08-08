@@ -269,10 +269,15 @@ public class PlayerController : MonoBehaviour
             return Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg;
         }
     }
-
     public void refreshWeaponSprites()
     {
         for (int i = 0; i < 8; i++)
             weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
     }
+    void OnTriggerEnter2D(Collider2D other){
+		if(other.CompareTag("Coin_1")){
+			Debug.Log("Coin touch");
+            Destroy(other.gameObject);
+		}
+	}
 }
