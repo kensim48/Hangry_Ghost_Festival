@@ -19,6 +19,8 @@ public class RoomTemplates : MonoBehaviour
 
     public List<int> roomCleared;
 
+    public int numEnemies;
+
     public float waitTime;
     private bool spawnedBoss;
     public GameObject boss;
@@ -76,17 +78,19 @@ public class RoomTemplates : MonoBehaviour
 
     void updatePlayerDeath(){
         Debug.Log("Event death recieved");
-        foreach (var obj in doors)
-            {
-                Debug.Log("door" + i.ToString());
-                try{
-                    obj.SetActive(false);
+        if(numEnemies == 0){
+            foreach (var obj in doors)
+                {
+                    Debug.Log("door" + i.ToString());
+                    try{
+                        obj.SetActive(false);
+                    }
+                    catch (Exception e) {
+                        // print(obj);
+                        print("Door error");
+                    }
+                    i++;
                 }
-                catch (Exception e) {
-                    // print(obj);
-                    print("Door error");
-                }
-                i++;
-            }
+        }
     }
 }
