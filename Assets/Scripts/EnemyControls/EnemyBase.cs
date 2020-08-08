@@ -56,6 +56,7 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
         // Based on the switch case key based on EnemyStates enum
         switch (currentState)
         {
@@ -129,9 +130,10 @@ public class EnemyBase : MonoBehaviour
                 isDead = true;
                 Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
                 Destroy(gameObject);
-                if (notifyDeath != null){
+                if (notifyDeath != null)
+                {
                     notifyDeath();
-                } 
+                }
                 break;
 
         }
@@ -156,19 +158,19 @@ public class EnemyBase : MonoBehaviour
         {
             //move towards player - MOvTowards is sim to Lerp but has maxDistanceDelta (if -ve, pushes away from target)
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime); //The speed*Time.delta time prevents faster computer from having faster enemies
-            RotateBody();
+            //RotateBody();
 
         }
         else if (Vector3.Distance(transform.position, player.transform.position) < stoppingDistance && Vector3.Distance(transform.position, player.position) > retreatDistance)
         {
             transform.position = this.transform.position;
-            RotateBody();
+            //RotateBody();
         }
         else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
         {
             //if enemy is too close
             transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-            RotateBody();
+            //RotateBody();
         }
     }
 
