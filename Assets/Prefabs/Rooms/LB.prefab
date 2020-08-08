@@ -437,6 +437,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LowerDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 8039375753629071646, guid: c62d2288797794a4a86950aa9399dcf1,
+        type: 3}
+      propertyPath: eneSP
+      value: 
+      objectReference: {fileID: 8244804822081109006}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c62d2288797794a4a86950aa9399dcf1, type: 3}
 --- !u!4 &3410099719950094663 stripped

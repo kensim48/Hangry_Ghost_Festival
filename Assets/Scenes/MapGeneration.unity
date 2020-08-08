@@ -591,6 +591,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entry Room
       objectReference: {fileID: 0}
+    - target: {fileID: 2246196680652433315, guid: 683bb6364ffbfeb4792319bde005fc3e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653406697106573260, guid: 683bb6364ffbfeb4792319bde005fc3e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481096056315691506, guid: 683bb6364ffbfeb4792319bde005fc3e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467140059615074144, guid: 683bb6364ffbfeb4792319bde005fc3e,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467140059615074144, guid: 683bb6364ffbfeb4792319bde005fc3e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.9999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683bb6364ffbfeb4792319bde005fc3e, type: 3}
 --- !u!1001 &1116279561
@@ -836,7 +861,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.46
+  orthographic size: 2.08
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1143,6 +1168,7 @@ MonoBehaviour:
   rooms: []
   doors: []
   roomCleared: 
+  numEnemies: 0
   waitTime: 4
   boss: {fileID: 1898445321837384, guid: 09e14c596e782a742829f1166838514d, type: 3}
 --- !u!1 &1529968960
@@ -1422,6 +1448,7 @@ GameObject:
   - component: {fileID: 1859162692}
   - component: {fileID: 1859162691}
   - component: {fileID: 1859162694}
+  - component: {fileID: 1859162695}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1502,13 +1529,29 @@ CircleCollider2D:
   m_GameObject: {fileID: 1859162690}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3c0b451eda2191148aaf46467eb79e2e, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 2.5}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!58 &1859162695
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859162690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0065246224, y: 2.5}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1001 &1961283362
 PrefabInstance:
   m_ObjectHideFlags: 0
