@@ -314,7 +314,7 @@ Transform:
   m_GameObject: {fileID: 295096591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 295529867}
   m_RootOrder: 0
@@ -700,11 +700,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3875883622368376064, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3875883624159337139, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
         type: 3}
       propertyPath: m_Name
@@ -765,20 +760,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3875883624159337141, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
+    - target: {fileID: 5950471311405915197, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+      propertyPath: m_Offset.y
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3875883624159337141, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
+    - target: {fileID: 5950471311405915197, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+      propertyPath: m_Radius
+      value: 0.19731082
       objectReference: {fileID: 0}
     - target: {fileID: 6853205674364116835, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
         type: 3}
       propertyPath: m_Offset.y
-      value: 2.5
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853205674364116835, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.15542245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853205674364116835, guid: 09f47fd83f0fbb7409410d0e7b718bb6,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f47fd83f0fbb7409410d0e7b718bb6, type: 3}
@@ -1046,6 +1051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 454904152680413335, guid: 6e8c5b8c062e5594889e33c828f99db2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1450311964429594874, guid: 6e8c5b8c062e5594889e33c828f99db2,
         type: 3}
@@ -1624,7 +1634,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.12354684
 --- !u!58 &1859162695
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1638,9 +1648,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0065246224, y: 0.5}
+  m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.10492292
 --- !u!1001 &1961283362
 PrefabInstance:
   m_ObjectHideFlags: 0
