@@ -201,4 +201,11 @@ leftArm.transform.eulerAngles.z
             return Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other){
+		if(other.CompareTag("Coin_1")){
+			Debug.Log("Coin touch");
+            Destroy(other.gameObject);
+		}
+	}
 }

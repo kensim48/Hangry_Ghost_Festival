@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -18,10 +19,18 @@ public class RoomTemplates : MonoBehaviour
 
     public List<int> roomCleared;
 
+    public int numEnemies;
+
     public float waitTime;
     private bool spawnedBoss;
     public GameObject boss;
+
+    public GameObject bossstairs;
     private int count = 0;
+
+    private int i=0;
+
+    public int test =1;
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -38,9 +47,9 @@ public class RoomTemplates : MonoBehaviour
         }
         if (waitTime <= 0 && spawnedBoss == false)
         {
-            for (int i = 0; i < rooms.Count; i++)
+            for (int i = rooms.Count-1; i >= 0; i--)
             {
-                if (i == rooms.Count - 1)
+                if ((rooms[i].gameObject.name =="T(Clone)" || rooms[i].gameObject.name =="B(Clone)" || rooms[i].gameObject.name =="L(Clone)" || rooms[i].gameObject.name =="R(Clone)" )&& spawnedBoss == false)
                 {
                     foreach (Transform child1 in rooms[i].transform)
                     {
@@ -51,11 +60,15 @@ public class RoomTemplates : MonoBehaviour
                                 var pos1 = child.position;
                                 var pos2 = pos1 - pos; 
                                 Instantiate(boss, new Vector3(pos1.x+pos2.x,pos1.y+pos2.y, -0.1f), Quaternion.identity);
+                                Instantiate(bossstairs, new Vector3(pos1.x,pos1.y, -0.1f), Quaternion.identity);
                             }
                     }
                     spawnedBoss = true;
+                    EnemyBase.notifyDeath += updatePlayerDeath;
                 }
+                Debug.Log(rooms[i].gameObject.name);
             }
+            
         }
         else
         {
@@ -65,12 +78,27 @@ public class RoomTemplates : MonoBehaviour
 
     void Start()
     {
-        detectionDoor.notifyRoomEnter += updatePlayerDeath;
+        // EnemyBase.notifyDeath += updatePlayerDeath;
         roomCleared.Add(0);
         roomCleared.Add(1);
     }
 
     void updatePlayerDeath(){
         Debug.Log("Event death recieved");
+        numEnemies -= 1;
+        if(numEnemies == 0){
+            foreach (var obj in doors)
+                {
+                    Debug.Log("door" + i.ToString());
+                    try{
+                        obj.SetActive(false);
+                    }
+                    catch (Exception e) {
+                        // print(obj);
+                        print("Door error");
+                    }
+                    i++;
+                }
+        }
     }
 }

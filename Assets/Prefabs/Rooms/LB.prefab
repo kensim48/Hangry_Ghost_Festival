@@ -124,7 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 2
   spawned: 0
-  waitTime: 4
+  test: {fileID: 0}
+  test1: 0
+  test2: 0
 --- !u!1 &3236266865821942392
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 4
   spawned: 0
-  waitTime: 4
+  test: {fileID: 0}
+  test1: 0
+  test2: 0
 --- !u!1 &5689521350037252939
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +511,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8039375753629071646, guid: 51996a71f74265149a6521e5003321f7,
+        type: 3}
+      propertyPath: eneSP
+      value: 
+      objectReference: {fileID: 8244804822081109006}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51996a71f74265149a6521e5003321f7, type: 3}
 --- !u!4 &1209272531937098655 stripped
@@ -582,6 +591,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8039375753629071646, guid: 51996a71f74265149a6521e5003321f7,
+        type: 3}
+      propertyPath: eneSP
+      value: 
+      objectReference: {fileID: 8244804822081109006}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51996a71f74265149a6521e5003321f7, type: 3}
 --- !u!4 &7266921724631936304 stripped
