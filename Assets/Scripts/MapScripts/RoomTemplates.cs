@@ -66,7 +66,7 @@ public class RoomTemplates : MonoBehaviour
                     spawnedBoss = true;
                     EnemyBase.notifyDeath += updatePlayerDeath;
                 }
-                Debug.Log(rooms[i].gameObject.name);
+                // Debug.Log(rooms[i].gameObject.name);
             }
             
         }
