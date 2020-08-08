@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     // Note: Due to some changes, arm1 and leftarm are used interchangeably, same for arm2 and right arm
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
     private bool isRightSelected = false;
     private int weaponSelectionCounter = 0;
     private int weaponSelectionCountereMax = 7;
+    public GameObject weaponSpriteLayer;
+    public Sprite[] weaponSpriteList;
     void Awake()
     {
 
@@ -71,6 +74,8 @@ public class PlayerController : MonoBehaviour
         // Initial inventory UI setup
         inventoryBarSlotSelector1.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot1).position;
         inventoryBarSlotSelector2.transform.position = inventoryBarSlots.transform.GetChild(weaponSlot2).position;
+
+        refreshWeaponSprites();
 
         // Getting rigidbody of Player
         rb = GetComponent<Rigidbody2D>();
@@ -263,5 +268,11 @@ public class PlayerController : MonoBehaviour
         {
             return Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg;
         }
+    }
+
+    public void refreshWeaponSprites()
+    {
+        for (int i = 0; i < 8; i++)
+            weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
     }
 }
