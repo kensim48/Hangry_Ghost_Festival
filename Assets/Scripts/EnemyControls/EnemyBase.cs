@@ -6,6 +6,9 @@ public class EnemyBase : MonoBehaviour
 {
     #region Movement
     public float speed;
+    public Vector3 change;
+    public bool facingLeft = false;
+    public Animator animator;
     public float stoppingDistance; // The higher the value, the further away it will stop 
     public float retreatDistance; // When enmy will back away from target
     public float patrolDistance; //Used for enemies who need to patrol, min distance required to chase
@@ -56,6 +59,7 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
         // Based on the switch case key based on EnemyStates enum
         switch (currentState)
         {
@@ -129,9 +133,10 @@ public class EnemyBase : MonoBehaviour
                 isDead = true;
                 Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
                 Destroy(gameObject);
-                if (notifyDeath != null){
+                if (notifyDeath != null)
+                {
                     notifyDeath();
-                } 
+                }
                 break;
 
         }
@@ -156,19 +161,42 @@ public class EnemyBase : MonoBehaviour
         {
             //move towards player - MOvTowards is sim to Lerp but has maxDistanceDelta (if -ve, pushes away from target)
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime); //The speed*Time.delta time prevents faster computer from having faster enemies
-            RotateBody();
+            //RotateBody();
+            CheckDirection();
 
         }
         else if (Vector3.Distance(transform.position, player.transform.position) < stoppingDistance && Vector3.Distance(transform.position, player.position) > retreatDistance)
         {
             transform.position = this.transform.position;
-            RotateBody();
+            //RotateBody();
+            CheckDirection();
         }
         else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
         {
             //if enemy is too close
             transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-            RotateBody();
+            //RotateBody();
+            CheckDirection();
+        }
+
+    }
+
+    public void CheckDirection()
+    {
+        change = transform.position - player.position;
+        if (change != Vector3.zero)
+        {
+
+            if (change.x < 0 && facingLeft == false)
+            {
+                facingLeft = true;
+                animator.transform.Rotate(0, 180, 0);
+            }
+            if (change.x > 0 && facingLeft == true)
+            {
+                facingLeft = false;
+                animator.transform.Rotate(0, 180, 0);
+            }
         }
     }
 

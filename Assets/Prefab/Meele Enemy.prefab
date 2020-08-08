@@ -85,12 +85,12 @@ MonoBehaviour:
   currentState: 0
   chasePatrolState: 0
   isDead: 0
-  health: 0
+  health: 5
   isHit: 0
   isAttack: 0
   startTime: 0
   waitTime: 1
-  coin: {fileID: 0}
+  coin: {fileID: 1178975936131227297, guid: 2f4bf5e3f74a06b4b8a2fc0bfe999792, type: 3}
   SwordPrefab: {fileID: 522591949252718376}
 --- !u!1 &522591949252718376
 GameObject:
