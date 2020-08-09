@@ -60,9 +60,6 @@ public class EnemyBoss : MonoBehaviour
     private bool firstcheckblack = true;
     private Transform nearestAnchor;
 
-    public int whiteHealth;
-    public int blackHealth;
-
     public GameObject player;
     public Rigidbody2D playerRb2d;
     public Rigidbody2D blackbossRb2d;
@@ -94,6 +91,7 @@ public class EnemyBoss : MonoBehaviour
         playerRb2d = player.GetComponent<Rigidbody2D>();
         // blackbossRb2d = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Rigidbody2D>();
         SetSpikesInvisible(spikeParent.transform);
+        EnemyBossHealth.notifyBossDeath += updateBossDeath;
 
     }
 
@@ -196,14 +194,19 @@ public class EnemyBoss : MonoBehaviour
                 break;
 
             case (int)BossPhase.black:
+                #region 1. Set up Phase timer
                 while (firstcheckblack)
                 {
                     blackEnd = Time.time + blackDuration;
                     firstcheckblack = false;
                 }
+                #endregion
 
+                #region 2. Boss to chase player and start trying to hit player if within distance
                 moveBoss();
 
+
+                #endregion
 
 
                 #region Checks if the time is up for the phase
@@ -219,8 +222,20 @@ public class EnemyBoss : MonoBehaviour
                 break;
 
             case (int)BossPhase.enraged:
+                print("In Enraged Mode");
                 break;
         }
+    }
+
+
+    // PLayer controller will deal with this
+    // First case is touching of either bosses 
+    // Following should be placed in the player controller
+    // state is when Black Boss hits player with sword
+    //state is when player hits the spike
+    public void updateBossDeath()
+    {
+        currentPhase = (int)BossPhase.enraged;
     }
 
     public Transform GetNearestAnchorPoint(Transform current)
@@ -279,24 +294,8 @@ public class EnemyBoss : MonoBehaviour
         }
         else if (Vector3.Distance(blackboss.position, player.transform.position) < stoppingDistance)
         {
-             blackbossRb2d.velocity = Vector2.zero;
+            blackbossRb2d.velocity = Vector2.zero;
         }
 
-         // check distance (enemies position, players position) > stopping distance
-        // if (Vector3.Distance(blackboss.position, player.transform.position) > stoppingDistance)
-        // {
-        //     //move towards player - MOvTowards is sim to Lerp but has maxDistanceDelta (if -ve, pushes away from target)
-        //     transform.position = Vector3.MoveTowards(blackboss.position, player.transform.position, speed * Time.deltaTime); //The speed*Time.delta time prevents faster computer from having faster enemies
-
-        // }
-        // else if (Vector3.Distance(blackboss.position, player.transform.position) < stoppingDistance && Vector3.Distance(blackboss.position, player.transform.position) > retreatDistance)
-        // {
-        //     transform.position = this.transform.position;
-        // }
-        // else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
-        // {
-        //     //if enemy is too close
-        //     transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-        // }
     }
 }
