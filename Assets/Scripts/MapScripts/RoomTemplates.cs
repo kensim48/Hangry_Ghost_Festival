@@ -30,7 +30,13 @@ public class RoomTemplates : MonoBehaviour
 
     private int i=0;
 
+    public GameObject item;
+
+    public Vector3 trans;
+
     public int test =1;
+    public GameObject overlay;
+
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -68,7 +74,7 @@ public class RoomTemplates : MonoBehaviour
                 }
                 // Debug.Log(rooms[i].gameObject.name);
             }
-            
+            overlay.SetActive (false);
         }
         else
         {
@@ -99,6 +105,7 @@ public class RoomTemplates : MonoBehaviour
                     }
                     i++;
                 }
+            Instantiate(item, new Vector3(trans.x, trans.y, -1), transform.rotation);
         }
     }
 }
