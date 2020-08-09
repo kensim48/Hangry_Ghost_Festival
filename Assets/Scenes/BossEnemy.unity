@@ -2482,10 +2482,10 @@ MonoBehaviour:
   bottomleftanchorpoint: {fileID: 1832937789}
   blackboss: {fileID: 0}
   whiteboss: {fileID: 0}
-  currentPhase: 1
+  currentPhase: 2
   idleDuration: 100
   whiteDuration: 1000
-  blackDuration: 20
+  blackDuration: 1000
   moveToCornerSpeed: 5
   whiteHealth: 0
   blackHealth: 0

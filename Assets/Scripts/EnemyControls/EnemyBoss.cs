@@ -54,8 +54,10 @@ public class EnemyBoss : MonoBehaviour
 
     private float idleEnd;
     private float whiteEnd;
+    private float blackEnd;
     public float moveToCornerSpeed;
-    private bool firstcheck = true;
+    private bool firstcheckwhite = true;
+    private bool firstcheckblack = true;
     private Transform nearestAnchor;
 
     public int whiteHealth;
@@ -123,11 +125,11 @@ public class EnemyBoss : MonoBehaviour
             case (int)BossPhase.white: //white
 
                 #region 1. Charge Up animation by moving to the corner
-                while (firstcheck)
+                while (firstcheckwhite)
                 {
                     whiteEnd = Time.time + whiteDuration;
                     nearestAnchor = GetNearestAnchorPoint(blackboss);
-                    firstcheck = false;
+                    firstcheckwhite = false;
                 }
                 // print("Boss Move: " + blackboss.position);
                 float step = moveToCornerSpeed * Time.deltaTime;
@@ -170,20 +172,17 @@ public class EnemyBoss : MonoBehaviour
                     // Start moving player
                     fanDirection = player.transform.position - whiteboss.position;
                     playerRb2d.AddForce(fanDirection * fanthrust);
-
                 }
-
                 #endregion
 
-
-                #region Checks if the time is up for the phase
+                #region 4. Checks if the time is up for the phase
                 if (Time.time >= whiteEnd)
                 {
                     // Go to idle phase
                     currentPhase = (int)BossPhase.idle;
                     idleEnd = Time.time + idleDuration;
                     previousAttackPhase = (int)BossPhase.white;
-                    firstcheck = true;
+                    firstcheckwhite = true;
                     isSpikesGenerated = false;
                 }
                 #endregion
@@ -191,7 +190,24 @@ public class EnemyBoss : MonoBehaviour
                 break;
 
             case (int)BossPhase.black:
+                while (firstcheckblack)
+                {
+                    blackEnd = Time.time + blackDuration;
+                    firstcheckblack = false;
+                }
 
+                
+
+                #region Checks if the time is up for the phase
+                if (Time.time >= blackEnd)
+                {
+                    // Go to idle phase
+                    currentPhase = (int)BossPhase.idle;
+                    idleEnd = Time.time + idleDuration;
+                    previousAttackPhase = (int)BossPhase.black;
+                    firstcheckblack = true;
+                }
+                #endregion
                 break;
 
             case (int)BossPhase.enraged:
