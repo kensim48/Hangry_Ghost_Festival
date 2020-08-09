@@ -28,6 +28,7 @@ public class EnemyBase : MonoBehaviour
     public float startTime;
     public float waitTime = 1f;
     public GameObject coin;
+    private Quaternion lockedRotation;
 
     #endregion
 
@@ -54,11 +55,13 @@ public class EnemyBase : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         startTime = Time.time;
+        lockedRotation = transform.rotation;
     }
 
     // Update is called once per frame
     public void Update()
     {
+        transform.rotation = lockedRotation;
         //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
         // Based on the switch case key based on EnemyStates enum
         switch (currentState)
@@ -154,14 +157,12 @@ public class EnemyBase : MonoBehaviour
     }
 
 
-    public void moveEnemy()
+    public virtual void moveEnemy()
     {
         // check distance (enemies position, players position) > stopping distance
         if (Vector3.Distance(transform.position, player.position) > stoppingDistance)
         {
-            //move towards player - MOvTowards is sim to Lerp but has maxDistanceDelta (if -ve, pushes away from target)
-            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime); //The speed*Time.delta time prevents faster computer from having faster enemies
-            //RotateBody();
+            rb2d.velocity = (player.position - transform.position) * speed * Time.deltaTime * 10;
             CheckDirection();
 
         }
@@ -174,7 +175,8 @@ public class EnemyBase : MonoBehaviour
         else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
         {
             //if enemy is too close
-            transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+            // transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+            // rb2d.AddForce(-(player.position - transform.position) * acceleration);
             //RotateBody();
             CheckDirection();
         }
@@ -184,19 +186,13 @@ public class EnemyBase : MonoBehaviour
     public void CheckDirection()
     {
         change = transform.position - player.position;
-        if (change != Vector3.zero)
+        if (change.x < 0)
         {
-
-            if (change.x < 0 && facingLeft == false)
-            {
-                facingLeft = true;
-                animator.transform.Rotate(0, 180, 0);
-            }
-            if (change.x > 0 && facingLeft == true)
-            {
-                facingLeft = false;
-                animator.transform.Rotate(0, 180, 0);
-            }
+            animator.transform.Rotate(0, 180, 0);
+        }
+        if (change.x > 0)
+        {
+            animator.transform.Rotate(0, 0, 0);
         }
     }
 
