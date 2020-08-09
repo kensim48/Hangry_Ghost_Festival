@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyProjectile : EnemyBase
 {
     // Shooting
-    public Transform firePoint;
+    public GameObject firePoint;
+    public GameObject fireParent;
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
     private float timeBtwShots;
@@ -20,7 +21,7 @@ public class EnemyProjectile : EnemyBase
     public void Shoot()
     {
         // Create bullet at fire point
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
         Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
         bulletrb.velocity = rb2d.velocity + (new Vector2(transform.right.x, transform.right.y) * bulletForce);
     }
@@ -45,6 +46,13 @@ public class EnemyProjectile : EnemyBase
         }
 
 
+    }
+
+    public void RotateBody()
+    {
+        Vector3 direction = player.position - fireParent.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        fireParent.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
 }
