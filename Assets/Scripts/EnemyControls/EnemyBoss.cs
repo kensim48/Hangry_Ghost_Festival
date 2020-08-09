@@ -65,6 +65,7 @@ public class EnemyBoss : MonoBehaviour
 
     public GameObject player;
     public Rigidbody2D playerRb2d;
+    public Rigidbody2D blackbossRb2d;
 
     public GameObject spikeParent;
     private int numberOfSpikes;
@@ -72,6 +73,9 @@ public class EnemyBoss : MonoBehaviour
     private bool isSpikesGenerated = false;
     private Vector3 fanDirection;
     public float fanthrust = 0.3f;
+
+    public float stoppingDistance; // The higher the value, the further away it will stop 
+    public float speed; // Speed of the black boss
 
     enum BossPhase : int
     {
@@ -88,6 +92,7 @@ public class EnemyBoss : MonoBehaviour
         whiteboss = GameObject.FindGameObjectWithTag("WhiteBoss").transform;
         player = GameObject.FindGameObjectWithTag("Player");
         playerRb2d = player.GetComponent<Rigidbody2D>();
+        // blackbossRb2d = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Rigidbody2D>();
         SetSpikesInvisible(spikeParent.transform);
 
     }
@@ -184,6 +189,7 @@ public class EnemyBoss : MonoBehaviour
                     previousAttackPhase = (int)BossPhase.white;
                     firstcheckwhite = true;
                     isSpikesGenerated = false;
+                    SetSpikesInvisible(spikeParent.transform);
                 }
                 #endregion
 
@@ -196,7 +202,9 @@ public class EnemyBoss : MonoBehaviour
                     firstcheckblack = false;
                 }
 
-                
+                moveBoss();
+
+
 
                 #region Checks if the time is up for the phase
                 if (Time.time >= blackEnd)
@@ -260,5 +268,35 @@ public class EnemyBoss : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+    }
+
+    public void moveBoss()
+    {
+        print("Stopping Distance: " + stoppingDistance);
+        if (Vector3.Distance(blackboss.position, player.transform.position) > stoppingDistance)
+        {
+            blackbossRb2d.velocity = (player.transform.position - blackboss.position) * speed * Time.deltaTime;
+        }
+        else if (Vector3.Distance(blackboss.position, player.transform.position) < stoppingDistance)
+        {
+             blackbossRb2d.velocity = Vector2.zero;
+        }
+
+         // check distance (enemies position, players position) > stopping distance
+        // if (Vector3.Distance(blackboss.position, player.transform.position) > stoppingDistance)
+        // {
+        //     //move towards player - MOvTowards is sim to Lerp but has maxDistanceDelta (if -ve, pushes away from target)
+        //     transform.position = Vector3.MoveTowards(blackboss.position, player.transform.position, speed * Time.deltaTime); //The speed*Time.delta time prevents faster computer from having faster enemies
+
+        // }
+        // else if (Vector3.Distance(blackboss.position, player.transform.position) < stoppingDistance && Vector3.Distance(blackboss.position, player.transform.position) > retreatDistance)
+        // {
+        //     transform.position = this.transform.position;
+        // }
+        // else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
+        // {
+        //     //if enemy is too close
+        //     transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+        // }
     }
 }
