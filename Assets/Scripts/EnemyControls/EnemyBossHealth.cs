@@ -6,14 +6,14 @@ public class EnemyBossHealth : MonoBehaviour
 {
     // Create death event that will trigger the enaged mode
     public int health = 5;
-
-    public delegate void NotifyBossEnemyDeath();
+    private string BossName;
+    public delegate void NotifyBossEnemyDeath(string message);
     public static event NotifyBossEnemyDeath notifyBossDeath;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        BossName = gameObject.name;
     }
 
     // Update is called once per frame
@@ -22,13 +22,19 @@ public class EnemyBossHealth : MonoBehaviour
         // This sends a message to register a change in the event
         if (health <= 0)
         {
-            if (notifyBossDeath != null)
-            {
-                notifyBossDeath();
-            }
+            RaiseBossDeathEvent("BossName");
+            gameObject.SetActive(false);
         }
 
 
+
+    }
+
+    public void RaiseBossDeathEvent(string message){ 
+        if (notifyBossDeath != null)
+            {
+                notifyBossDeath(message);
+            }
 
     }
 

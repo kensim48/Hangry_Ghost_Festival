@@ -74,6 +74,11 @@ public class EnemyBoss : MonoBehaviour
     public float stoppingDistance; // The higher the value, the further away it will stop 
     public float speed; // Speed of the black boss
 
+    public bool isBlackDead;
+    public bool isWhiteDead;
+
+    private int BossDeathCount;
+
     enum BossPhase : int
     {
         idle,
@@ -98,6 +103,11 @@ public class EnemyBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if it is end game
+        if (BossDeathCount >= 2){
+            // Insert Game End scene or smt
+        }
+
         //The White Boss to follow and mirror the position of the black box.
         float distFromAnchor = anchorpoint.position.x - blackboss.position.x;
         float newX = blackboss.position.x + 2 * (distFromAnchor);
@@ -156,11 +166,6 @@ public class EnemyBoss : MonoBehaviour
                         }
                         spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
                     }
-
-                    // Random generator to select child index
-                    // int randomchild = Random.Range(0, numberOfSpikes);
-                    // Transform childspike = spikeParent.transform.GetChild(randomchild);
-                    // print("Child Spike: " + childspike);
                     isSpikesGenerated = true;
                 }
 
@@ -194,6 +199,7 @@ public class EnemyBoss : MonoBehaviour
                 break;
 
             case (int)BossPhase.black:
+                // @HUAN XUAN To start the sword animation for the Sign here
                 #region 1. Set up Phase timer
                 while (firstcheckblack)
                 {
@@ -202,14 +208,12 @@ public class EnemyBoss : MonoBehaviour
                 }
                 #endregion
 
-                #region 2. Boss to chase player and start trying to hit player if within distance
+                #region 2. Boss to chase player, as long as the sword hit, it deducts life
                 moveBoss();
-
-
                 #endregion
 
-
                 #region Checks if the time is up for the phase
+                // Remember to end the animation here
                 if (Time.time >= blackEnd)
                 {
                     // Go to idle phase
@@ -223,21 +227,37 @@ public class EnemyBoss : MonoBehaviour
 
             case (int)BossPhase.enraged:
                 print("In Enraged Mode");
+                // If Black Boss is alive
+                if (!isBlackDead){
+
+                }
+
+
+                // If White Boss alive
+                else if (!isWhiteDead){
+                    
+                }
+
+
                 break;
         }
     }
-
 
     // PLayer controller will deal with this
     // First case is touching of either bosses 
     // Following should be placed in the player controller
     // state is when Black Boss hits player with sword
     //state is when player hits the spike
-    public void updateBossDeath()
+    public void updateBossDeath(string message)
     {
+        if (message.Contains("BlackBoss")){
+            isBlackDead = true;
+        } else if (message.Contains("WhiteBoss")){
+            isWhiteDead = true;
+        }
         currentPhase = (int)BossPhase.enraged;
+        BossDeathCount ++;
     }
-
     public Transform GetNearestAnchorPoint(Transform current)
     {
         // Grab which is the nearest anchor point
