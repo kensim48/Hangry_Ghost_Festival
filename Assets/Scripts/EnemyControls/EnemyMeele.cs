@@ -9,12 +9,15 @@ public class EnemyMeele : EnemyBase
     public GameObject SwordPrefab;
     private float timeBtwAtks;
     public float startTimeBtwAtks;
+    public float timeBreakMovement;
+    private float lastTimeMovement;
 
 
     public void Start()
     {
         base.Start();
         chasePatrolState = 0; // chase
+        lastTimeMovement = Time.time;
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
