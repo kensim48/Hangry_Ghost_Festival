@@ -13,6 +13,7 @@ TagManager:
   - Door
   - Coin_1
   - Wall
+  - Score
   layers:
   - Default
   - TransparentFX

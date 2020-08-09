@@ -35,6 +35,8 @@ public class RoomTemplates : MonoBehaviour
     public Vector3 trans;
 
     public int test =1;
+    public GameObject overlay;
+
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -72,7 +74,7 @@ public class RoomTemplates : MonoBehaviour
                 }
                 // Debug.Log(rooms[i].gameObject.name);
             }
-            
+            overlay.SetActive (false);
         }
         else
         {

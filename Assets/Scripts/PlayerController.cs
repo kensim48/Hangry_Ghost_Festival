@@ -278,6 +278,7 @@ public class PlayerController : MonoBehaviour
 		if(other.CompareTag("Coin_1")){
 			Debug.Log("Coin touch");
             Destroy(other.gameObject);
+            GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore += 10;
 		}
 	}
 }
