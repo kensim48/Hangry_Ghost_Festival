@@ -147,7 +147,8 @@ public class EnemyBase : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Projectile")
+        print(other.gameObject.tag);
+        if (other.gameObject.tag == "PlayerWeapon")
         {
             currentState = 1; // Hit state
             isHit = true;

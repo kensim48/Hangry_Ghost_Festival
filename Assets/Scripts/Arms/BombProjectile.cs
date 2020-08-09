@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterProjectile : MonoBehaviour
+public class BombProjectile : MonoBehaviour
 {
     // Start is called before the first frame update
     private float startTime;
@@ -14,7 +14,7 @@ public class ShooterProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - startTime > 2f)
+        if (Time.time - startTime > 30f)
             Destroy(gameObject);
     }
 
