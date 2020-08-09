@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
             arm2Last = arm2;
         }
         // Inventory code
-        if (isLeftSelected || isRightSelected)
+        if ((isLeftSelected || isRightSelected) && (Mathf.Abs(rightMove.x) > 0.5f || Mathf.Abs(rightMove.y) > 0.5f))
         {
             if (weaponSelectionCounter > weaponSelectionCountereMax)
             {
@@ -274,9 +274,11 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < 8; i++)
             weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
     }
-    void OnTriggerEnter2D(Collider2D other){
-		if(other.CompareTag("Coin_1")){
-			Debug.Log("Coin touch");
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin_1"))
+        {
+            Debug.Log("Coin touch");
             Destroy(other.gameObject);
             GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore += 10;
 		}

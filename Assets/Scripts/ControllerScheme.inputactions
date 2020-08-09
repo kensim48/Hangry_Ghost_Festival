@@ -133,45 +133,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1d09110b-2193-4c7e-9abf-2a33e12ce25c",
+                    "id": "c7627470-94b3-4fd3-a5b4-f8cf91010b18",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftShoulder",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d98a3559-c57a-4a95-b80c-55915494e160",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightShoulder",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c7627470-94b3-4fd3-a5b4-f8cf91010b18",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
                     "action": "LeftPrime",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "26da40ee-c462-4efc-bdb9-2a2bf4a1f178",
-                    "path": "<Gamepad>/rightStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightPrime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -216,6 +183,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "WeaponSwapRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cae7a3c1-756f-43da-9ae7-18d176bec772",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPrime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
