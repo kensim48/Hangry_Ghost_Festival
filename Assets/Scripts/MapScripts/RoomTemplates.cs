@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class RoomTemplates : MonoBehaviour
     public int test =1;
     public GameObject overlay;
 
+    public GameObject playerObject;
+
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -53,8 +56,10 @@ public class RoomTemplates : MonoBehaviour
         }
         if (waitTime <= 0 && spawnedBoss == false)
         {
+            playerObject.transform.position = new Vector3(0,0,-1f);
             for (int i = rooms.Count-1; i >= 0; i--)
             {
+                playerObject.transform.position = new Vector3(0,0,-1f);
                 if (i < 6 && spawnedBoss == false)
                 {
                     Debug.Log("reset due to boss room too close");
@@ -78,7 +83,9 @@ public class RoomTemplates : MonoBehaviour
                     spawnedBoss = true;
                     EnemyBase.notifyDeath += updatePlayerDeath;
                     Debug.Log(i);
-                    overlay.SetActive (false);
+                    // overlay.SetActive (false);
+                    playerObject.transform.position = new Vector3(0,0,-1f);
+                    Time.timeScale = 0f;
                 }
                 // Debug.Log(rooms[i].gameObject.name);
             }
@@ -95,6 +102,7 @@ public class RoomTemplates : MonoBehaviour
         // EnemyBase.notifyDeath += updatePlayerDeath;
         roomCleared.Add(0);
         roomCleared.Add(1);
+        playerObject.SetActive(false);
     }
 
     void updatePlayerDeath(){
@@ -114,6 +122,16 @@ public class RoomTemplates : MonoBehaviour
                     i++;
                 }
             Instantiate(item, new Vector3(trans.x, trans.y, -1), transform.rotation);
+        }
+    }
+
+    public void playButton()
+    {
+        if(spawnedBoss == true)
+        {
+            overlay.SetActive (false);
+            Time.timeScale = 1f;
+            playerObject.SetActive(true);
         }
     }
 }

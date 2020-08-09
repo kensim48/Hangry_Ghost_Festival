@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3408465325405256796}
   - component: {fileID: 702905567658658721}
   - component: {fileID: 570190706368555856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
