@@ -67,6 +67,9 @@ public class EnemyBoss : MonoBehaviour
     public GameObject spikeParent;
     private int numberOfSpikes;
     public int showNumberOfSpikes = 3;
+    private bool isSpikesGenerated = false;
+    private Vector3 fanDirection;
+    public float fanthrust = 0.3f;
 
     enum BossPhase : int
     {
@@ -122,43 +125,66 @@ public class EnemyBoss : MonoBehaviour
                 #region 1. Charge Up animation by moving to the corner
                 while (firstcheck)
                 {
+                    whiteEnd = Time.time + whiteDuration;
                     nearestAnchor = GetNearestAnchorPoint(blackboss);
                     firstcheck = false;
                 }
+                // print("Boss Move: " + blackboss.position);
                 float step = moveToCornerSpeed * Time.deltaTime;
                 blackboss.position = Vector3.MoveTowards(blackboss.position, nearestAnchor.position, step);
                 #endregion
 
                 #region 2. Spawn Spikes
                 // Get number of child Spikes
-                numberOfSpikes = spikeParent.transform.childCount;
-                // print("Spike After: " + spikeParent.transform.childCount);
-                for (int i = 0; i < showNumberOfSpikes; i++)
+                while (!isSpikesGenerated)
                 {
-                    int randomchild = Random.Range(0, numberOfSpikes);
-                    // gameObject childspike = spikeParent.transform.GetChild(randomchild).gameObject;
-                    while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
+                    numberOfSpikes = spikeParent.transform.childCount;
+                    // print("Spike After: " + spikeParent.transform.childCount);
+                    for (int i = 0; i < showNumberOfSpikes; i++)
                     {
-                        // Keep getting new random int
-                        randomchild = Random.Range(0, numberOfSpikes);
+                        int randomchild = Random.Range(0, numberOfSpikes);
+                        // gameObject childspike = spikeParent.transform.GetChild(randomchild).gameObject;
+                        while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
+                        {
+                            // Keep getting new random int
+                            randomchild = Random.Range(0, numberOfSpikes);
+                        }
+                        spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
                     }
-                    spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
+
+                    // Random generator to select child index
+                    // int randomchild = Random.Range(0, numberOfSpikes);
+                    // Transform childspike = spikeParent.transform.GetChild(randomchild);
+                    // print("Child Spike: " + childspike);
+                    isSpikesGenerated = true;
                 }
 
-                // Random generator to select child index
-                // int randomchild = Random.Range(0, numberOfSpikes);
-                // Transform childspike = spikeParent.transform.GetChild(randomchild);
-                // print("Child Spike: " + childspike);
+                #endregion
+
+                #region 3. Move player
+                // Check enemy is at the corner
+                print("blackboss posiion: " + blackboss.position);
+                print("anchorpoint position: " + nearestAnchor.position);
+                if (blackboss.position == nearestAnchor.position)
+                {
+                    // Start moving player
+                    fanDirection = player.transform.position - whiteboss.position;
+                    playerRb2d.AddForce(fanDirection * fanthrust);
+
+                }
+
                 #endregion
 
 
                 #region Checks if the time is up for the phase
-                if (Time.time == whiteEnd)
+                if (Time.time >= whiteEnd)
                 {
                     // Go to idle phase
                     currentPhase = (int)BossPhase.idle;
                     idleEnd = Time.time + idleDuration;
                     previousAttackPhase = (int)BossPhase.white;
+                    firstcheck = true;
+                    isSpikesGenerated = false;
                 }
                 #endregion
 
