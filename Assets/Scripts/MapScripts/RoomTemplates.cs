@@ -55,6 +55,12 @@ public class RoomTemplates : MonoBehaviour
         {
             for (int i = rooms.Count-1; i >= 0; i--)
             {
+                if (i < 6 && spawnedBoss == false)
+                {
+                    Debug.Log("reset due to boss room too close");
+                    SceneManager.LoadScene("MapGeneration");
+                    waitTime = 4f;
+                }
                 if ((rooms[i].gameObject.name =="T(Clone)" || rooms[i].gameObject.name =="B(Clone)" || rooms[i].gameObject.name =="L(Clone)" || rooms[i].gameObject.name =="R(Clone)" )&& spawnedBoss == false)
                 {
                     foreach (Transform child1 in rooms[i].transform)
@@ -71,10 +77,12 @@ public class RoomTemplates : MonoBehaviour
                     }
                     spawnedBoss = true;
                     EnemyBase.notifyDeath += updatePlayerDeath;
+                    Debug.Log(i);
+                    overlay.SetActive (false);
                 }
                 // Debug.Log(rooms[i].gameObject.name);
             }
-            overlay.SetActive (false);
+            
         }
         else
         {
