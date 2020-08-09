@@ -280,6 +280,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Coin touch");
             Destroy(other.gameObject);
-        }
-    }
+            GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore += 10;
+		}
+	}
 }

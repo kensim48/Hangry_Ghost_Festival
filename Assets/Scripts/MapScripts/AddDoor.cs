@@ -9,8 +9,6 @@ public class AddDoor : MonoBehaviour
 	public Vector3 trans;
 
 	void OnTriggerEnter2D(Collider2D other){
-		// if(other.CompareTag("Wall"));
-		// else 
 		templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
 		if(templates.doors.Contains(transform.parent.gameObject) == false){
 			if(other.gameObject.tag == "Door" || transform.parent.parent.parent.parent.GetComponent<AddRoom>().roomNumber<=5){
@@ -23,8 +21,8 @@ public class AddDoor : MonoBehaviour
 			else
 			{	
 				templates.test ++;
-				Debug.Log(other.gameObject.tag);
-				Debug.Log(transform.parent.parent.parent.parent.gameObject.name);
+				// Debug.Log(other.gameObject.tag);
+				// Debug.Log(transform.parent.parent.parent.parent.gameObject.name);
 			}
 		}
 	}
