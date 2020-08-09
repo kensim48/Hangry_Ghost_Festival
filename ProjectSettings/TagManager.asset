@@ -54,3 +54,12 @@ TagManager:
   - name: floor
     uniqueID: 2080368537
     locked: 0
+  - name: table
+    uniqueID: 2926868295
+    locked: 0
+  - name: food
+    uniqueID: 3022887257
+    locked: 0
+  - name: mobs
+    uniqueID: 3430736491
+    locked: 0

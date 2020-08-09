@@ -40,7 +40,7 @@ SpriteRenderer:
   m_GameObject: {fileID: 5303761990157672058}
   m_Enabled: 1
   m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1813696397511105724, guid: 35bc5da682f221b4cb2d8e798718b3a0,
+  m_Sprite: {fileID: -7847884659731802787, guid: dfb37ef5b1396d7408c6ccb398005eb3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
