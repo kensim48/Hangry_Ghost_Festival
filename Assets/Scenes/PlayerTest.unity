@@ -2579,10 +2579,10 @@ MonoBehaviour:
   weaponSpriteLayer: {fileID: 1119974518}
   weaponSpriteList:
   - {fileID: 21300000, guid: 9907f3f6cdf4cf9478323758584920e8, type: 3}
-  - {fileID: 21300000, guid: 0a30142828a2c90419d89d654aa5c24c, type: 3}
-  - {fileID: 21300000, guid: 1d64b709d4ee3784cae1eee06ea5a3cc, type: 3}
-  - {fileID: 21300000, guid: e74bf3f5093e0d24c850a8cb43a134c4, type: 3}
-  - {fileID: 21300000, guid: a91a37b0dc9668048bbac2ee32738c7a, type: 3}
+  - {fileID: 21300000, guid: 7e470d33f213013408037060f102655c, type: 3}
+  - {fileID: 21300000, guid: a2640c99d18977b4a8598d3b6ce07862, type: 3}
+  - {fileID: 21300000, guid: de3860a100fbed64fbbc1d45d68c11ac, type: 3}
+  - {fileID: 21300000, guid: a2640c99d18977b4a8598d3b6ce07862, type: 3}
 --- !u!4 &1859162693
 Transform:
   m_ObjectHideFlags: 0

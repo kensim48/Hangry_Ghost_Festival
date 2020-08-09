@@ -30,7 +30,13 @@ public class RoomTemplates : MonoBehaviour
 
     private int i=0;
 
+    public GameObject item;
+
+    public Vector3 trans;
+
     public int test =1;
+    public GameObject overlay;
+
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -49,6 +55,12 @@ public class RoomTemplates : MonoBehaviour
         {
             for (int i = rooms.Count-1; i >= 0; i--)
             {
+                if (i < 6 && spawnedBoss == false)
+                {
+                    Debug.Log("reset due to boss room too close");
+                    SceneManager.LoadScene("MapGeneration");
+                    waitTime = 4f;
+                }
                 if ((rooms[i].gameObject.name =="T(Clone)" || rooms[i].gameObject.name =="B(Clone)" || rooms[i].gameObject.name =="L(Clone)" || rooms[i].gameObject.name =="R(Clone)" )&& spawnedBoss == false)
                 {
                     foreach (Transform child1 in rooms[i].transform)
@@ -65,6 +77,8 @@ public class RoomTemplates : MonoBehaviour
                     }
                     spawnedBoss = true;
                     EnemyBase.notifyDeath += updatePlayerDeath;
+                    Debug.Log(i);
+                    overlay.SetActive (false);
                 }
                 // Debug.Log(rooms[i].gameObject.name);
             }
@@ -99,6 +113,7 @@ public class RoomTemplates : MonoBehaviour
                     }
                     i++;
                 }
+            Instantiate(item, new Vector3(trans.x, trans.y, -1), transform.rotation);
         }
     }
 }

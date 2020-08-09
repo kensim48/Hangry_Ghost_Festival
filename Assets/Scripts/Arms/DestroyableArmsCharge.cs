@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyableArmsBomb : MonoBehaviour
+public class DestroyableArmsCharge : MonoBehaviour
 {
     private Rigidbody2D rb;
     // Start is called before the first frame update
-    public Rigidbody2D bombSingle;
+    public Rigidbody2D laserObject;
+
     public int thrust;
     private float startTime;
     void Start()
@@ -22,11 +23,7 @@ public class DestroyableArmsBomb : MonoBehaviour
             rb.AddForce(thrust * transform.up);
         else
         {
-            for (int i = 0; i < 20; i++)
-            {
-                Rigidbody2D bombs = Instantiate(bombSingle, transform.position, transform.rotation) as Rigidbody2D;
-                bombs.AddForce(new Vector3(Random.Range(-5000.0f, 5000.0f), Random.Range(-5000.0f, 5000.0f), 0));
-            }
+            // Rigidbody2D bombs = Instantiate(laserObject, transform.position, transform.rotation) as Rigidbody2D;
             Destroy(gameObject);
         }
     }
