@@ -159,24 +159,25 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void moveEnemy()
     {
+        float distanceFromPlayer = Vector3.Distance(transform.position, player.position);
         // check distance (enemies position, players position) > stopping distance
-        if (Vector3.Distance(transform.position, player.position) > stoppingDistance)
+        if (distanceFromPlayer > stoppingDistance)
         {
             rb2d.velocity = (player.position - transform.position) * speed * Time.deltaTime * 10;
             CheckDirection();
 
         }
-        else if (Vector3.Distance(transform.position, player.transform.position) < stoppingDistance && Vector3.Distance(transform.position, player.position) > retreatDistance)
+        else if (distanceFromPlayer < stoppingDistance && distanceFromPlayer > retreatDistance)
         {
-            transform.position = this.transform.position;
+            rb2d.velocity = Vector2.zero;
             //RotateBody();
             CheckDirection();
         }
-        else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
+        else if (distanceFromPlayer < retreatDistance)
         {
             //if enemy is too close
             // transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-            // rb2d.AddForce(-(player.position - transform.position) * acceleration);
+            rb2d.velocity = -(player.position - transform.position) * speed * Time.deltaTime * 10;
             //RotateBody();
             CheckDirection();
         }
