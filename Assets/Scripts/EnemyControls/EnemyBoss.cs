@@ -46,8 +46,8 @@ public class EnemyBoss : MonoBehaviour
     public Transform bottomleftanchorpoint;
     public Transform blackboss;
     public Transform whiteboss;
-    public string currentPhase = "idle";
-    private string previousPhase;
+    public int currentPhase = 0;
+    private int previousAttackPhase;
     public float idleDuration;
     public float whiteDuration;
     public float blackDuration;
@@ -57,6 +57,13 @@ public class EnemyBoss : MonoBehaviour
     public float moveToCornerSpeed;
     private bool firstcheck = true;
     private Transform nearestAnchor;
+
+    enum BossPhase: int{
+        idle,
+        white,
+        black,
+        enraged
+    }
 
 
     void Start()
@@ -80,22 +87,22 @@ public class EnemyBoss : MonoBehaviour
 
         switch (currentPhase)
         {
-            case "idle":
+            case (int) BossPhase.idle: //idle
                 // To call animation here
                 if (Time.time == idleEnd)
                 {
-                    if (previousPhase.Contains("white"))
+                    if (previousAttackPhase == (int) BossPhase.white)
                     {
-                        currentPhase = "black";
+                        currentPhase = (int) BossPhase.black;
                     }
-                    else if (previousPhase.Contains("black"))
+                    else if (previousAttackPhase == (int) BossPhase.black)
                     {
-                        currentPhase = "white";
+                        currentPhase = (int) BossPhase.white;
                     }
                 }
                 break;
 
-            case "white":
+            case (int) BossPhase.white: //white
 
                 // Move black boss to the nearest corner (as white boss is the follower)
                 while (firstcheck)
@@ -110,9 +117,9 @@ public class EnemyBoss : MonoBehaviour
                 if (Time.time == whiteEnd)
                 {
                     // Go to idle phase
-                    currentPhase = "idle";
+                    currentPhase = (int) BossPhase.idle;
                     idleEnd = Time.time + idleDuration;
-                    previousPhase = "white";
+                    previousAttackPhase = (int) BossPhase.white;
                 }
                 else
                 {
@@ -122,11 +129,11 @@ public class EnemyBoss : MonoBehaviour
 
                 break;
 
-            case "black":
+            case (int) BossPhase.black:
 
                 break;
 
-            case "enraged":
+            case (int) BossPhase.enraged:
                 break;
         }
     }
