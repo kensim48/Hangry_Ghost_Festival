@@ -58,7 +58,18 @@ public class EnemyBoss : MonoBehaviour
     private bool firstcheck = true;
     private Transform nearestAnchor;
 
-    enum BossPhase: int{
+    public int whiteHealth;
+    public int blackHealth;
+
+    public GameObject player;
+    public Rigidbody2D playerRb2d;
+
+    public GameObject spikeParent;
+    private int numberOfSpikes;
+    public int showNumberOfSpikes = 3;
+
+    enum BossPhase : int
+    {
         idle,
         white,
         black,
@@ -70,6 +81,10 @@ public class EnemyBoss : MonoBehaviour
     {
         blackboss = GameObject.FindGameObjectWithTag("BlackBoss").transform;
         whiteboss = GameObject.FindGameObjectWithTag("WhiteBoss").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerRb2d = player.GetComponent<Rigidbody2D>();
+        SetSpikesInvisible(spikeParent.transform);
+
     }
 
     // Update is called once per frame
@@ -87,24 +102,24 @@ public class EnemyBoss : MonoBehaviour
 
         switch (currentPhase)
         {
-            case (int) BossPhase.idle: //idle
-                // To call animation here
+            case (int)BossPhase.idle: //idle
+                                      // To call animation here
                 if (Time.time == idleEnd)
                 {
-                    if (previousAttackPhase == (int) BossPhase.white)
+                    if (previousAttackPhase == (int)BossPhase.white)
                     {
-                        currentPhase = (int) BossPhase.black;
+                        currentPhase = (int)BossPhase.black;
                     }
-                    else if (previousAttackPhase == (int) BossPhase.black)
+                    else if (previousAttackPhase == (int)BossPhase.black)
                     {
-                        currentPhase = (int) BossPhase.white;
+                        currentPhase = (int)BossPhase.white;
                     }
                 }
                 break;
 
-            case (int) BossPhase.white: //white
+            case (int)BossPhase.white: //white
 
-                // Move black boss to the nearest corner (as white boss is the follower)
+                #region 1. Charge Up animation by moving to the corner
                 while (firstcheck)
                 {
                     nearestAnchor = GetNearestAnchorPoint(blackboss);
@@ -112,28 +127,48 @@ public class EnemyBoss : MonoBehaviour
                 }
                 float step = moveToCornerSpeed * Time.deltaTime;
                 blackboss.position = Vector3.MoveTowards(blackboss.position, nearestAnchor.position, step);
+                #endregion
+
+                #region 2. Spawn Spikes
+                // Get number of child Spikes
+                numberOfSpikes = spikeParent.transform.childCount;
+                // print("Spike After: " + spikeParent.transform.childCount);
+                for (int i = 0; i < showNumberOfSpikes; i++)
+                {
+                    int randomchild = Random.Range(0, numberOfSpikes);
+                    // gameObject childspike = spikeParent.transform.GetChild(randomchild).gameObject;
+                    while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
+                    {
+                        // Keep getting new random int
+                        randomchild = Random.Range(0, numberOfSpikes);
+                    }
+                    spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
+                }
+
+                // Random generator to select child index
+                // int randomchild = Random.Range(0, numberOfSpikes);
+                // Transform childspike = spikeParent.transform.GetChild(randomchild);
+                // print("Child Spike: " + childspike);
+                #endregion
 
 
+                #region Checks if the time is up for the phase
                 if (Time.time == whiteEnd)
                 {
                     // Go to idle phase
-                    currentPhase = (int) BossPhase.idle;
+                    currentPhase = (int)BossPhase.idle;
                     idleEnd = Time.time + idleDuration;
-                    previousAttackPhase = (int) BossPhase.white;
+                    previousAttackPhase = (int)BossPhase.white;
                 }
-                else
-                {
-
-                }
-
+                #endregion
 
                 break;
 
-            case (int) BossPhase.black:
+            case (int)BossPhase.black:
 
                 break;
 
-            case (int) BossPhase.enraged:
+            case (int)BossPhase.enraged:
                 break;
         }
     }
@@ -177,4 +212,11 @@ public class EnemyBoss : MonoBehaviour
 
     }
 
+    public void SetSpikesInvisible(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
 }
