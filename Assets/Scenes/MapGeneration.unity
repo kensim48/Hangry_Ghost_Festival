@@ -4744,6 +4744,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1145158008398097853, guid: 683bb6364ffbfeb4792319bde005fc3e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1762107576496227244, guid: 683bb6364ffbfeb4792319bde005fc3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4832,6 +4837,11 @@ PrefabInstance:
     - target: {fileID: 7183861268787554994, guid: 683bb6364ffbfeb4792319bde005fc3e,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194957760957754440, guid: 683bb6364ffbfeb4792319bde005fc3e,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
