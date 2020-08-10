@@ -5124,22 +5124,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1095199073032597353}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &1471387839
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471387838}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 3c0b451eda2191148aaf46467eb79e2e, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
-  serializedVersion: 2
-  m_Radius: 0.16145957
 --- !u!50 &1471387840
 Rigidbody2D:
   serializedVersion: 4
@@ -5161,66 +5145,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1471387841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471387838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcfc1c72db3031347864976fd61acb8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 60
-  armsList:
-  - {fileID: 524235655514336494, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
-  - {fileID: 3634362618982557625, guid: c0f081466bfbc884594b6c04d051a38b, type: 3}
-  - {fileID: 1831679515076659607, guid: da24708f33d7aa4449e33db795089855, type: 3}
-  - {fileID: 2052817310018002644, guid: 68aa5fa9537090a40bb1966f3b46d460, type: 3}
-  - {fileID: 3914949108691817172, guid: 2c63a098964e2bd44a523d61dea67df1, type: 3}
-  destroyableArmsList:
-  - {fileID: 4350072235751897452, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
-  - {fileID: 4350072235751897452, guid: a1fe52c138009304790a61560ff9cb8f, type: 3}
-  arm1: 4
-  arm2: 1
-  maxSpeed: 5
-  mainBase: {fileID: 0}
-  cameraAngle: {fileID: 1332222419}
-  inventoryBarSlots: {fileID: 1052356923}
-  inventoryBarSlotSelector1: {fileID: 172950884}
-  inventoryBarSlotSelector2: {fileID: 1190169470}
-  healthBar: {fileID: 0}
-  weaponInventory: 0100000002000000030000000200000000000000020000000300000001000000
-  weaponSlot1: 0
-  weaponSlot2: 0
-  maxWeaponSlot: 8
-  weaponSpriteLayer: {fileID: 1984779687}
-  weaponSpriteList:
-  - {fileID: 21300000, guid: 9907f3f6cdf4cf9478323758584920e8, type: 3}
-  - {fileID: 21300000, guid: 0a30142828a2c90419d89d654aa5c24c, type: 3}
-  - {fileID: 21300000, guid: 1d64b709d4ee3784cae1eee06ea5a3cc, type: 3}
-  - {fileID: 21300000, guid: e74bf3f5093e0d24c850a8cb43a134c4, type: 3}
-  - {fileID: 21300000, guid: a91a37b0dc9668048bbac2ee32738c7a, type: 3}
-  playerStunTime: 2
-  playerStunForce: 350
---- !u!58 &1471387843
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471387838}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
-  serializedVersion: 2
-  m_Radius: 0.3
 --- !u!4 &1471387847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1095199073893513131, guid: b5781e89b08a62f40a430641a1befb6e,
@@ -7851,6 +7775,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 429983208}
+    - target: {fileID: 1095199073893513130, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1095199073893513131, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7904,6 +7833,16 @@ PrefabInstance:
     - target: {fileID: 1095199073893513131, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513174, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513174, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1095199073893513175, guid: b5781e89b08a62f40a430641a1befb6e,
