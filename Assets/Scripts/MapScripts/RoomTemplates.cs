@@ -23,7 +23,9 @@ public class RoomTemplates : MonoBehaviour
     public int numEnemies;
 
     public float waitTime;
-    private bool spawnedBoss;
+    private bool spawnedBoss=false;
+
+    private bool allowResume=false;
     public GameObject boss;
 
     public GameObject bossstairs;
@@ -41,6 +43,10 @@ public class RoomTemplates : MonoBehaviour
     public GameObject playerObject;
 
     public GameObject playbutt;
+
+    public GameObject pauseMenu;
+
+    public GameObject gameoverMenu;
 
     void FixedUpdate()
     {
@@ -83,7 +89,8 @@ public class RoomTemplates : MonoBehaviour
                             }
                     }
                     spawnedBoss = true;
-                    EnemyBase.notifyDeath += updatePlayerDeath;
+                    EnemyBase.notifyDeath += updateEnemyDeath;
+                    PlayerController.notifyPlayerDeath += updatePlayerDeath1;
                     Debug.Log(i);
                     // overlay.SetActive (false);
                     playerObject.transform.position = new Vector3(0,0,-1f);
@@ -98,6 +105,12 @@ public class RoomTemplates : MonoBehaviour
         {
             waitTime -= Time.deltaTime;
         }
+        if (Input.GetKey("escape") && spawnedBoss == true && allowResume == true)
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            Debug.Log("escape pressed");
+        }
     }
 
     void Start()
@@ -107,9 +120,11 @@ public class RoomTemplates : MonoBehaviour
         roomCleared.Add(1);
         playerObject.SetActive(false);
         playbutt.SetActive(false);
+        spawnedBoss=false;
+        allowResume=false;
     }
 
-    void updatePlayerDeath(){
+    void updateEnemyDeath(){
         Debug.Log("Event death recieved");
         numEnemies -= 1;
         if(numEnemies == 0){
@@ -129,6 +144,12 @@ public class RoomTemplates : MonoBehaviour
         }
     }
 
+    void updatePlayerDeath1(){
+        gameoverMenu.SetActive(true);
+        Time.timeScale = 0f;
+        Debug.Log("Player death");
+    }
+
     public void playButton()
     {
         if(spawnedBoss == true)
@@ -136,7 +157,23 @@ public class RoomTemplates : MonoBehaviour
             overlay.SetActive (false);
             Time.timeScale = 1f;
             playerObject.SetActive(true);
+            allowResume = true;
         }
+    }
+    public void resumeButton()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void restartButton()
+    {
+        Debug.Log("reset due to restartbutton");
+        EnemyBase.notifyDeath -= updateEnemyDeath;
+        PlayerController.notifyPlayerDeath -= updatePlayerDeath1;
+        SceneManager.LoadScene("MapGeneration");
+        waitTime = 4f;
+        Time.timeScale = 1f;
+
     }
     public void quitButton()
     {

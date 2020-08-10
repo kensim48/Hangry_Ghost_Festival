@@ -24,9 +24,7 @@ TagManager:
   - WeaponCharge
   - WeaponBomb
   - WeaponShooter
-  - BlackBoss
-  - EnemyWeapon
-  - WhiteBoss
+
   layers:
   - Default
   - TransparentFX

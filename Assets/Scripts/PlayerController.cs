@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour
     private float playerStunTimeLast;
     public int playerStunForce = 350;
     private Animator m_Animator;
-    // public delegate void NotifyPlayerDeath();
-    // public static event NotifyPlayerDeath notifyPlayerDeath;
+    public delegate void NotifyPlayerDeath();
+    public static event NotifyPlayerDeath notifyPlayerDeath;
     void Awake()
     {
 
@@ -323,8 +323,8 @@ public class PlayerController : MonoBehaviour
                 m_Animator.SetTrigger("healthDecrease");
                 Vector2 boosterForce = (Vector2)(other.transform.position - transform.position);
                 rb.AddForce(-boosterForce * playerStunForce);
-                // if (health <= 0)
-                // notifyPlayerDeath();
+                if (health <= 0)
+                    notifyPlayerDeath();
             }
         }
 
