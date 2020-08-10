@@ -11,6 +11,7 @@ public class EnemyRandomMelee : EnemyBase
     public float startTimeBtwAtks;
     public float timeBreakMovement;
     private float lastTimeMovement;
+    private Animator m_Animator;
 
 
     public void Start()
@@ -18,15 +19,17 @@ public class EnemyRandomMelee : EnemyBase
         base.Start();
         chasePatrolState = 0; // chase
         lastTimeMovement = Time.time;
+        m_Animator = gameObject.GetComponent<Animator>();
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        print(other.gameObject.tag);
+        // print(other.gameObject.tag);
         if (other.gameObject.tag == "PlayerWeapon")
         {
             currentState = 1; // Hit state
             isHit = true;
             print("On Collision with projectile");
+            m_Animator.SetTrigger("isHit");
         }
     }
     public void OnTriggerExit2D(Collider2D other)
