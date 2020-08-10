@@ -11,12 +11,15 @@ public class EnemyProjectile : EnemyBase
     public float bulletForce = 20f;
     private float timeBtwShots;
     public float startTimeBtwShots;
+    private Animator m_Animator;
+
 
     public void Start()
     {
         base.Start();
         chasePatrolState = 1; // Patrol
         timeBtwShots = startTimeBtwShots;
+        m_Animator = gameObject.GetComponent<Animator>();
     }
     public void Shoot()
     {
@@ -29,7 +32,6 @@ public class EnemyProjectile : EnemyBase
     void Update()
     {
         base.Update();
-        print(isAttack);
         RotateBody();
         if (isAttack)
         {
@@ -59,13 +61,15 @@ public class EnemyProjectile : EnemyBase
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        print(other.gameObject.tag);
+        // print(other.gameObject.tag);
         if (other.gameObject.tag == "PlayerWeapon")
         {
             currentState = 1; // Hit state
             isHit = true;
             print("On Collision with projectile");
+            m_Animator.SetTrigger("isHit");
         }
-    }
 
+
+    }
 }
