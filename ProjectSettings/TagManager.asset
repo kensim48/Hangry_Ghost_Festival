@@ -70,3 +70,6 @@ TagManager:
   - name: board
     uniqueID: 3046386115
     locked: 0
+  - name: weapon
+    uniqueID: 1392067359
+    locked: 0
