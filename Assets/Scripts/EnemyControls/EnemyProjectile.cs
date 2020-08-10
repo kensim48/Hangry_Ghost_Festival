@@ -69,7 +69,5 @@ public class EnemyProjectile : EnemyBase
             print("On Collision with projectile");
             m_Animator.SetTrigger("isHit");
         }
-
-
     }
 }
