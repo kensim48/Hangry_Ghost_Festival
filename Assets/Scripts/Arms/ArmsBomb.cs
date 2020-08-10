@@ -16,8 +16,14 @@ public class ArmsBomb : ArmsClass
     public Rigidbody2D bombSingle;
     public Transform[] spawnPoints;
     public float bombThrust = 800f;
+    public AudioClip[] bleeps;
+    public AudioClip bleepRelease;
+
+    private int lastChargeState;
+    private AudioSource audioSource;
     void Awake()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         m_Animator = gameObject.GetComponent<Animator>();
         for (int i = 3; i > 0; i--)
         {
@@ -29,6 +35,11 @@ public class ArmsBomb : ArmsClass
         isMoving = true;
         if (chargeLevel <= maxCharge) chargeLevel += chargeRate;
         chargeState = (int)Mathf.Floor(chargeLevel / (maxCharge / 3));
+        if (lastChargeState != chargeState)
+        {
+            audioSource.PlayOneShot(bleeps[chargeState - 1]);
+            lastChargeState = chargeState;
+        }
         print(chargeState);
         if (chargeState > 0) indicators[chargeState - 1].SetActive(true);
     }
@@ -47,11 +58,14 @@ public class ArmsBomb : ArmsClass
         {
             m_Animator.ResetTrigger("moveOn");
             m_Animator.SetTrigger("moveOff");
+            if (chargeState > 0)
+                audioSource.PlayOneShot(bleepRelease);
             for (; chargeState > 0; chargeState--)
             {
                 indicators[chargeState - 1].SetActive(false);
                 Rigidbody2D bomb = Instantiate(bombSingle, spawnPoints[chargeState - 1].position, transform.rotation) as Rigidbody2D;
                 bomb.AddForce(spawnPoints[chargeState - 1].up * bombThrust);
+                bomb.AddTorque(10f);
             }
             chargeLevel = 0;
         }

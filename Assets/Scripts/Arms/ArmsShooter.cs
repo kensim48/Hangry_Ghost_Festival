@@ -22,6 +22,7 @@ public class ArmsShooter : ArmsClass
         animator.SetBool("attacking", false);
         if (chargeupCounter >= 100)
         {
+            GetComponent<AudioSource>().Play();
             animator.SetBool("attacking", true);
             Vector2 boosterForce = (Vector2)(transform.rotation * Quaternion.Euler(0, 0, -90) * Vector2.right);
             rb.AddForce(boosterForce * amplifierBoosterMultiplier);

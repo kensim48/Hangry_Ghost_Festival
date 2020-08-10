@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
         };
         controls.Gameplay.RightArmMovement.canceled += ctx => rightRotationActive = false;
         controls.Gameplay.LeftPrime.performed += ctx => arm1ExplosiveArmed = !arm1ExplosiveArmed;
+        controls.Gameplay.RightPrime.performed += ctx => arm2ExplosiveArmed = !arm2ExplosiveArmed;
         controls.Gameplay.WeaponSwapLeft.performed += ctx => isLeftSelected = true;
         controls.Gameplay.WeaponSwapLeft.canceled += ctx => isLeftSelected = false;
         controls.Gameplay.WeaponSwapRight.performed += ctx => isRightSelected = true;
@@ -226,6 +227,9 @@ public class PlayerController : MonoBehaviour
                 // Destroy current arm
                 arm1 = 0;
                 arm1ExplosiveArmed = false;
+                weaponInventory[weaponSlot1] = 0;
+                refreshWeaponOrder();
+                refreshWeaponSprites();
             }
             if (rightBoosterForce && arm2ExplosiveArmed)
             {
@@ -234,6 +238,9 @@ public class PlayerController : MonoBehaviour
                 destroyableArm.transform.rotation = rightArm.transform.rotation;
                 arm2 = 0;
                 arm2ExplosiveArmed = false;
+                weaponInventory[weaponSlot2] = 0;
+                refreshWeaponOrder();
+                refreshWeaponSprites();
             }
 
             // Runs attack and move if trigger is clicked in
@@ -304,15 +311,9 @@ public class PlayerController : MonoBehaviour
             newWeapon = 4;
         if (newWeapon != 0)
         {
-            for (int i = 0; i < 8; i++)
+            if (addNewWeapon(newWeapon))
             {
-                if (weaponInventory[i] == 0)
-                {
-                    weaponInventory[i] = newWeapon;
-                    refreshWeaponSprites();
-                    Destroy(other.gameObject);
-                    break;
-                }
+                Destroy(other.gameObject);
             }
         }
         else if (other.CompareTag("EnemyWeapon"))
@@ -326,11 +327,42 @@ public class PlayerController : MonoBehaviour
                 Vector2 boosterForce = (Vector2)(other.transform.position - transform.position);
                 rb.AddForce(-boosterForce * playerStunForce);
                 if (health <= 0)
+                {
                     notifyPlayerDeath();
+                }
             }
         }
+    }
 
+    public bool addNewWeapon(int weaponInt)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (weaponInventory[i] == 0)
+            {
+                weaponInventory[i] = weaponInt;
+                refreshWeaponOrder();
+                refreshWeaponSprites();
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public void refreshWeaponOrder()
+    {
+        for (int k = 0; k < 7; k++)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                if (weaponInventory[i] == 0)
+                {
+                    for (int j = i; j < 7; j++)
+                        weaponInventory[j] = weaponInventory[j + 1];
+                    weaponInventory[7] = 0;
+                }
+            }
+        }
     }
 
     // Method registered to Shop Selection Event
@@ -344,16 +376,16 @@ public class PlayerController : MonoBehaviour
         }
         else if (selectedItem.weaponidx == 1)
         { //noodle
-        print("Player Controller: Noodle " + selectedItem.cost.ToString());
+            print("Player Controller: Noodle " + selectedItem.cost.ToString());
 
         }
         else if (selectedItem.weaponidx == 2)
         { //popcorn
-        print("Player Controller: Popcorn " + selectedItem.cost.ToString());
+            print("Player Controller: Popcorn " + selectedItem.cost.ToString());
         }
         else if (selectedItem.weaponidx == 3)
         { //bubbletea
-        print("Player Controller: bubbletea " + selectedItem.cost.ToString());
+            print("Player Controller: bubbletea " + selectedItem.cost.ToString());
         }
         else
         {

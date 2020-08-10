@@ -6,10 +6,9 @@ public class DestroyableArmsCharge : MonoBehaviour
 {
     private Rigidbody2D rb;
     // Start is called before the first frame update
-    public Rigidbody2D laserObject;
-
     public int thrust;
     private float startTime;
+    public GameObject noodleParent;
     void Start()
     {
         rb = transform.GetComponent<Rigidbody2D>();
@@ -21,10 +20,9 @@ public class DestroyableArmsCharge : MonoBehaviour
     {
         if (Time.time - startTime < 1f)
             rb.AddForce(thrust * transform.up);
+        else if (Time.time - startTime < 1.5f)
+            noodleParent.SetActive(true);
         else
-        {
-            // Rigidbody2D bombs = Instantiate(laserObject, transform.position, transform.rotation) as Rigidbody2D;
             Destroy(gameObject);
-        }
     }
 }
