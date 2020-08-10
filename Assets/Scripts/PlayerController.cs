@@ -118,6 +118,8 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.WeaponSwapLeft.canceled += ctx => isLeftSelected = false;
         controls.Gameplay.WeaponSwapRight.performed += ctx => isRightSelected = true;
         controls.Gameplay.WeaponSwapRight.canceled += ctx => isRightSelected = false;
+
+        ShopManager.notifyitemselected += updateShopItemSelection;
     }
 
     void Update()
@@ -328,6 +330,35 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
+    }
+
+    // Method registered to Shop Selection Event
+    // TODO: @KENNETH Add the adding to inventory of the following class
+    //TODO: Deduct selectedItem.cost from inventory.
+    public void updateShopItemSelection(ShopItem selectedItem)
+    {
+        if (selectedItem.weaponidx == 0)
+        { //Whipcream
+            print("Player Controller: Whipcream " + selectedItem.cost.ToString());
+        }
+        else if (selectedItem.weaponidx == 1)
+        { //noodle
+        print("Player Controller: Noodle " + selectedItem.cost.ToString());
+
+        }
+        else if (selectedItem.weaponidx == 2)
+        { //popcorn
+        print("Player Controller: Popcorn " + selectedItem.cost.ToString());
+        }
+        else if (selectedItem.weaponidx == 3)
+        { //bubbletea
+        print("Player Controller: bubbletea " + selectedItem.cost.ToString());
+        }
+        else
+        {
+            print("Shop item recieved by Player controller but cant get weapon idx");
+        }
 
     }
 }

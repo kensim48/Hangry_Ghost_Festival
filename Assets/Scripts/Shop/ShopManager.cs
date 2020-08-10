@@ -19,6 +19,10 @@ public class ShopManager : MonoBehaviour
     public int popcornCost;
     public int bubbleteaCost;
 
+    private bool Mat1First = true;
+    private bool Mat2First = true;
+    private bool Mat3First = true;
+
     public delegate void NotifyShopItemSelected(ShopItem selectedItem);
     public static event NotifyShopItemSelected notifyitemselected;
 
@@ -57,21 +61,30 @@ public class ShopManager : MonoBehaviour
     void Update()
     {
 
-        if (Mat1.GetComponent<ShopMat>().isSelected){
+        if (Mat1.GetComponent<ShopMat>().isSelected && Mat1First)
+        {
             RaiseShopItemSelcetd(ShopList[0]);
-        }else if(Mat2.GetComponent<ShopMat>().isSelected){
+            Mat1First = false;
+        }
+        else if (Mat2.GetComponent<ShopMat>().isSelected && Mat2First)
+        {
             RaiseShopItemSelcetd(ShopList[1]);
-        }else if( Mat3.GetComponent<ShopMat>().isSelected){
+            Mat2First = false;
+        }
+        else if (Mat3.GetComponent<ShopMat>().isSelected && Mat3First)
+        {
             RaiseShopItemSelcetd(ShopList[2]);
+            Mat3First = false;
         }
 
     }
 
-    public void RaiseShopItemSelcetd(ShopItem selectedItem){ 
+    public void RaiseShopItemSelcetd(ShopItem selectedItem)
+    {
         if (notifyitemselected != null)
-            {
-                notifyitemselected(selectedItem);
-            }
+        {
+            notifyitemselected(selectedItem);
+        }
 
     }
 }
