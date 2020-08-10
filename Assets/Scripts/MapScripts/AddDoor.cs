@@ -32,7 +32,7 @@ public class AddDoor : MonoBehaviour
         catch (Exception e) 
 		{
             // print(obj);
-            print("Door error");
+            // print("Door error");
         }		
 		
 	}

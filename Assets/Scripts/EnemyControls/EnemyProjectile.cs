@@ -57,4 +57,15 @@ public class EnemyProjectile : EnemyBase
         fireParent.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        print(other.gameObject.tag);
+        if (other.gameObject.tag == "PlayerWeapon")
+        {
+            currentState = 1; // Hit state
+            isHit = true;
+            print("On Collision with projectile");
+        }
+    }
+
 }

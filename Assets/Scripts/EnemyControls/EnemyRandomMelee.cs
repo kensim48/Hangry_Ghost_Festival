@@ -21,10 +21,12 @@ public class EnemyRandomMelee : EnemyBase
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        print(other.gameObject.tag);
+        if (other.gameObject.tag == "PlayerWeapon")
         {
-            Debug.Log("hitting player");
-            animator.SetBool("attacking", true);
+            currentState = 1; // Hit state
+            isHit = true;
+            print("On Collision with projectile");
         }
     }
     public void OnTriggerExit2D(Collider2D other)
@@ -53,8 +55,9 @@ public class EnemyRandomMelee : EnemyBase
 
     }
 
-    public override void moveEnemy(){
-                float distanceFromPlayer = Vector3.Distance(transform.position, player.position);
+    public override void moveEnemy()
+    {
+        float distanceFromPlayer = Vector3.Distance(transform.position, player.position);
         // check distance (enemies position, players position) > stopping distance
         if (distanceFromPlayer > stoppingDistance)
         {
