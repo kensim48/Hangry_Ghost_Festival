@@ -42,7 +42,6 @@ public class Chest : MonoBehaviour
 
     public void CreatePickup()
     {
-        print("Create pickup");
         isFading = true;
         Instantiate(weaponSpawner, gameObject.transform.position, gameObject.transform.rotation);
     }
