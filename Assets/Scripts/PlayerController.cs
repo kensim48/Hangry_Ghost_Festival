@@ -232,6 +232,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot1] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
+                arm1Last = 0;
                 arm1 = weaponInventory[weaponSlot1];
             }
             if (rightBoosterForce && arm2ExplosiveArmed)
@@ -244,6 +245,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot2] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
+                arm2Last = 0;
                 arm2 = weaponInventory[weaponSlot2];
             }
 
@@ -336,6 +338,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(-boosterForce * playerStunForce);
                 if (health <= 0)
                 {
+                    print("DIEEEEEE");
                     notifyPlayerDeath();
                 }
             }
