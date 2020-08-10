@@ -48,6 +48,10 @@ public class RoomTemplates : MonoBehaviour
 
     public GameObject gameoverMenu;
 
+    public GameObject winMenu;
+
+    public Text winMenuText;
+
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -91,6 +95,7 @@ public class RoomTemplates : MonoBehaviour
                     spawnedBoss = true;
                     EnemyBase.notifyDeath += updateEnemyDeath;
                     PlayerController.notifyPlayerDeath += updatePlayerDeath1;
+                    // PlayerController.notifyPlayerDeath += updateWinGame; //to update to wingame event
                     Debug.Log(i);
                     // overlay.SetActive (false);
                     playerObject.transform.position = new Vector3(0,0,-1f);
@@ -150,6 +155,13 @@ public class RoomTemplates : MonoBehaviour
         Debug.Log("Player death");
     }
 
+    void updateWinGame(){
+        winMenu.SetActive(true);
+        winMenuText.text = "Beelzebucks:\n" + GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore.ToString();
+        Time.timeScale = 0f;
+        Debug.Log("Game Won");
+    }
+
     public void playButton()
     {
         if(spawnedBoss == true)
@@ -170,6 +182,7 @@ public class RoomTemplates : MonoBehaviour
         Debug.Log("reset due to restartbutton");
         EnemyBase.notifyDeath -= updateEnemyDeath;
         PlayerController.notifyPlayerDeath -= updatePlayerDeath1;
+        // PlayerController.notifyPlayerDeath -= updateWinGame; //to update to wingame event
         SceneManager.LoadScene("MapGeneration");
         waitTime = 4f;
         Time.timeScale = 1f;
