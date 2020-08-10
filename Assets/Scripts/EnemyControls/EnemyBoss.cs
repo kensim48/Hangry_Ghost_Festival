@@ -302,7 +302,7 @@ public class EnemyBoss : MonoBehaviour
                 switch (currentEnragePhase)
                 {
                     case (int)EnragedCurrentPhase.franticfan:
-                        while (firstfranticfan)
+                        if (firstfranticfan)
                         {
                             print("Enter Frantic Fan Mode");
                             franticfanEnd = Time.time + franticfanduration;
