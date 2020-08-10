@@ -17,7 +17,6 @@ public class ArmsCharge : ArmsClass
     private bool noodleDestroyed = true;
     private GameObject noodlePoint;
 
-
     public override void Attack()
     {
         chargeTotal += chargeRate;
@@ -25,6 +24,7 @@ public class ArmsCharge : ArmsClass
         {
             noodlePoint = Instantiate(noodle, noodleSpawn.transform.position, noodleSpawn.transform.rotation);
             laserShotTime = Time.time;
+            GetComponent<AudioSource>().Play();
         }
         isMoving = true;
     }

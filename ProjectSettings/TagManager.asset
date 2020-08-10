@@ -24,7 +24,6 @@ TagManager:
   - WeaponCharge
   - WeaponBomb
   - WeaponShooter
-
   layers:
   - Default
   - TransparentFX
@@ -34,8 +33,8 @@ TagManager:
   - UI
   - 
   - 
-  - MiniMap
-  - NonMiniMap
+  - 
+  - 
   - 
   - 
   - 
@@ -62,21 +61,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: floor
-    uniqueID: 2080368537
-    locked: 0
-  - name: table
-    uniqueID: 2926868295
+  - name: furni
+    uniqueID: 80968627
     locked: 0
   - name: food
-    uniqueID: 3022887257
+    uniqueID: 1782877623
     locked: 0
-  - name: mobs
-    uniqueID: 3430736491
-    locked: 0
-  - name: weapon
-    uniqueID: 1189500847
-    locked: 0
-  - name: New Layer
-    uniqueID: 2058035569
+  - name: board
+    uniqueID: 3046386115
     locked: 0

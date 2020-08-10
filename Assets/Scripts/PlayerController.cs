@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     private Animator m_Animator;
     public delegate void NotifyPlayerDeath();
     public static event NotifyPlayerDeath notifyPlayerDeath;
+    private float lastPickupTime = 0;
     void Awake()
     {
 
@@ -127,6 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         // Locking of player's body rotation
         transform.rotation = lastRotation;
+        refreshWeaponSprites();
     }
     void FixedUpdate()
     {
@@ -230,6 +232,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot1] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
+                arm1 = weaponInventory[weaponSlot1];
             }
             if (rightBoosterForce && arm2ExplosiveArmed)
             {
@@ -241,6 +244,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot2] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
+                arm2 = weaponInventory[weaponSlot2];
             }
 
             // Runs attack and move if trigger is clicked in
@@ -290,7 +294,10 @@ public class PlayerController : MonoBehaviour
     public void refreshWeaponSprites()
     {
         for (int i = 0; i < 8; i++)
+        {
+            print(weaponInventory[i]);
             weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -309,8 +316,9 @@ public class PlayerController : MonoBehaviour
             newWeapon = 3;
         else if (other.CompareTag("WeaponShooter"))
             newWeapon = 4;
-        if (newWeapon != 0)
+        if (newWeapon != 0 && Time.time - lastPickupTime > 2f)
         {
+            lastPickupTime = Time.time;
             if (addNewWeapon(newWeapon))
             {
                 Destroy(other.gameObject);
@@ -341,7 +349,7 @@ public class PlayerController : MonoBehaviour
             if (weaponInventory[i] == 0)
             {
                 weaponInventory[i] = weaponInt;
-                refreshWeaponOrder();
+                // refreshWeaponOrder();
                 refreshWeaponSprites();
                 return true;
             }
