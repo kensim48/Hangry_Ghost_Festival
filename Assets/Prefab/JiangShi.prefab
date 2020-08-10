@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 853072170166883171}
   m_Layer: 0
   m_Name: JiangShi
-  m_TagString: EnemyBody
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

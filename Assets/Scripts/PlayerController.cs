@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public GameObject inventoryBarSlots;
     public GameObject inventoryBarSlotSelector1;
     public GameObject inventoryBarSlotSelector2;
+    public Animator healthBar;
     public int[] weaponInventory;
     public int weaponSlot1;
     public int weaponSlot2;
@@ -55,6 +56,13 @@ public class PlayerController : MonoBehaviour
     private int weaponSelectionCountereMax = 7;
     public GameObject weaponSpriteLayer;
     public Sprite[] weaponSpriteList;
+    private int health = 3;
+    public float playerStunTime = 2f;
+    private float playerStunTimeLast;
+    public int playerStunForce = 350;
+    Animator m_Animator;
+    public delegate void NotifyPlayerDeath();
+    public static event NotifyPlayerDeath notifyPlayerDeath;
     void Awake()
     {
 
@@ -79,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
         // Getting rigidbody of Player
         rb = GetComponent<Rigidbody2D>();
+        m_Animator = gameObject.GetComponent<Animator>();
 
         // Control scheme input system
         controls = new ControllerScheme();
@@ -276,11 +285,49 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        int newWeapon = 0;
         if (other.CompareTag("Coin_1"))
         {
             Debug.Log("Coin touch");
             Destroy(other.gameObject);
             GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore += 10;
-		}
-	}
+        }
+        else if (other.CompareTag("WeaponBooster"))
+            newWeapon = 1;
+        else if (other.CompareTag("WeaponCharge"))
+            newWeapon = 2;
+        else if (other.CompareTag("WeaponBomb"))
+            newWeapon = 3;
+        else if (other.CompareTag("WeaponShooter"))
+            newWeapon = 4;
+        if (newWeapon != 0)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (weaponInventory[i] == 0)
+                {
+                    weaponInventory[i] = newWeapon;
+                    refreshWeaponSprites();
+                    Destroy(other.gameObject);
+                    break;
+                }
+            }
+        }
+        else if (other.CompareTag("EnemyWeapon"))
+        {
+            if (Time.time - playerStunTimeLast > playerStunTime)
+            {
+                playerStunTimeLast = Time.time;
+                health--;
+                healthBar.SetTrigger("healthDecrease");
+                m_Animator.SetTrigger("healthDecrease");
+                Vector2 boosterForce = (Vector2)(other.transform.position - transform.position);
+                rb.AddForce(-boosterForce * playerStunForce);
+                if (health <= 0)
+                    notifyPlayerDeath();
+            }
+        }
+
+
+    }
 }
