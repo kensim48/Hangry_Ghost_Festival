@@ -53,5 +53,6 @@ public class detectBossRoom : MonoBehaviour
         bossManager.GetComponent<EnemyBoss>().blackboss = GameObject.FindGameObjectWithTag("BlackBoss").transform;
         bossManager.GetComponent<EnemyBoss>().whiteboss = GameObject.FindGameObjectWithTag("WhiteBoss").transform;
         bossManager.GetComponent<EnemyBoss>().blackbossRb2d = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Rigidbody2D>();
+        bossManager.GetComponent<EnemyBoss>().whitebossRb2d = GameObject.FindGameObjectWithTag("WlackBoss").GetComponent<Rigidbody2D>();
     }
 }

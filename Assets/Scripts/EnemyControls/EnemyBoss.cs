@@ -92,6 +92,7 @@ public class EnemyBoss : MonoBehaviour
     public GameObject player;
     public Rigidbody2D playerRb2d;
     public Rigidbody2D blackbossRb2d;
+    public Rigidbody2D whitebossRb2d;
 
     public GameObject spikeParent;
     private int numberOfSpikes;
@@ -101,7 +102,7 @@ public class EnemyBoss : MonoBehaviour
     public float fanthrust = 0.3f;
 
     public float stoppingDistance; // The higher the value, the further away it will stop 
-    public float speed; // Speed of the black boss
+    public float chaseSpeed; // Speed of the black boss
 
     public bool isBlackDead;
     public bool isWhiteDead;
@@ -111,11 +112,31 @@ public class EnemyBoss : MonoBehaviour
 
     #region Variables for Enraged Boss Mode
     private bool firstEnragedEnter = true;
-    public Transform enragedboss;
+    private Transform enragedboss;
+    private Rigidbody2D enragedbossrb2d;
+
+    // for fantic phase
     public float franticfanduration;
     private float franticfanEnd;
-    private bool firstfranticfan;
+    private bool firstfranticfan = true;
     private bool isSpikesGenerated_enraged = false;
+    public GameObject spikeParent_enraged;
+    public float franticfanWaitDuration;
+    private float franticfanMoveEnd;
+    private bool isfranticfanmove = false;
+    private Transform currentPosition;
+    public float franticfanMoveSpeed;
+    public float franticfanthrust;
+
+    private bool firstfrantichit = true;
+    public float enragedspeed;
+    public float frantichitDuration;
+    private float frantichitEnd;
+
+    private bool firstcheckidle_enraged = true;
+    private float enragedidleEnd;
+    public float enragedidleDuration;
+
 
     #endregion
 
@@ -140,24 +161,25 @@ public class EnemyBoss : MonoBehaviour
             // Insert Game End scene or smt
         }
 
-        //The White Boss to follow and mirror the position of the black box.
-        float distFromAnchor = anchorpoint.position.x - blackboss.position.x;
-        float newX = blackboss.position.x + 2 * (distFromAnchor);
-        whiteboss.position = new Vector3(newX, blackboss.position.y, -1);
-
         switch (enragedPhase)
         {
             case (int)EnragedPhase.normal:
+                //The White Boss to follow and mirror the position of the black box.
+                float distFromAnchor = anchorpoint.position.x - blackboss.position.x;
+                float newX = blackboss.position.x + 2 * (distFromAnchor);
+                whiteboss.position = new Vector3(newX, blackboss.position.y, -1);
                 switch (currentPhase)
                 {
                     case (int)BossPhase.idle: //idle
+                        #region Set Up Idle phase Timer
                         if (firstcheckidle)
                         {
                             idleEnd = Time.time + idleDuration;
                             firstcheckidle = false;
                         }
+                        #endregion
 
-
+                        #region Set to move to the next phase when timer is up
                         if (Time.time >= idleEnd)
                         {
                             if (previousAttackPhase == (int)BossPhase.white)
@@ -167,16 +189,20 @@ public class EnemyBoss : MonoBehaviour
                             else if (previousAttackPhase == (int)BossPhase.black)
                             {
                                 currentPhase = (int)BossPhase.white;
-                            } else{
+                            }
+                            else
+                            {
                                 currentPhase = (int)BossPhase.white;
                             }
                             firstcheckidle = true;
                         }
+                        #endregion
                         break;
+
 
                     case (int)BossPhase.white: //white
 
-                        #region 1. Charge Up animation by moving to the corner
+                        #region 1. Set up timer + Charge Up animation by moving to the corner
                         while (firstcheckwhite)
                         {
                             whiteEnd = Time.time + whiteDuration;
@@ -194,8 +220,8 @@ public class EnemyBoss : MonoBehaviour
 
                         #region 3. Move player
                         // Check enemy is at the corner
-                        print("blackboss posiion: " + blackboss.position);
-                        print("anchorpoint position: " + nearestAnchor.position);
+                        // print("blackboss posiion: " + blackboss.position);
+                        // print("anchorpoint position: " + nearestAnchor.position);
                         if (blackboss.position == nearestAnchor.position)
                         {
                             // Start moving player
@@ -220,7 +246,7 @@ public class EnemyBoss : MonoBehaviour
                         break;
 
                     case (int)BossPhase.black:
-                        // ODO: @HUAN XUAN To start the sword animation for the Sign here
+                        // TODO: @HUAN XUAN To start the sword animation for the Sign here
                         #region 1. Set up Phase timer
                         while (firstcheckblack)
                         {
@@ -231,10 +257,10 @@ public class EnemyBoss : MonoBehaviour
                         #endregion
 
                         #region 2. Boss to chase player, as long as the sword hit, it deducts life
-                        moveBoss();
+                        moveBoss(blackboss, blackbossRb2d, chaseSpeed);
                         #endregion
 
-                        #region Checks if the time is up for the phase
+                        #region 3. Checks if the time is up for the phase
                         // Remember to end the animation here
                         if (Time.time >= blackEnd)
                         {
@@ -246,7 +272,6 @@ public class EnemyBoss : MonoBehaviour
                         }
                         #endregion
                         break;
-
                 }
                 break;
 
@@ -255,8 +280,22 @@ public class EnemyBoss : MonoBehaviour
                 while (firstEnragedEnter)
                 {
                     print("In Enraged Mode");
-                    if (!isBlackDead) { enragedboss = blackboss; }
-                    else if (!isWhiteDead) { enragedboss = whiteboss; }
+                    if (isBlackDead && !isWhiteDead)
+                    {
+                        print("White Boss Alive, Black Boss Dead");
+                        enragedboss = whiteboss;
+                        enragedbossrb2d = whitebossRb2d;
+                    }
+                    else if (isWhiteDead && !isBlackDead)
+                    {
+                        print("Black Boss Alive, white Boss Dead");
+                        enragedboss = blackboss;
+                        enragedbossrb2d = blackbossRb2d;
+                    }
+                    else
+                    {
+                        print("Unable to set enraged boss");
+                    }
                     firstEnragedEnter = false;
                 }
 
@@ -268,35 +307,93 @@ public class EnemyBoss : MonoBehaviour
                             print("Enter Frantic Fan Mode");
                             franticfanEnd = Time.time + franticfanduration;
                             firstfranticfan = false;
+                            isSpikesGenerated = false;
                         }
 
                         #region 1. Spawn Spikes
-                        if (!isSpikesGenerated_enraged)
-                        {
-                            GenerateSpikes();
-                        }
+                        // TODO: Set a value for the number of spikes to generate here
+                        GenerateSpikes();
+
                         #endregion
 
-                        #region 2. Randomly generate enemy movements
+                        #region 2. Randomly move Boss
                         // Set eight points anchor points for the enemy to go to
-                        float wait = Random.Range(0, 10) * 1;
+                        if (!isfranticfanmove)
+                        {
+                            franticfanMoveEnd = Time.time + franticfanWaitDuration;
+                            isfranticfanmove = true;
+                            currentPosition = ChooseNextPosition();
+                        }
 
+                        if (Time.time >= franticfanMoveEnd)
+                        {
+                            isfranticfanmove = false;
+                        }
+
+                        float step = franticfanMoveSpeed * Time.deltaTime;
+                        enragedboss.position = Vector3.MoveTowards(enragedboss.position, currentPosition.position, step);
 
                         #endregion
 
                         #region 3. Move player accordingly
+                        // get the boss position and add force to the player
+                        playerRb2d.AddForce((player.transform.position - enragedboss.position) * franticfanthrust);
 
                         #endregion
 
+                        #region 4. Check if timer for phase is up
+                        if (Time.time >= franticfanEnd)
+                        {
+                            // Go to the frantic hit phase
+                            currentEnragePhase = (int)EnragedCurrentPhase.frantichit;
+                            firstfranticfan = true;
+                            isSpikesGenerated = false;
+                            SetSpikesInvisible(spikeParent.transform);
+                        }
+
+                        #endregion
                         break;
 
                     case (int)EnragedCurrentPhase.frantichit:
+                        if (firstfrantichit)
+                        {
+                            print("Enter Frantic HIT Mode");
+                            frantichitEnd = Time.time + frantichitDuration;
+                            firstfrantichit = false;
+                        }
+
+                        #region 1. Chase after player
+                        // Chase after player
+                        moveBoss(enragedboss, enragedbossrb2d, enragedspeed);
+                        #endregion
+
+                        #region 2. Check if timer for phase is up
+                        if (Time.time >= frantichitEnd)
+                        {
+                            // Go to idle phases
+                            currentEnragePhase = (int)EnragedCurrentPhase.idle;
+                            firstfrantichit = true;
+                        }
+                        #endregion
                         break;
 
-                    case (int)EnragedCurrentPhase.youneedjesus:
-                        break;
+                    // case (int)EnragedCurrentPhase.youneedjesus:
+                    //     break;
 
                     case (int)EnragedCurrentPhase.idle:
+                        if (firstcheckidle_enraged)
+                        {
+                            print("Enter Enraged Idle Mode");
+                            enragedidleEnd = Time.time + enragedidleDuration;
+                            firstcheckidle_enraged = false;
+                        }
+
+                        if (Time.time >= enragedidleEnd)
+                        {
+                            //Go to the frantic fan stage
+                            currentEnragePhase = (int)EnragedCurrentPhase.franticfan;
+                            firstcheckidle_enraged = true;
+                        }
                         break;
                 }
 
@@ -316,22 +413,34 @@ public class EnemyBoss : MonoBehaviour
     //state is when player hits the spike
     public void updateBossDeath(string message)
     {
+        print("Recieved Boss Death Event: " + message);
         if (message.Contains("BlackBoss"))
         {
+            print("recieve black boss dead");
             isBlackDead = true;
+            isWhiteDead = false;
         }
         else if (message.Contains("WhiteBoss"))
         {
+            print("recieve white boss dead");
             isWhiteDead = true;
+            isBlackDead = false;
         }
         enragedPhase = (int)EnragedPhase.enraged;
         BossDeathCount++;
     }
 
+    public Transform ChooseNextPosition()
+    {
+        int numberOfEnemyPositions = spikeParent_enraged.transform.childCount;
+        int randompos = Random.Range(0, numberOfEnemyPositions);
+        return spikeParent_enraged.transform.GetChild(randompos);
+    }
     public void GenerateSpikes()
     {
         while (!isSpikesGenerated)
         {
+            print("Spikes Spawning");
             numberOfSpikes = spikeParent.transform.childCount;
             // print("Spike After: " + spikeParent.transform.childCount);
             for (int i = 0; i < showNumberOfSpikes; i++)
@@ -394,17 +503,17 @@ public class EnemyBoss : MonoBehaviour
             child.gameObject.SetActive(false);
         }
     }
-    public void moveBoss()
+    public void moveBoss(Transform boss, Rigidbody2D bossrb2d, float speed)
     {
-        print("Stopping Distance: " + stoppingDistance);
-        if (Vector3.Distance(blackboss.position, player.transform.position) > stoppingDistance)
+        // print("Stopping Distance: " + stoppingDistance);
+        if (Vector3.Distance(boss.position, player.transform.position) > stoppingDistance)
         {
-            blackbossRb2d.velocity = (player.transform.position - blackboss.position) * speed * Time.deltaTime;
-            print("velocity: " + (player.transform.position - blackboss.position));
+            bossrb2d.velocity = (player.transform.position - boss.position) * speed * Time.deltaTime;
+            // print("velocity: " + bossrb2d.velocity);
         }
-        else if (Vector3.Distance(blackboss.position, player.transform.position) < stoppingDistance)
+        else if (Vector3.Distance(boss.position, player.transform.position) < stoppingDistance)
         {
-            blackbossRb2d.velocity = Vector2.zero;
+            bossrb2d.velocity = Vector2.zero;
         }
 
     }

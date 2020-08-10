@@ -29,7 +29,7 @@ public class EnemyProjectile : EnemyBase
     void Update()
     {
         base.Update();
-        print(isAttack);
+        // print(isAttack);
         RotateBody();
         if (isAttack)
         {
