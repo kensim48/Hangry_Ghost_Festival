@@ -2066,7 +2066,7 @@ PrefabInstance:
     - target: {fileID: 3294738958031753244, guid: e49b1e0b2c4a5eb46bd26c9339ead010,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e49b1e0b2c4a5eb46bd26c9339ead010, type: 3}
@@ -3770,6 +3770,10 @@ MonoBehaviour:
   enragedspeed: 8
   frantichitDuration: 20
   enragedidleDuration: 10
+  heiheiAnimator: {fileID: 0}
+  heiweapAnimator: {fileID: 0}
+  baibaiAnimator: {fileID: 0}
+  baiweapAnimator: {fileID: 0}
 --- !u!4 &901101237
 Transform:
   m_ObjectHideFlags: 0
@@ -10117,6 +10121,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4350072235751897452, guid: b9ab37b4b52f13243b4d4e6e52e36782,
         type: 3}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponSlot2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: arm1
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1095199073893513131, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
       propertyPath: m_LocalPosition.x
