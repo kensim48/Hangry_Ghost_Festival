@@ -217,7 +217,7 @@ public class EnemyBoss : MonoBehaviour
                     case (int)BossPhase.white: //white
 
                         #region 1. Set up timer + Charge Up animation by moving to the corner
-                        while (firstcheckwhite)
+                        if (firstcheckwhite)
                         {
                             whiteEnd = Time.time + whiteDuration;
                             nearestAnchor = GetNearestAnchorPoint(blackboss);
@@ -266,7 +266,7 @@ public class EnemyBoss : MonoBehaviour
                     case (int)BossPhase.black:
                         // TODO: @HUAN XUAN To start the sword animation for the Sign here
                         #region 1. Set up Phase timer
-                        while (firstcheckblack)
+                        if (firstcheckblack)
                         {
                             blackEnd = Time.time + blackDuration;
                             firstcheckblack = false;
@@ -303,7 +303,7 @@ public class EnemyBoss : MonoBehaviour
 
             case (int)EnragedPhase.enraged:
                 // Sets the remaining boss as the enraged boss
-                while (firstEnragedEnter)
+                if (firstEnragedEnter)
                 {
                     print("In Enraged Mode");
                     if (isBlackDead && !isWhiteDead)
