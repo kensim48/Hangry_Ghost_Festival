@@ -234,7 +234,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot1] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
-                arm1Last = 0;
+                arm1Last = 99;
             }
             if (rightBoosterForce && arm2ExplosiveArmed)
             {
@@ -246,7 +246,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot2] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
-                arm2Last = 0;
+                arm2Last = 99;
             }
 
             // Runs attack and move if trigger is clicked in
