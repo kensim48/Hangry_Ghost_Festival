@@ -20,10 +20,10 @@ public class ArmsBomb : ArmsClass
     public AudioClip bleepRelease;
 
     private int lastChargeState;
-    private AudioSource audio;
+    private AudioSource audioSource;
     void Awake()
     {
-        audio = gameObject.GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         m_Animator = gameObject.GetComponent<Animator>();
         for (int i = 3; i > 0; i--)
         {
@@ -37,7 +37,7 @@ public class ArmsBomb : ArmsClass
         chargeState = (int)Mathf.Floor(chargeLevel / (maxCharge / 3));
         if (lastChargeState != chargeState)
         {
-            audio.PlayOneShot(bleeps[chargeState - 1]);
+            audioSource.PlayOneShot(bleeps[chargeState - 1]);
             lastChargeState = chargeState;
         }
         print(chargeState);
@@ -59,7 +59,7 @@ public class ArmsBomb : ArmsClass
             m_Animator.ResetTrigger("moveOn");
             m_Animator.SetTrigger("moveOff");
             if (chargeState > 0)
-                audio.PlayOneShot(bleepRelease);
+                audioSource.PlayOneShot(bleepRelease);
             for (; chargeState > 0; chargeState--)
             {
                 indicators[chargeState - 1].SetActive(false);
