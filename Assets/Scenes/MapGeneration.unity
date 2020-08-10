@@ -5742,6 +5742,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 202615448723021585, guid: ec7a903aa7dab3749bd411808e4be0ea, type: 3}
   - {fileID: 3875883624159337139, guid: 09f47fd83f0fbb7409410d0e7b718bb6, type: 3}
+  - {fileID: 3875883624159337139, guid: d22a9daba7e17be48a8c2b7beebd430f, type: 3}
   boss:
   - {fileID: 8830711531588867475, guid: 009a5dd674f02704287792a824b04b1d, type: 3}
   - {fileID: 9047904530150058121, guid: 1959bb537c3fbad42950467cff3e5b47, type: 3}
@@ -7395,6 +7396,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
+      propertyPath: destroyableArmsList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
       propertyPath: cameraAngle
       value: 
       objectReference: {fileID: 1332222419}
@@ -7487,6 +7493,24 @@ PrefabInstance:
       propertyPath: arm1
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: destroyableArmsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 4350072235751897452, guid: daeca188c94674f48bec0c183d29e645,
+        type: 3}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: destroyableArmsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 4350072235751897452, guid: 3ec050bd70100aa4690dd8c7c09b1366,
+        type: 3}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: destroyableArmsList.Array.data[4]
+      value: 
+      objectReference: {fileID: 4350072235751897452, guid: b9ab37b4b52f13243b4d4e6e52e36782,
+        type: 3}
     - target: {fileID: 1095199073893513131, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
       propertyPath: m_LocalPosition.x

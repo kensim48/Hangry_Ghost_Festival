@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         // Locking of player's body rotation
         transform.rotation = lastRotation;
+        refreshWeaponSprites();
     }
     void FixedUpdate()
     {
@@ -313,7 +314,7 @@ public class PlayerController : MonoBehaviour
             newWeapon = 3;
         else if (other.CompareTag("WeaponShooter"))
             newWeapon = 4;
-        if (newWeapon != 0 && Time.time - lastPickupTime > 1f)
+        if (newWeapon != 0 && Time.time - lastPickupTime > 2f)
         {
             lastPickupTime = Time.time;
             if (addNewWeapon(newWeapon))
