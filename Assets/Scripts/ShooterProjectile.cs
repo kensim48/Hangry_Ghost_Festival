@@ -17,4 +17,10 @@ public class ShooterProjectile : MonoBehaviour
         if (Time.time - startTime > 2f)
             Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "EnemyBody")
+            Destroy(gameObject);
+    }
 }
