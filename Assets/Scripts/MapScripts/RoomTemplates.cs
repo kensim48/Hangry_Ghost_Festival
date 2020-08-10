@@ -76,6 +76,12 @@ public class RoomTemplates : MonoBehaviour
                 }
                 if ((rooms[i].gameObject.name =="T(Clone)" || rooms[i].gameObject.name =="B(Clone)" || rooms[i].gameObject.name =="L(Clone)" || rooms[i].gameObject.name =="R(Clone)" )&& spawnedBoss == false)
                 {
+                    if (i < 6 )
+                    {
+                        Debug.Log("reset due to boss room too close");
+                        SceneManager.LoadScene("MapGeneration");
+                        waitTime = 4f;
+                    }
                     foreach (Transform child1 in rooms[i].transform)
                     {
                         foreach (Transform child in child1)
