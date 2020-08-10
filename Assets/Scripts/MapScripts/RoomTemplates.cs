@@ -157,7 +157,7 @@ public class RoomTemplates : MonoBehaviour
 
     void updateWinGame(){
         winMenu.SetActive(true);
-        winMenuText.text = "Beelzebucks: " + GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore.ToString();
+        winMenuText.text = "Beelzebucks:\n" + GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore.ToString();
         Time.timeScale = 0f;
         Debug.Log("Game Won");
     }
