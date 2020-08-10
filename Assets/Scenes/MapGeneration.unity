@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: quitButton
         m_Mode: 1
         m_Arguments:
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: quitButton
         m_Mode: 1
         m_Arguments:
@@ -3145,7 +3145,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: quitButton
         m_Mode: 1
         m_Arguments:
@@ -3618,7 +3618,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: restartButton
         m_Mode: 1
         m_Arguments:
@@ -4122,7 +4122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: quitButton
         m_Mode: 1
         m_Arguments:
@@ -7122,7 +7122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: restartButton
         m_Mode: 1
         m_Arguments:
@@ -7252,8 +7252,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: restartButton
+      - m_Target: {fileID: 1529000541}
+        m_MethodName: quitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8193,7 +8193,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: resumeButton
         m_Mode: 1
         m_Arguments:
@@ -9716,7 +9716,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1529000541}
         m_MethodName: playButton
         m_Mode: 1
         m_Arguments:
