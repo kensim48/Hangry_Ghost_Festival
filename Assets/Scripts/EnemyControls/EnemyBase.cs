@@ -154,7 +154,6 @@ public class EnemyBase : MonoBehaviour
             isHit = true;
             print("On Collision with projectile");
         }
-
     }
 
 
