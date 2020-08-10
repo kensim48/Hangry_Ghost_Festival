@@ -11,13 +11,15 @@ public class EnemyMeele : EnemyBase
     public float startTimeBtwAtks;
     public float timeBreakMovement;
     private float lastTimeMovement;
-
+   private Animator m_Animator;
 
     public void Start()
     {
         base.Start();
         chasePatrolState = 0; // chase
         lastTimeMovement = Time.time;
+        m_Animator = gameObject.GetComponent<Animator>();
+
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,6 +29,7 @@ public class EnemyMeele : EnemyBase
             currentState = 1; // Hit state
             isHit = true;
             print("On Collision with projectile");
+            m_Animator.SetTrigger("isHit");
         }
 
     }

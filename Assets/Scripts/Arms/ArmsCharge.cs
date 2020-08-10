@@ -15,13 +15,15 @@ public class ArmsCharge : ArmsClass
     public float timeDestroyLaser;
     private float laserShotTime;
     private bool noodleDestroyed = true;
+    private GameObject noodlePoint;
+
 
     public override void Attack()
     {
         chargeTotal += chargeRate;
         if (chargeTotal >= 100)
         {
-            Instantiate(noodle, noodleSpawn.transform.position, noodleSpawn.transform.rotation, noodleSpawn.transform);
+            noodlePoint = Instantiate(noodle, noodleSpawn.transform.position, noodleSpawn.transform.rotation);
             laserShotTime = Time.time;
         }
         isMoving = true;
@@ -44,7 +46,7 @@ public class ArmsCharge : ArmsClass
         isMoving = false;
         if (Time.time - laserShotTime > timeDestroyLaser && !noodleDestroyed)
         {
-            Destroy(noodleSpawn.transform.GetChild(0).gameObject);
+            Destroy(noodlePoint);
             noodleDestroyed = true;
         }
 
