@@ -129,6 +129,8 @@ public class PlayerController : MonoBehaviour
         // Locking of player's body rotation
         transform.rotation = lastRotation;
         refreshWeaponSprites();
+        arm1 = weaponInventory[weaponSlot1];
+        arm2 = weaponInventory[weaponSlot2];
     }
     void FixedUpdate()
     {
@@ -233,7 +235,6 @@ public class PlayerController : MonoBehaviour
                 refreshWeaponOrder();
                 refreshWeaponSprites();
                 arm1Last = 0;
-                arm1 = weaponInventory[weaponSlot1];
             }
             if (rightBoosterForce && arm2ExplosiveArmed)
             {
@@ -246,7 +247,6 @@ public class PlayerController : MonoBehaviour
                 refreshWeaponOrder();
                 refreshWeaponSprites();
                 arm2Last = 0;
-                arm2 = weaponInventory[weaponSlot2];
             }
 
             // Runs attack and move if trigger is clicked in
@@ -338,7 +338,6 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(-boosterForce * playerStunForce);
                 if (health <= 0)
                 {
-                    print("DIEEEEEE");
                     notifyPlayerDeath();
                 }
             }
