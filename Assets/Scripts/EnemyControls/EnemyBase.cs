@@ -36,6 +36,9 @@ public class EnemyBase : MonoBehaviour
     public static event NotifyEnemyDeath notifyDeath;
 
 
+    Animator m_Animator;
+
+
     enum ChasePatrolStates
     {
         Chase,
@@ -54,6 +57,8 @@ public class EnemyBase : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        m_Animator = gameObject.GetComponent<Animator>();
+
         startTime = Time.time;
         lockedRotation = transform.rotation;
     }
@@ -98,15 +103,11 @@ public class EnemyBase : MonoBehaviour
                 if (Time.time - startTime > waitTime)
                 {
                     startTime = Time.time;
-                    if (health <= 0)
+                    health--;
+                    if (health <= 1)
                     {
                         // Check if player is death first, if yes, set to Death state
-                        currentState = 4; // death
-
-                    }
-                    else
-                    {
-                        health--;
+                        dyingFunction();
                     }
                     print("On Collision: " + health.ToString());
 
@@ -131,17 +132,17 @@ public class EnemyBase : MonoBehaviour
                 }
                 break;
 
-            case 4: //Death
-                // TODO: Add death event trigger here to signal to room enemy is isDead
-                isDead = true;
-                Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
-                Destroy(gameObject);
-                if (notifyDeath != null)
-                {
-                    notifyDeath();
-                }
-                break;
+        }
+    }
 
+    private void dyingFunction()
+    {
+        isDead = true;
+        Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
+        Destroy(gameObject);
+        if (notifyDeath != null)
+        {
+            notifyDeath();
         }
     }
 
@@ -152,6 +153,7 @@ public class EnemyBase : MonoBehaviour
         {
             currentState = 1; // Hit state
             isHit = true;
+
             print("On Collision with projectile");
         }
     }

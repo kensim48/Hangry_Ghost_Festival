@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7708179877316470199}
   - component: {fileID: 493801653347954724}
+  - component: {fileID: 3946741831043759523}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: bubbletea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2432907072332551741}
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -2.7949e-10, y: 0.688, z: 0}
-  m_LocalScale: {x: 0.2449263, y: 0.36300004, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0000030696388, w: -1}
+  m_LocalPosition: {x: 0.022, y: 0.654, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1.5}
   m_Children: []
   m_Father: {fileID: 4350072235751897455}
   m_RootOrder: 0
@@ -67,11 +68,12 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1189500847
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 26227b8f508800145a449fb7bac996fc, type: 3}
-  m_Color: {r: 0.43100464, g: 0.019607842, b: 0.8666667, a: 1}
+  m_Sprite: {fileID: 7343517133600468840, guid: 7a37fd2eee3a55e42a46c23e7bbe57cd,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -81,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3946741831043759523
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432907072332551741}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 785f92788388f564ca9288662b996efa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2925089923728958143
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &999909128104992092
 Transform:
   m_ObjectHideFlags: 0
@@ -215,6 +236,7 @@ MonoBehaviour:
   shooterProjectile: {fileID: 1210671378063977382, guid: 33f860cd49e7bc640b45cca6cb342646,
     type: 3}
   projectileSpawnPosition: {fileID: 4639737273565408971}
+  animator: {fileID: 3946741831043759523}
 --- !u!1 &4350072236601823280
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4350072236601823283
 Transform:
   m_ObjectHideFlags: 0
