@@ -40,6 +40,8 @@ public class RoomTemplates : MonoBehaviour
 
     public GameObject playerObject;
 
+    public GameObject playbutt;
+
     void FixedUpdate()
     {
         if (rooms.Count>15)
@@ -86,6 +88,7 @@ public class RoomTemplates : MonoBehaviour
                     // overlay.SetActive (false);
                     playerObject.transform.position = new Vector3(0,0,-1f);
                     Time.timeScale = 0f;
+                    playbutt.SetActive(true);
                 }
                 // Debug.Log(rooms[i].gameObject.name);
             }
@@ -103,6 +106,7 @@ public class RoomTemplates : MonoBehaviour
         roomCleared.Add(0);
         roomCleared.Add(1);
         playerObject.SetActive(false);
+        playbutt.SetActive(false);
     }
 
     void updatePlayerDeath(){
@@ -133,5 +137,9 @@ public class RoomTemplates : MonoBehaviour
             Time.timeScale = 1f;
             playerObject.SetActive(true);
         }
+    }
+    public void quitButton()
+    {
+        Application.Quit();
     }
 }
