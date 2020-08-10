@@ -36,7 +36,7 @@ public class EnemyBase : MonoBehaviour
     public static event NotifyEnemyDeath notifyDeath;
 
 
-    Animator m_Animator;
+    // Animator m_Animator;
 
 
     enum ChasePatrolStates
@@ -57,7 +57,7 @@ public class EnemyBase : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        m_Animator = gameObject.GetComponent<Animator>();
+        // m_Animator = gameObject.GetComponent<Animator>();
 
         startTime = Time.time;
         lockedRotation = transform.rotation;
