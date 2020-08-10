@@ -5,4 +5,6 @@ using UnityEngine;
 public class EnemyTemplates : MonoBehaviour
 {
     public GameObject[] enemies;
+
+    public GameObject[] boss;
 }

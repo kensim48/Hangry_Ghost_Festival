@@ -121,8 +121,8 @@ public class EnemyBoss : MonoBehaviour
 
     void Start()
     {
-        blackboss = GameObject.FindGameObjectWithTag("BlackBoss").transform;
-        whiteboss = GameObject.FindGameObjectWithTag("WhiteBoss").transform;
+        // blackboss = GameObject.FindGameObjectWithTag("BlackBoss").transform;
+        // whiteboss = GameObject.FindGameObjectWithTag("WhiteBoss").transform;
         player = GameObject.FindGameObjectWithTag("Player");
         playerRb2d = player.GetComponent<Rigidbody2D>();
         // blackbossRb2d = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Rigidbody2D>();
@@ -134,7 +134,7 @@ public class EnemyBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if it is end game
+        // TODO: Check if it is end game
         if (BossDeathCount >= 2)
         {
             // Insert Game End scene or smt
@@ -220,12 +220,13 @@ public class EnemyBoss : MonoBehaviour
                         break;
 
                     case (int)BossPhase.black:
-                        // @HUAN XUAN To start the sword animation for the Sign here
+                        // ODO: @HUAN XUAN To start the sword animation for the Sign here
                         #region 1. Set up Phase timer
                         while (firstcheckblack)
                         {
                             blackEnd = Time.time + blackDuration;
                             firstcheckblack = false;
+                            // print("IN Black phase");
                         }
                         #endregion
 
@@ -399,6 +400,7 @@ public class EnemyBoss : MonoBehaviour
         if (Vector3.Distance(blackboss.position, player.transform.position) > stoppingDistance)
         {
             blackbossRb2d.velocity = (player.transform.position - blackboss.position) * speed * Time.deltaTime;
+            print("velocity: " + (player.transform.position - blackboss.position));
         }
         else if (Vector3.Distance(blackboss.position, player.transform.position) < stoppingDistance)
         {
