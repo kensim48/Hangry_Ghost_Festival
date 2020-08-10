@@ -276,11 +276,35 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        int newWeapon = 0;
         if (other.CompareTag("Coin_1"))
         {
             Debug.Log("Coin touch");
             Destroy(other.gameObject);
             GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore += 10;
-		}
-	}
+        }
+        else if (other.CompareTag("WeaponBooster"))
+            newWeapon = 1;
+        else if (other.CompareTag("WeaponCharge"))
+            newWeapon = 2;
+        else if (other.CompareTag("WeaponBomb"))
+            newWeapon = 3;
+        else if (other.CompareTag("WeaponShooter"))
+            newWeapon = 4;
+        if (newWeapon != 0)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (weaponInventory[i] == 0)
+                {
+                    weaponInventory[i] = newWeapon;
+                    refreshWeaponSprites();
+                    Destroy(other.gameObject);
+                    break;
+                }
+            }
+        }
+
+
+    }
 }
