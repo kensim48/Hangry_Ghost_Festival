@@ -31,11 +31,12 @@ public class EnemyBossHealth : MonoBehaviour
 
     }
 
-    public void RaiseBossDeathEvent(string message){ 
+    public void RaiseBossDeathEvent(string message)
+    {
         if (notifyBossDeath != null)
-            {
-                notifyBossDeath(message);
-            }
+        {
+            notifyBossDeath(message);
+        }
 
     }
 
@@ -43,9 +44,10 @@ public class EnemyBossHealth : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player_projectile")
+        if (other.gameObject.tag == "PlayerWeapon")
         {
             print("On collision with player's projectile");
+            health -= 1;
         }
 
         // add another case for collision with player's sword
