@@ -186,15 +186,15 @@ public class EnemyBase : MonoBehaviour
 
     public void CheckDirection()
     {
-        change = transform.position - player.position;
-        if (change.x < 0)
-        {
-            animator.transform.Rotate(0, 180, 0);
-        }
-        if (change.x > 0)
-        {
-            animator.transform.Rotate(0, 0, 0);
-        }
+        // change = transform.position - player.position;
+        // if (change.x < 0)
+        // {
+        //     animator.transform.Rotate(0, 180, 0);
+        // }
+        // if (change.x > 0)
+        // {
+        //     animator.transform.Rotate(0, 0, 0);
+        // }
     }
 
 
