@@ -18,5 +18,6 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + playerScore.ToString();
+        
     }
 }
