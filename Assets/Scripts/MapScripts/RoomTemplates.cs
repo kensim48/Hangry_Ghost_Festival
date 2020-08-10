@@ -90,7 +90,7 @@ public class RoomTemplates : MonoBehaviour
                     }
                     spawnedBoss = true;
                     EnemyBase.notifyDeath += updateEnemyDeath;
-                    // detectionDoor.notifyRoomEnter += updatePlayerDeath;
+                    PlayerController.notifyPlayerDeath += updatePlayerDeath1;
                     Debug.Log(i);
                     // overlay.SetActive (false);
                     playerObject.transform.position = new Vector3(0,0,-1f);
@@ -144,7 +144,7 @@ public class RoomTemplates : MonoBehaviour
         }
     }
 
-    void updatePlayerDeath(){
+    void updatePlayerDeath1(){
         gameoverMenu.SetActive(true);
         Time.timeScale = 0f;
         Debug.Log("Player death");
@@ -169,7 +169,7 @@ public class RoomTemplates : MonoBehaviour
     {
         Debug.Log("reset due to restartbutton");
         EnemyBase.notifyDeath -= updateEnemyDeath;
-        // detectionDoor.notifyRoomEnter -= updatePlayerDeath;
+        PlayerController.notifyPlayerDeath -= updatePlayerDeath1;
         SceneManager.LoadScene("MapGeneration");
         waitTime = 4f;
         Time.timeScale = 1f;
