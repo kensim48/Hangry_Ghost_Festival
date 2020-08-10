@@ -1837,7 +1837,7 @@ PrefabInstance:
     - target: {fileID: 3294738958031753244, guid: e49b1e0b2c4a5eb46bd26c9339ead010,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e49b1e0b2c4a5eb46bd26c9339ead010, type: 3}
@@ -5353,7 +5353,7 @@ MonoBehaviour:
   boss: {fileID: 1898445321837384, guid: 09e14c596e782a742829f1166838514d, type: 3}
   bossstairs: {fileID: 3294738958031753244, guid: e49b1e0b2c4a5eb46bd26c9339ead010,
     type: 3}
-  item: {fileID: 1178975936131227297, guid: 2f4bf5e3f74a06b4b8a2fc0bfe999792, type: 3}
+  item: {fileID: 347445726388302678, guid: 17719491be5fc4143830414f929b0443, type: 3}
   trans: {x: 0, y: 0, z: 0}
   test: 1
   overlay: {fileID: 1884988072}
@@ -7445,7 +7445,47 @@ PrefabInstance:
     - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
       propertyPath: weaponInventory.Array.data[4]
-      value: 4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponInventory.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponInventory.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponInventory.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponInventory.Array.data[5]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponInventory.Array.data[6]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponInventory.Array.data[7]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: weaponSlot2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: arm1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1095199073893513131, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
