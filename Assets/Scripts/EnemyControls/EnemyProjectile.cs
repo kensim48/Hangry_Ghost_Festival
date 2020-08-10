@@ -21,26 +21,28 @@ public class EnemyProjectile : EnemyBase
     public void Shoot()
     {
         // Create bullet at fire point
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
-        bulletrb.velocity = rb2d.velocity + (new Vector2(transform.right.x, transform.right.y) * bulletForce);
+        bulletrb.velocity = rb2d.velocity + (new Vector2(firePoint.transform.right.x, firePoint.transform.right.y) * bulletForce);
     }
 
     void Update()
     {
         base.Update();
+        print(isAttack);
+        RotateBody();
         if (isAttack)
         {
             if (timeBtwShots <= 0)
             {
                 Shoot();
-                RotateBody();
+
                 // Instantiate(projectile,transform.position , Quaternion.identity);// at the enemies position
                 timeBtwShots = startTimeBtwShots;
             }
             else
             {
-                RotateBody();
+                // RotateBody();
                 timeBtwShots -= Time.deltaTime; // like a count down, once zero, spawn the projectile
             }
         }
