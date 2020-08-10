@@ -22,7 +22,8 @@ public class EnemyBossHealth : MonoBehaviour
         // This sends a message to register a change in the event
         if (health <= 0)
         {
-            RaiseBossDeathEvent("BossName");
+            print("Boss health < 0");
+            RaiseBossDeathEvent(BossName);
             gameObject.SetActive(false);
         }
 
