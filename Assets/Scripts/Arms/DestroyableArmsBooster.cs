@@ -12,6 +12,7 @@ public class DestroyableArmsBooster : MonoBehaviour
     private float zSpeed = 0;
     public float zAccel;
     public float zMaxSpeed;
+    public GameObject whip;
     void Start()
     {
         rb = transform.GetComponent<Rigidbody2D>();
@@ -29,6 +30,7 @@ public class DestroyableArmsBooster : MonoBehaviour
             // rb.velocity = Vector3.zero;
             transform.rotation = Quaternion.Euler(-30f, 0, zRotation);
             zRotation += zSpeed;
+            whip.SetActive(true);
             if (zSpeed < zMaxSpeed)
                 zSpeed += zAccel;
         }

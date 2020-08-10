@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
         };
         controls.Gameplay.RightArmMovement.canceled += ctx => rightRotationActive = false;
         controls.Gameplay.LeftPrime.performed += ctx => arm1ExplosiveArmed = !arm1ExplosiveArmed;
+        controls.Gameplay.RightPrime.performed += ctx => arm2ExplosiveArmed = !arm2ExplosiveArmed;
         controls.Gameplay.WeaponSwapLeft.performed += ctx => isLeftSelected = true;
         controls.Gameplay.WeaponSwapLeft.canceled += ctx => isLeftSelected = false;
         controls.Gameplay.WeaponSwapRight.performed += ctx => isRightSelected = true;

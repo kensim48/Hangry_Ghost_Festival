@@ -52,6 +52,7 @@ public class ArmsBomb : ArmsClass
                 indicators[chargeState - 1].SetActive(false);
                 Rigidbody2D bomb = Instantiate(bombSingle, spawnPoints[chargeState - 1].position, transform.rotation) as Rigidbody2D;
                 bomb.AddForce(spawnPoints[chargeState - 1].up * bombThrust);
+                bomb.AddTorque(10f);
             }
             chargeLevel = 0;
         }

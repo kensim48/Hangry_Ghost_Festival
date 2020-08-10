@@ -9,6 +9,7 @@ public class BombProjectile : MonoBehaviour
     void Start()
     {
         startTime = Time.time;
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
     }
 
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class BombProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "EnemyBody")
+        if (other.gameObject.tag == "EnemyWeapon")
             Destroy(gameObject);
     }
 }
