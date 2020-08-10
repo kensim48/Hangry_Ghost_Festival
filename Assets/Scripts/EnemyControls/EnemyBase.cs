@@ -66,11 +66,6 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (health <= 1)
-        {
-            // Check if player is death first, if yes, set to Death state
-            dyingFunction();
-        }
         transform.rotation = lockedRotation;
         //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
         // Based on the switch case key based on EnemyStates enum

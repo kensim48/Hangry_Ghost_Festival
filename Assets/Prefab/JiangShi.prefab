@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7367048186363688243}
   - component: {fileID: 5711062622733071388}
   - component: {fileID: 853072170166883170}
-  - component: {fileID: 853072170166883171}
+  - component: {fileID: 5132802928363493166}
   m_Layer: 0
   m_Name: JiangShi
   m_TagString: EnemyWeapon
@@ -93,11 +93,11 @@ MonoBehaviour:
   currentState: 0
   chasePatrolState: 0
   isDead: 0
-  health: 3
+  health: 5
   isHit: 0
   isAttack: 0
   startTime: 0
-  waitTime: 0.2
+  waitTime: 0.12
   coin: {fileID: 1178975936131227297, guid: 2f4bf5e3f74a06b4b8a2fc0bfe999792, type: 3}
   SwordPrefab: {fileID: 3875883624318597026}
   startTimeBtwAtks: 0
@@ -117,7 +117,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.31
+  m_Radius: 0.34
 --- !u!95 &7367048186363688243
 Animator:
   serializedVersion: 3
@@ -209,8 +209,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &853072170166883171
-BoxCollider2D:
+--- !u!58 &5132802928363493166
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -222,19 +222,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5133811}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.44, y: 0.49}
-    newSize: {x: 0.44, y: 0.49}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.44, y: 0.53107905}
-  m_EdgeRadius: 0
+  m_Radius: 0.23
 --- !u!1 &3875883624318597026
 GameObject:
   m_ObjectHideFlags: 0
