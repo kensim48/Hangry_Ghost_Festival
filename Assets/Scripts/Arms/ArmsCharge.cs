@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ArmsCharge : ArmsClass
 {
-    public Animator animator;
 
     public int amplifierBoosterMultiplier = 500;
     public GameObject chargeMeter;
@@ -23,7 +22,6 @@ public class ArmsCharge : ArmsClass
         chargeTotal += chargeRate;
         if (chargeTotal >= 100)
         {
-            animator.SetBool("attacking", true);
             noodlePoint = Instantiate(noodle, noodleSpawn.transform.position, noodleSpawn.transform.rotation);
             laserShotTime = Time.time;
             GetComponent<AudioSource>().Play();
@@ -48,7 +46,6 @@ public class ArmsCharge : ArmsClass
         isMoving = false;
         if (Time.time - laserShotTime > timeDestroyLaser && !noodleDestroyed)
         {
-            animator.SetBool("attacking", false);
             Destroy(noodlePoint);
             noodleDestroyed = true;
         }
