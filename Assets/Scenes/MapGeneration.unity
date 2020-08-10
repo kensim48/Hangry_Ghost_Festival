@@ -10314,6 +10314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 208703395, guid: 7c9988ae9f7d777459e96705469e136b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1370837667839050102, guid: 7c9988ae9f7d777459e96705469e136b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10373,6 +10377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shop Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370837669295350087, guid: 7c9988ae9f7d777459e96705469e136b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c9988ae9f7d777459e96705469e136b, type: 3}
