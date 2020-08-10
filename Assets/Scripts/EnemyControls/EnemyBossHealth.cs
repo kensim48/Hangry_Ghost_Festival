@@ -47,6 +47,7 @@ public class EnemyBossHealth : MonoBehaviour
         if (other.gameObject.tag == "PlayerWeapon")
         {
             print("On collision with player's projectile");
+            health -= 1;
         }
 
         // add another case for collision with player's sword
