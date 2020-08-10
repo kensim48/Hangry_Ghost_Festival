@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     private Animator m_Animator;
     public delegate void NotifyPlayerDeath();
     public static event NotifyPlayerDeath notifyPlayerDeath;
+    private float lastPickupTime = 0;
     void Awake()
     {
 
@@ -290,7 +291,10 @@ public class PlayerController : MonoBehaviour
     public void refreshWeaponSprites()
     {
         for (int i = 0; i < 8; i++)
+        {
+            print(weaponInventory[i]);
             weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -309,8 +313,9 @@ public class PlayerController : MonoBehaviour
             newWeapon = 3;
         else if (other.CompareTag("WeaponShooter"))
             newWeapon = 4;
-        if (newWeapon != 0)
+        if (newWeapon != 0 && Time.time - lastPickupTime > 1f)
         {
+            lastPickupTime = Time.time;
             if (addNewWeapon(newWeapon))
             {
                 Destroy(other.gameObject);
@@ -341,7 +346,7 @@ public class PlayerController : MonoBehaviour
             if (weaponInventory[i] == 0)
             {
                 weaponInventory[i] = weaponInt;
-                refreshWeaponOrder();
+                // refreshWeaponOrder();
                 refreshWeaponSprites();
                 return true;
             }
