@@ -61,8 +61,8 @@ public class detectionDoor : MonoBehaviour
         foreach (Transform child in eneSP.transform)
         {
             var pos = child.position;
-            // rand = UnityEngine.Random.Range(0, enemyTemp.enemies.Length);
-            Instantiate(enemyTemp.enemies[0],new Vector3(pos.x,pos.y, -1f),enemyTemp.enemies[0].transform.rotation);
+            rand = UnityEngine.Random.Range(0, enemyTemp.enemies.Length);
+            Instantiate(enemyTemp.enemies[rand],new Vector3(pos.x,pos.y, -1f),enemyTemp.enemies[rand].transform.rotation);
             Debug.Log("Enemies Spawned");
             templates.numEnemies += 1;
             templates.trans = child.position;
