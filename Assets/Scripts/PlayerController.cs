@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public GameObject inventoryBarSlots;
     public GameObject inventoryBarSlotSelector1;
     public GameObject inventoryBarSlotSelector2;
+    public Animator healthBar;
     public int[] weaponInventory;
     public int weaponSlot1;
     public int weaponSlot2;
@@ -55,6 +56,13 @@ public class PlayerController : MonoBehaviour
     private int weaponSelectionCountereMax = 7;
     public GameObject weaponSpriteLayer;
     public Sprite[] weaponSpriteList;
+    private int health = 3;
+    public float playerStunTime = 2f;
+    private float playerStunTimeLast;
+    public int playerStunForce = 350;
+    Animator m_Animator;
+    // public delegate void NotifyPlayerDeath();
+    // public static event NotifyPlayerDeath notifyPlayerDeath;
     void Awake()
     {
 
@@ -79,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
         // Getting rigidbody of Player
         rb = GetComponent<Rigidbody2D>();
+        m_Animator = gameObject.GetComponent<Animator>();
 
         // Control scheme input system
         controls = new ControllerScheme();
@@ -302,6 +311,20 @@ public class PlayerController : MonoBehaviour
                     Destroy(other.gameObject);
                     break;
                 }
+            }
+        }
+        else if (other.CompareTag("EnemyWeapon"))
+        {
+            if (Time.time - playerStunTimeLast > playerStunTime)
+            {
+                playerStunTimeLast = Time.time;
+                health--;
+                healthBar.SetTrigger("healthDecrease");
+                m_Animator.SetTrigger("healthDecrease");
+                Vector2 boosterForce = (Vector2)(other.transform.position - transform.position);
+                rb.AddForce(-boosterForce * playerStunForce);
+                // if (health <= 0)
+                // notifyPlayerDeath();
             }
         }
 

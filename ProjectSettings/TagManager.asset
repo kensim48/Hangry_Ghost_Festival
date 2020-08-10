@@ -15,6 +15,15 @@ TagManager:
   - Wall
   - Score
   - Shop
+  - EnemyBody
+  - PlayerWeapon
+  - WeaponBooster
+  - WeaponCharge
+  - WeaponBomb
+  - WeaponShooter
+  - BlackBoss
+  - EnemyWeapon
+  - WhiteBoss
   layers:
   - Default
   - TransparentFX

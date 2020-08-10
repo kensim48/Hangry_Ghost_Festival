@@ -168,6 +168,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 6920979692249625008, guid: 8ab77523774ecd146a17635e4050b4f7,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyWeapon
+      objectReference: {fileID: 0}
     - target: {fileID: 7243584046018554590, guid: 8ab77523774ecd146a17635e4050b4f7,
         type: 3}
       propertyPath: m_Enabled
