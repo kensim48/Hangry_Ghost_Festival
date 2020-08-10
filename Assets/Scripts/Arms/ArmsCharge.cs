@@ -17,6 +17,7 @@ public class ArmsCharge : ArmsClass
     private bool noodleDestroyed = true;
     private GameObject noodlePoint;
 
+
     public override void Attack()
     {
         chargeTotal += chargeRate;

@@ -15,8 +15,11 @@ TagManager:
   - Wall
   - Score
   - Shop
+  - BlackBoss
+  - EnemyWeapon
   - EnemyBody
   - PlayerWeapon
+  - WhiteBoss
   - WeaponBooster
   - WeaponCharge
   - WeaponBomb
@@ -72,4 +75,10 @@ TagManager:
     locked: 0
   - name: mobs
     uniqueID: 3430736491
+    locked: 0
+  - name: weapon
+    uniqueID: 1189500847
+    locked: 0
+  - name: New Layer
+    uniqueID: 2058035569
     locked: 0

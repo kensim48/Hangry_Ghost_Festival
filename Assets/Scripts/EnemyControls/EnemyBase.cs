@@ -36,6 +36,9 @@ public class EnemyBase : MonoBehaviour
     public static event NotifyEnemyDeath notifyDeath;
 
 
+    Animator m_Animator;
+
+
     enum ChasePatrolStates
     {
         Chase,
@@ -54,6 +57,8 @@ public class EnemyBase : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; //equal to the position of object named player
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        m_Animator = gameObject.GetComponent<Animator>();
+
         startTime = Time.time;
         lockedRotation = transform.rotation;
     }
@@ -133,6 +138,7 @@ public class EnemyBase : MonoBehaviour
 
             case 4: //Death
                 // TODO: Add death event trigger here to signal to room enemy is isDead
+                print("hello");
                 isDead = true;
                 Instantiate(coin, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
                 Destroy(gameObject);
@@ -152,6 +158,7 @@ public class EnemyBase : MonoBehaviour
         {
             currentState = 1; // Hit state
             isHit = true;
+            
             print("On Collision with projectile");
         }
     }

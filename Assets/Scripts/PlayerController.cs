@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     public float playerStunTime = 2f;
     private float playerStunTimeLast;
     public int playerStunForce = 350;
-    Animator m_Animator;
+    private Animator m_Animator;
     // public delegate void NotifyPlayerDeath();
     // public static event NotifyPlayerDeath notifyPlayerDeath;
     void Awake()
