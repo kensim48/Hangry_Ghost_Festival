@@ -21,7 +21,7 @@ public class EnemyMeele : EnemyBase
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        print(other.gameObject.tag);
+        // print(other.gameObject.tag);
         if (other.gameObject.tag == "PlayerWeapon")
         {
             currentState = 1; // Hit state
