@@ -143,6 +143,9 @@ public class EnemyBoss : MonoBehaviour
     public Animator baibaiAnimator;
     public Animator baiweapAnimator;
 
+    public delegate void NotifyBossDeath();
+    public static event NotifyBossDeath notifyBossDeath;
+
 
     #endregion
 
@@ -169,6 +172,7 @@ public class EnemyBoss : MonoBehaviour
         if (BossDeathCount >= 2)
         {
             // Insert Game End scene or smt
+            notifyBossDeath();
         }
 
         switch (enragedPhase)

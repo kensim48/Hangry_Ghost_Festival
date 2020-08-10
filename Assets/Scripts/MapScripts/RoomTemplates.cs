@@ -95,7 +95,7 @@ public class RoomTemplates : MonoBehaviour
                     spawnedBoss = true;
                     EnemyBase.notifyDeath += updateEnemyDeath;
                     PlayerController.notifyPlayerDeath += updatePlayerDeath1;
-                    // PlayerController.notifyPlayerDeath += updateWinGame; //to update to wingame event
+                    PlayerController.notifyPlayerDeath += updateWinGame; //to update to wingame event
                     Debug.Log(i);
                     // overlay.SetActive (false);
                     playerObject.transform.position = new Vector3(0,0,-1f);
@@ -182,7 +182,7 @@ public class RoomTemplates : MonoBehaviour
         Debug.Log("reset due to restartbutton");
         EnemyBase.notifyDeath -= updateEnemyDeath;
         PlayerController.notifyPlayerDeath -= updatePlayerDeath1;
-        // PlayerController.notifyPlayerDeath -= updateWinGame; //to update to wingame event
+        PlayerController.notifyPlayerDeath -= updateWinGame; //to update to wingame event
         SceneManager.LoadScene("MapGeneration");
         waitTime = 4f;
         Time.timeScale = 1f;
