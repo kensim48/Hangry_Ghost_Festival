@@ -18,6 +18,7 @@ public class ShopManager : MonoBehaviour
     public int noodleCost;
     public int popcornCost;
     public int bubbleteaCost;
+    public Transform[] places;
 
     private bool Mat1First = true;
     private bool Mat2First = true;
@@ -47,7 +48,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int randPos = Random.Range(0, PriceDictionary.Count);
-            GameObject board = Instantiate(BoardPrefab, transform.position, transform.rotation) as GameObject;
+            GameObject board = Instantiate(BoardPrefab, places[i].position, places[i].rotation) as GameObject;
             board.transform.SetParent(shopManager.transform, true);
             board.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sprite = WeaponImageList[randPos];
             board.transform.GetChild(0).gameObject.GetComponent<Text>().text = PriceDictionary[randPos].ToString();
@@ -63,18 +64,21 @@ public class ShopManager : MonoBehaviour
 
         if (Mat1.GetComponent<ShopMat>().isSelected && Mat1First)
         {
-            RaiseShopItemSelcetd(ShopList[0]);
             Mat1First = false;
+            RaiseShopItemSelcetd(ShopList[0]);
+
         }
         else if (Mat2.GetComponent<ShopMat>().isSelected && Mat2First)
         {
-            RaiseShopItemSelcetd(ShopList[1]);
             Mat2First = false;
+            RaiseShopItemSelcetd(ShopList[1]);
+
         }
         else if (Mat3.GetComponent<ShopMat>().isSelected && Mat3First)
         {
-            RaiseShopItemSelcetd(ShopList[2]);
             Mat3First = false;
+            RaiseShopItemSelcetd(ShopList[2]);
+
         }
 
     }

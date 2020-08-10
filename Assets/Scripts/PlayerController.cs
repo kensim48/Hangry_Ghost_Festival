@@ -380,8 +380,17 @@ public class PlayerController : MonoBehaviour
     //TODO: Deduct selectedItem.cost from inventory.
     public void updateShopItemSelection(ShopItem selectedItem)
     {
+        int newWeapon = selectedItem.weaponidx + 1;
+
+        if (newWeapon != 0 && Time.time - lastPickupTime > 2f)
+        {
+            lastPickupTime = Time.time;
+            GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore -= selectedItem.cost;
+            addNewWeapon(newWeapon);
+        }
         if (selectedItem.weaponidx == 0)
         { //Whipcream
+
             print("Player Controller: Whipcream " + selectedItem.cost.ToString());
         }
         else if (selectedItem.weaponidx == 1)
@@ -401,6 +410,10 @@ public class PlayerController : MonoBehaviour
         {
             print("Shop item recieved by Player controller but cant get weapon idx");
         }
+        // if (GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore >= selectedItem.cost)
+        // {
+
+        // }
 
     }
 }
