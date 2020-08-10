@@ -5597,6 +5597,8 @@ MonoBehaviour:
   playbutt: {fileID: 299244858}
   pauseMenu: {fileID: 0}
   gameoverMenu: {fileID: 0}
+  winMenu: {fileID: 0}
+  winMenuText: {fileID: 0}
 --- !u!1 &1529968960
 GameObject:
   m_ObjectHideFlags: 0
@@ -7970,7 +7972,7 @@ PrefabInstance:
     - target: {fileID: 1095199073893513174, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 1095199073893513175, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
