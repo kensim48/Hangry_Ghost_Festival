@@ -36,9 +36,38 @@ public class EnemyBoss : MonoBehaviour
         The player is not allowed touch them or he will die
 
         // Enraged mode
-        TBC
+        
          */
 
+    #region State Handling
+    public int currentPhase = (int)BossPhase.idle;
+    private int previousAttackPhase;
+    public int enragedPhase = (int)EnragedPhase.normal;
+    public int currentEnragePhase;
+    enum EnragedPhase : int
+    {
+        normal,
+        enraged
+
+    }
+    enum BossPhase : int
+    {
+        idle,
+        white,
+        black,
+        enraged
+    }
+    enum EnragedCurrentPhase : int
+    {
+        franticfan,
+        frantichit,
+        youneedjesus,
+        idle
+    }
+
+    #endregion
+
+    #region variables for Normal Boss Mode
     public Transform anchorpoint;
     public Transform toprightanchorpoint;
     public Transform topleftanchorpoint;
@@ -46,8 +75,7 @@ public class EnemyBoss : MonoBehaviour
     public Transform bottomleftanchorpoint;
     public Transform blackboss;
     public Transform whiteboss;
-    public int currentPhase = 0;
-    private int previousAttackPhase;
+
     public float idleDuration;
     public float whiteDuration;
     public float blackDuration;
@@ -58,6 +86,7 @@ public class EnemyBoss : MonoBehaviour
     public float moveToCornerSpeed;
     private bool firstcheckwhite = true;
     private bool firstcheckblack = true;
+    private bool firstcheckidle = true;
     private Transform nearestAnchor;
 
     public GameObject player;
@@ -78,15 +107,17 @@ public class EnemyBoss : MonoBehaviour
     public bool isWhiteDead;
 
     private int BossDeathCount;
+    #endregion
 
-    enum BossPhase : int
-    {
-        idle,
-        white,
-        black,
-        enraged
-    }
+    #region Variables for Enraged Boss Mode
+    private bool firstEnragedEnter = true;
+    public Transform enragedboss;
+    public float franticfanduration;
+    private float franticfanEnd;
+    private bool firstfranticfan;
+    private bool isSpikesGenerated_enraged = false;
 
+    #endregion
 
     void Start()
     {
@@ -104,7 +135,8 @@ public class EnemyBoss : MonoBehaviour
     void Update()
     {
         // Check if it is end game
-        if (BossDeathCount >= 2){
+        if (BossDeathCount >= 2)
+        {
             // Insert Game End scene or smt
         }
 
@@ -113,134 +145,167 @@ public class EnemyBoss : MonoBehaviour
         float newX = blackboss.position.x + 2 * (distFromAnchor);
         whiteboss.position = new Vector3(newX, blackboss.position.y, -1);
 
-        // print("WhiteBoss: x " +  transform.eulerAngles.x);
-        // print("WhiteBoss: y" +  transform.eulerAngles.y);
-        // print("WhiteBoss: z" +  transform.eulerAngles.z);
-        // transform.eulerAngles = new Vector3( transform.eulerAngles.x, yRotation, transform.eulerAngles.z );
-
-        switch (currentPhase)
+        switch (enragedPhase)
         {
-            case (int)BossPhase.idle: //idle
-                                      // To call animation here
-                if (Time.time == idleEnd)
+            case (int)EnragedPhase.normal:
+                switch (currentPhase)
                 {
-                    if (previousAttackPhase == (int)BossPhase.white)
-                    {
-                        currentPhase = (int)BossPhase.black;
-                    }
-                    else if (previousAttackPhase == (int)BossPhase.black)
-                    {
-                        currentPhase = (int)BossPhase.white;
-                    }
-                }
-                break;
-
-            case (int)BossPhase.white: //white
-
-                #region 1. Charge Up animation by moving to the corner
-                while (firstcheckwhite)
-                {
-                    whiteEnd = Time.time + whiteDuration;
-                    nearestAnchor = GetNearestAnchorPoint(blackboss);
-                    firstcheckwhite = false;
-                }
-                // print("Boss Move: " + blackboss.position);
-                float step = moveToCornerSpeed * Time.deltaTime;
-                blackboss.position = Vector3.MoveTowards(blackboss.position, nearestAnchor.position, step);
-                #endregion
-
-                #region 2. Spawn Spikes
-                // Get number of child Spikes
-                while (!isSpikesGenerated)
-                {
-                    numberOfSpikes = spikeParent.transform.childCount;
-                    // print("Spike After: " + spikeParent.transform.childCount);
-                    for (int i = 0; i < showNumberOfSpikes; i++)
-                    {
-                        int randomchild = Random.Range(0, numberOfSpikes);
-                        // gameObject childspike = spikeParent.transform.GetChild(randomchild).gameObject;
-                        while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
+                    case (int)BossPhase.idle: //idle
+                        if (firstcheckidle)
                         {
-                            // Keep getting new random int
-                            randomchild = Random.Range(0, numberOfSpikes);
+                            idleEnd = Time.time + idleDuration;
+                            firstcheckidle = false;
                         }
-                        spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
-                    }
-                    isSpikesGenerated = true;
+
+
+                        if (Time.time >= idleEnd)
+                        {
+                            if (previousAttackPhase == (int)BossPhase.white)
+                            {
+                                currentPhase = (int)BossPhase.black;
+                            }
+                            else if (previousAttackPhase == (int)BossPhase.black)
+                            {
+                                currentPhase = (int)BossPhase.white;
+                            } else{
+                                currentPhase = (int)BossPhase.white;
+                            }
+                            firstcheckidle = true;
+                        }
+                        break;
+
+                    case (int)BossPhase.white: //white
+
+                        #region 1. Charge Up animation by moving to the corner
+                        while (firstcheckwhite)
+                        {
+                            whiteEnd = Time.time + whiteDuration;
+                            nearestAnchor = GetNearestAnchorPoint(blackboss);
+                            firstcheckwhite = false;
+                        }
+                        // print("Boss Move: " + blackboss.position);
+                        float step = moveToCornerSpeed * Time.deltaTime;
+                        blackboss.position = Vector3.MoveTowards(blackboss.position, nearestAnchor.position, step);
+                        #endregion
+
+                        #region 2. Spawn Spikes
+                        GenerateSpikes();
+                        #endregion
+
+                        #region 3. Move player
+                        // Check enemy is at the corner
+                        print("blackboss posiion: " + blackboss.position);
+                        print("anchorpoint position: " + nearestAnchor.position);
+                        if (blackboss.position == nearestAnchor.position)
+                        {
+                            // Start moving player
+                            fanDirection = player.transform.position - whiteboss.position;
+                            playerRb2d.AddForce(fanDirection * fanthrust);
+                        }
+                        #endregion
+
+                        #region 4. Checks if the time is up for the phase
+                        if (Time.time >= whiteEnd)
+                        {
+                            // Go to idle phase
+                            currentPhase = (int)BossPhase.idle;
+                            // idleEnd = Time.time + idleDuration;
+                            previousAttackPhase = (int)BossPhase.white;
+                            firstcheckwhite = true;
+                            isSpikesGenerated = false;
+                            SetSpikesInvisible(spikeParent.transform);
+                        }
+                        #endregion
+
+                        break;
+
+                    case (int)BossPhase.black:
+                        // @HUAN XUAN To start the sword animation for the Sign here
+                        #region 1. Set up Phase timer
+                        while (firstcheckblack)
+                        {
+                            blackEnd = Time.time + blackDuration;
+                            firstcheckblack = false;
+                        }
+                        #endregion
+
+                        #region 2. Boss to chase player, as long as the sword hit, it deducts life
+                        moveBoss();
+                        #endregion
+
+                        #region Checks if the time is up for the phase
+                        // Remember to end the animation here
+                        if (Time.time >= blackEnd)
+                        {
+                            // Go to idle phase
+                            currentPhase = (int)BossPhase.idle;
+                            // idleEnd = Time.time + idleDuration;
+                            previousAttackPhase = (int)BossPhase.black;
+                            firstcheckblack = true;
+                        }
+                        #endregion
+                        break;
+
                 }
+                break;
 
-                #endregion
-
-                #region 3. Move player
-                // Check enemy is at the corner
-                print("blackboss posiion: " + blackboss.position);
-                print("anchorpoint position: " + nearestAnchor.position);
-                if (blackboss.position == nearestAnchor.position)
+            case (int)EnragedPhase.enraged:
+                // Sets the remaining boss as the enraged boss
+                while (firstEnragedEnter)
                 {
-                    // Start moving player
-                    fanDirection = player.transform.position - whiteboss.position;
-                    playerRb2d.AddForce(fanDirection * fanthrust);
+                    print("In Enraged Mode");
+                    if (!isBlackDead) { enragedboss = blackboss; }
+                    else if (!isWhiteDead) { enragedboss = whiteboss; }
+                    firstEnragedEnter = false;
                 }
-                #endregion
 
-                #region 4. Checks if the time is up for the phase
-                if (Time.time >= whiteEnd)
+                switch (currentEnragePhase)
                 {
-                    // Go to idle phase
-                    currentPhase = (int)BossPhase.idle;
-                    idleEnd = Time.time + idleDuration;
-                    previousAttackPhase = (int)BossPhase.white;
-                    firstcheckwhite = true;
-                    isSpikesGenerated = false;
-                    SetSpikesInvisible(spikeParent.transform);
+                    case (int)EnragedCurrentPhase.franticfan:
+                        while (firstfranticfan)
+                        {
+                            print("Enter Frantic Fan Mode");
+                            franticfanEnd = Time.time + franticfanduration;
+                            firstfranticfan = false;
+                        }
+
+                        #region 1. Spawn Spikes
+                        if (!isSpikesGenerated_enraged)
+                        {
+                            GenerateSpikes();
+                        }
+                        #endregion
+
+                        #region 2. Randomly generate enemy movements
+                        // Set eight points anchor points for the enemy to go to
+                        float wait = Random.Range(0, 10) * 1;
+
+
+                        #endregion
+
+                        #region 3. Move player accordingly
+
+                        #endregion
+
+                        break;
+
+                    case (int)EnragedCurrentPhase.frantichit:
+                        break;
+
+                    case (int)EnragedCurrentPhase.youneedjesus:
+                        break;
+
+                    case (int)EnragedCurrentPhase.idle:
+                        break;
                 }
-                #endregion
+
+
+
 
                 break;
 
-            case (int)BossPhase.black:
-                // @HUAN XUAN To start the sword animation for the Sign here
-                #region 1. Set up Phase timer
-                while (firstcheckblack)
-                {
-                    blackEnd = Time.time + blackDuration;
-                    firstcheckblack = false;
-                }
-                #endregion
-
-                #region 2. Boss to chase player, as long as the sword hit, it deducts life
-                moveBoss();
-                #endregion
-
-                #region Checks if the time is up for the phase
-                // Remember to end the animation here
-                if (Time.time >= blackEnd)
-                {
-                    // Go to idle phase
-                    currentPhase = (int)BossPhase.idle;
-                    idleEnd = Time.time + idleDuration;
-                    previousAttackPhase = (int)BossPhase.black;
-                    firstcheckblack = true;
-                }
-                #endregion
-                break;
-
-            case (int)BossPhase.enraged:
-                print("In Enraged Mode");
-                // If Black Boss is alive
-                if (!isBlackDead){
-
-                }
-
-
-                // If White Boss alive
-                else if (!isWhiteDead){
-                    
-                }
-
-
-                break;
         }
+
     }
 
     // PLayer controller will deal with this
@@ -250,13 +315,38 @@ public class EnemyBoss : MonoBehaviour
     //state is when player hits the spike
     public void updateBossDeath(string message)
     {
-        if (message.Contains("BlackBoss")){
+        if (message.Contains("BlackBoss"))
+        {
             isBlackDead = true;
-        } else if (message.Contains("WhiteBoss")){
+        }
+        else if (message.Contains("WhiteBoss"))
+        {
             isWhiteDead = true;
         }
-        currentPhase = (int)BossPhase.enraged;
-        BossDeathCount ++;
+        enragedPhase = (int)EnragedPhase.enraged;
+        BossDeathCount++;
+    }
+
+    public void GenerateSpikes()
+    {
+        while (!isSpikesGenerated)
+        {
+            numberOfSpikes = spikeParent.transform.childCount;
+            // print("Spike After: " + spikeParent.transform.childCount);
+            for (int i = 0; i < showNumberOfSpikes; i++)
+            {
+                int randomchild = Random.Range(0, numberOfSpikes);
+                // gameObject childspike = spikeParent.transform.GetChild(randomchild).gameObject;
+                while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
+                {
+                    // Keep getting new random int
+                    randomchild = Random.Range(0, numberOfSpikes);
+                }
+                spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
+            }
+            isSpikesGenerated = true;
+        }
+
     }
     public Transform GetNearestAnchorPoint(Transform current)
     {
@@ -296,7 +386,6 @@ public class EnemyBoss : MonoBehaviour
         }
 
     }
-
     public void SetSpikesInvisible(Transform parent)
     {
         foreach (Transform child in parent)
@@ -304,7 +393,6 @@ public class EnemyBoss : MonoBehaviour
             child.gameObject.SetActive(false);
         }
     }
-
     public void moveBoss()
     {
         print("Stopping Distance: " + stoppingDistance);
