@@ -72,4 +72,5 @@ public class EnemyProjectile : EnemyBase
             m_Animator.SetTrigger("isHit");
         }
     }
+
 }

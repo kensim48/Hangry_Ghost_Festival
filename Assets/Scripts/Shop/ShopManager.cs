@@ -64,21 +64,21 @@ public class ShopManager : MonoBehaviour
 
         if (Mat1.GetComponent<ShopMat>().isSelected && Mat1First)
         {
-            Mat1First = false;
-            RaiseShopItemSelcetd(ShopList[0]);
 
+            RaiseShopItemSelcetd(ShopList[0]);
+            Mat1First = false;
         }
         else if (Mat2.GetComponent<ShopMat>().isSelected && Mat2First)
         {
-            Mat2First = false;
-            RaiseShopItemSelcetd(ShopList[1]);
 
+            RaiseShopItemSelcetd(ShopList[1]);
+            Mat2First = false;
         }
         else if (Mat3.GetComponent<ShopMat>().isSelected && Mat3First)
         {
-            Mat3First = false;
-            RaiseShopItemSelcetd(ShopList[2]);
 
+            RaiseShopItemSelcetd(ShopList[2]);
+            Mat3First = false;
         }
 
     }
