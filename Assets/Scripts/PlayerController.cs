@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     private Animator m_Animator;
     public delegate void NotifyPlayerDeath();
     public static event NotifyPlayerDeath notifyPlayerDeath;
+    private float lastPickupTime = 0;
     void Awake()
     {
 
@@ -114,16 +115,22 @@ public class PlayerController : MonoBehaviour
         };
         controls.Gameplay.RightArmMovement.canceled += ctx => rightRotationActive = false;
         controls.Gameplay.LeftPrime.performed += ctx => arm1ExplosiveArmed = !arm1ExplosiveArmed;
+        controls.Gameplay.RightPrime.performed += ctx => arm2ExplosiveArmed = !arm2ExplosiveArmed;
         controls.Gameplay.WeaponSwapLeft.performed += ctx => isLeftSelected = true;
         controls.Gameplay.WeaponSwapLeft.canceled += ctx => isLeftSelected = false;
         controls.Gameplay.WeaponSwapRight.performed += ctx => isRightSelected = true;
         controls.Gameplay.WeaponSwapRight.canceled += ctx => isRightSelected = false;
+
+        ShopManager.notifyitemselected += updateShopItemSelection;
     }
 
     void Update()
     {
         // Locking of player's body rotation
         transform.rotation = lastRotation;
+        refreshWeaponSprites();
+        arm1 = weaponInventory[weaponSlot1];
+        arm2 = weaponInventory[weaponSlot2];
     }
     void FixedUpdate()
     {
@@ -224,6 +231,10 @@ public class PlayerController : MonoBehaviour
                 // Destroy current arm
                 arm1 = 0;
                 arm1ExplosiveArmed = false;
+                weaponInventory[weaponSlot1] = 0;
+                refreshWeaponOrder();
+                refreshWeaponSprites();
+                arm1Last = 99;
             }
             if (rightBoosterForce && arm2ExplosiveArmed)
             {
@@ -232,6 +243,10 @@ public class PlayerController : MonoBehaviour
                 destroyableArm.transform.rotation = rightArm.transform.rotation;
                 arm2 = 0;
                 arm2ExplosiveArmed = false;
+                weaponInventory[weaponSlot2] = 0;
+                refreshWeaponOrder();
+                refreshWeaponSprites();
+                arm2Last = 99;
             }
 
             // Runs attack and move if trigger is clicked in
@@ -281,7 +296,10 @@ public class PlayerController : MonoBehaviour
     public void refreshWeaponSprites()
     {
         for (int i = 0; i < 8; i++)
+        {
+            print(weaponInventory[i]);
             weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -300,17 +318,12 @@ public class PlayerController : MonoBehaviour
             newWeapon = 3;
         else if (other.CompareTag("WeaponShooter"))
             newWeapon = 4;
-        if (newWeapon != 0)
+        if (newWeapon != 0 && Time.time - lastPickupTime > 2f)
         {
-            for (int i = 0; i < 8; i++)
+            lastPickupTime = Time.time;
+            if (addNewWeapon(newWeapon))
             {
-                if (weaponInventory[i] == 0)
-                {
-                    weaponInventory[i] = newWeapon;
-                    refreshWeaponSprites();
-                    Destroy(other.gameObject);
-                    break;
-                }
+                Destroy(other.gameObject);
             }
         }
         else if (other.CompareTag("EnemyWeapon"))
@@ -324,10 +337,83 @@ public class PlayerController : MonoBehaviour
                 Vector2 boosterForce = (Vector2)(other.transform.position - transform.position);
                 rb.AddForce(-boosterForce * playerStunForce);
                 if (health <= 0)
+                {
                     notifyPlayerDeath();
+                }
             }
         }
+    }
 
+    public bool addNewWeapon(int weaponInt)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (weaponInventory[i] == 0)
+            {
+                weaponInventory[i] = weaponInt;
+                // refreshWeaponOrder();
+                refreshWeaponSprites();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void refreshWeaponOrder()
+    {
+        for (int k = 0; k < 7; k++)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                if (weaponInventory[i] == 0)
+                {
+                    for (int j = i; j < 7; j++)
+                        weaponInventory[j] = weaponInventory[j + 1];
+                    weaponInventory[7] = 0;
+                }
+            }
+        }
+    }
+
+    // Method registered to Shop Selection Event
+    // TODO: @KENNETH Add the adding to inventory of the following class
+    //TODO: Deduct selectedItem.cost from inventory.
+    public void updateShopItemSelection(ShopItem selectedItem)
+    {
+        int newWeapon = selectedItem.weaponidx + 1;
+
+        if (newWeapon != 0 && Time.time - lastPickupTime > 2f)
+        {
+            lastPickupTime = Time.time;
+            GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore -= selectedItem.cost;
+            addNewWeapon(newWeapon);
+        }
+        if (selectedItem.weaponidx == 0)
+        { //Whipcream
+
+            print("Player Controller: Whipcream " + selectedItem.cost.ToString());
+        }
+        else if (selectedItem.weaponidx == 1)
+        { //noodle
+            print("Player Controller: Noodle " + selectedItem.cost.ToString());
+
+        }
+        else if (selectedItem.weaponidx == 2)
+        { //popcorn
+            print("Player Controller: Popcorn " + selectedItem.cost.ToString());
+        }
+        else if (selectedItem.weaponidx == 3)
+        { //bubbletea
+            print("Player Controller: bubbletea " + selectedItem.cost.ToString());
+        }
+        else
+        {
+            print("Shop item recieved by Player controller but cant get weapon idx");
+        }
+        // if (GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore >= selectedItem.cost)
+        // {
+
+        // }
 
     }
 }

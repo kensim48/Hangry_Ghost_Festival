@@ -11,7 +11,7 @@ public class DestroyableArmsShooter : MonoBehaviour
     public int thrust;
     private float startTime;
     private float lastShootTime;
-    private float timeBetweenShoot;
+    public float timeBetweenShoot;
     private float zRotation;
     private float zSpeed = 0;
     public float zAccel;
@@ -29,7 +29,7 @@ public class DestroyableArmsShooter : MonoBehaviour
     {
         if (Time.time - startTime < 1f)
             rb.AddForce(thrust * transform.up);
-        else if (Time.time - startTime < 20f)
+        else if (Time.time - startTime < 10f)
         {
             // rb.velocity = Vector3.zero;
             transform.rotation = Quaternion.Euler(-30f, 0, zRotation);
@@ -39,7 +39,8 @@ public class DestroyableArmsShooter : MonoBehaviour
             if (Time.time - lastShootTime > timeBetweenShoot)
             {
                 Rigidbody2D projectile = Instantiate(shooterProjectile, shootingPoint.position, shootingPoint.rotation) as Rigidbody2D;
-                projectile.AddForce(shootingPoint.forward * shootThrust);
+                projectile.AddForce(shootingPoint.up * shootThrust);
+                lastShootTime = Time.time;
             }
         }
         else

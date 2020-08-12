@@ -3120,6 +3120,9 @@ MonoBehaviour:
   destroyableArmsList:
   - {fileID: 4350072235751897452, guid: 2af9859826fd9a84c9b0034c73b98a98, type: 3}
   - {fileID: 4350072235751897452, guid: a1fe52c138009304790a61560ff9cb8f, type: 3}
+  - {fileID: 4350072235751897452, guid: daeca188c94674f48bec0c183d29e645, type: 3}
+  - {fileID: 4350072235751897452, guid: 3ec050bd70100aa4690dd8c7c09b1366, type: 3}
+  - {fileID: 4350072235751897452, guid: b9ab37b4b52f13243b4d4e6e52e36782, type: 3}
   arm1: 2
   arm2: 1
   maxSpeed: 5

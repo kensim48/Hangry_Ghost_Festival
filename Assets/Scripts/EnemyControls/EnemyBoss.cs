@@ -61,7 +61,6 @@ public class EnemyBoss : MonoBehaviour
     {
         franticfan,
         frantichit,
-        youneedjesus,
         idle
     }
 
@@ -137,6 +136,15 @@ public class EnemyBoss : MonoBehaviour
     private float enragedidleEnd;
     public float enragedidleDuration;
 
+    private bool facingLeft = false;
+    public Animator heiheiAnimator;
+    public Animator heiweapAnimator;
+    public Animator baibaiAnimator;
+    public Animator baiweapAnimator;
+
+    public delegate void NotifyBossDeath();
+    public static event NotifyBossDeath notifyBossDeath;
+
 
     #endregion
 
@@ -149,7 +157,11 @@ public class EnemyBoss : MonoBehaviour
         // blackbossRb2d = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Rigidbody2D>();
         SetSpikesInvisible(spikeParent.transform);
         EnemyBossHealth.notifyBossDeath += updateBossDeath;
+        // heiheiAnimator = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Animator>();
+        // heiweapAnimator = GameObject.Find("HeiheiWeapon").GetComponent<Animator>();
 
+        // baibaiAnimator = GameObject.FindGameObjectWithTag("WhiteBoss").GetComponent<Animator>();
+        // baiweapAnimator = GameObject.Find("BaibaiWeapon").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -159,6 +171,7 @@ public class EnemyBoss : MonoBehaviour
         if (BossDeathCount >= 2)
         {
             // Insert Game End scene or smt
+            notifyBossDeath();
         }
 
         switch (enragedPhase)
@@ -203,7 +216,7 @@ public class EnemyBoss : MonoBehaviour
                     case (int)BossPhase.white: //white
 
                         #region 1. Set up timer + Charge Up animation by moving to the corner
-                        while (firstcheckwhite)
+                        if (firstcheckwhite)
                         {
                             whiteEnd = Time.time + whiteDuration;
                             nearestAnchor = GetNearestAnchorPoint(blackboss);
@@ -226,7 +239,9 @@ public class EnemyBoss : MonoBehaviour
                         {
                             // Start moving player
                             fanDirection = player.transform.position - whiteboss.position;
-                            playerRb2d.AddForce(fanDirection * fanthrust);
+                            playerRb2d.AddForce(fanDirection * fanthrust * 0.2f);
+                            baibaiAnimator.SetBool("attacking", true);
+                            baiweapAnimator.SetBool("attacking", true);
                         }
                         #endregion
 
@@ -240,6 +255,8 @@ public class EnemyBoss : MonoBehaviour
                             firstcheckwhite = true;
                             isSpikesGenerated = false;
                             SetSpikesInvisible(spikeParent.transform);
+                            baibaiAnimator.SetBool("attacking", false);
+                            baiweapAnimator.SetBool("attacking", false);
                         }
                         #endregion
 
@@ -248,7 +265,7 @@ public class EnemyBoss : MonoBehaviour
                     case (int)BossPhase.black:
                         // TODO: @HUAN XUAN To start the sword animation for the Sign here
                         #region 1. Set up Phase timer
-                        while (firstcheckblack)
+                        if (firstcheckblack)
                         {
                             blackEnd = Time.time + blackDuration;
                             firstcheckblack = false;
@@ -257,7 +274,13 @@ public class EnemyBoss : MonoBehaviour
                         #endregion
 
                         #region 2. Boss to chase player, as long as the sword hit, it deducts life
+                        if (heiweapAnimator != null && heiweapAnimator.isActiveAndEnabled)
+                        {
+                            CheckDirection(blackboss, heiheiAnimator);
+                        }
                         moveBoss(blackboss, blackbossRb2d, chaseSpeed);
+
+
                         #endregion
 
                         #region 3. Checks if the time is up for the phase
@@ -269,6 +292,8 @@ public class EnemyBoss : MonoBehaviour
                             // idleEnd = Time.time + idleDuration;
                             previousAttackPhase = (int)BossPhase.black;
                             firstcheckblack = true;
+                            heiweapAnimator.SetBool("attacking", false);
+                            heiheiAnimator.SetBool("attacking", false);
                         }
                         #endregion
                         break;
@@ -277,7 +302,7 @@ public class EnemyBoss : MonoBehaviour
 
             case (int)EnragedPhase.enraged:
                 // Sets the remaining boss as the enraged boss
-                while (firstEnragedEnter)
+                if (firstEnragedEnter)
                 {
                     print("In Enraged Mode");
                     if (isBlackDead && !isWhiteDead)
@@ -426,6 +451,7 @@ public class EnemyBoss : MonoBehaviour
             isWhiteDead = true;
             isBlackDead = false;
         }
+        // Th following commented out line will set mode into the enraged phase
         enragedPhase = (int)EnragedPhase.enraged;
         BossDeathCount++;
     }
@@ -438,7 +464,7 @@ public class EnemyBoss : MonoBehaviour
     }
     public void GenerateSpikes()
     {
-        while (!isSpikesGenerated)
+        if (!isSpikesGenerated)
         {
             print("Spikes Spawning");
             numberOfSpikes = spikeParent.transform.childCount;
@@ -447,11 +473,11 @@ public class EnemyBoss : MonoBehaviour
             {
                 int randomchild = Random.Range(0, numberOfSpikes);
                 // gameObject childspike = spikeParent.transform.GetChild(randomchild).gameObject;
-                while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
-                {
-                    // Keep getting new random int
-                    randomchild = Random.Range(0, numberOfSpikes);
-                }
+                // while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
+                // {
+                //     // Keep getting new random int
+                //     randomchild = Random.Range(0, numberOfSpikes);
+                // }
                 spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
             }
             isSpikesGenerated = true;
@@ -509,12 +535,39 @@ public class EnemyBoss : MonoBehaviour
         if (Vector3.Distance(boss.position, player.transform.position) > stoppingDistance)
         {
             bossrb2d.velocity = (player.transform.position - boss.position) * speed * Time.deltaTime;
-            // print("velocity: " + bossrb2d.velocity);
+            //print("velocity: " + bossrb2d.velocity);
+            if (heiweapAnimator != null && heiweapAnimator.isActiveAndEnabled && heiheiAnimator != null && heiweapAnimator.isActiveAndEnabled)
+            {
+                // CheckDirection(blackboss, heiheiAnimator);
+                heiweapAnimator.SetBool("attacking", true);
+                heiheiAnimator.SetBool("attacking", true);
+
+            }
+
         }
         else if (Vector3.Distance(boss.position, player.transform.position) < stoppingDistance)
         {
+            // if (heiweapAnimator != null && heiweapAnimator.isActiveAndEnabled)
+            // {
+            //     CheckDirection(blackboss, heiheiAnimator);
+            // }
             bossrb2d.velocity = Vector2.zero;
         }
 
+    }
+
+    public void CheckDirection(Transform boss, Animator animator)
+    {
+        Vector3 change = boss.position - player.transform.position;
+        if (change.x < 0 && !facingLeft)
+        {
+            facingLeft = true;
+            animator.transform.Rotate(0, 180, 0);
+        }
+        if (change.x > 0 && facingLeft)
+        {
+            facingLeft = false;
+            animator.transform.Rotate(0, 0, 0);
+        }
     }
 }
