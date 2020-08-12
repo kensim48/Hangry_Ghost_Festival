@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArmsBomb : ArmsClass
 {
 
-    private float amplifierBoosterMultiplier = 0.5f;
+    public float amplifierBoosterMultiplier = 0.5f;
     private bool isMoving;
     Animator m_Animator;
     public GameObject[] indicators;

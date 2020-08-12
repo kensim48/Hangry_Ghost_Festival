@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  amplifierBoosterMultiplier: 1.2
   indicators:
   - {fileID: 2804941146322391363}
   - {fileID: 6764407464254512856}
