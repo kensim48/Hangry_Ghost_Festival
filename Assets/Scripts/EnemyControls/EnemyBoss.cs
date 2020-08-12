@@ -302,17 +302,21 @@ public class EnemyBoss : MonoBehaviour
                 if (firstEnragedEnter)
                 {
                     print("In Enraged Mode");
+
+
                     if (isBlackDead && !isWhiteDead)
                     {
                         print("White Boss Alive, Black Boss Dead");
                         enragedboss = whiteboss;
                         enragedbossrb2d = whitebossRb2d;
+                        baibaiAnimator.SetBool("enraged", true);
                     }
                     else if (isWhiteDead && !isBlackDead)
                     {
                         print("Black Boss Alive, white Boss Dead");
                         enragedboss = blackboss;
                         enragedbossrb2d = blackbossRb2d;
+                        heiheiAnimator.SetBool("enraged", true);
                     }
                     else
                     {
@@ -359,7 +363,7 @@ public class EnemyBoss : MonoBehaviour
 
                         #region 3. Move player accordingly
                         // get the boss position and add force to the player
-                        playerRb2d.AddForce((player.transform.position - enragedboss.position) * franticfanthrust);
+                        playerRb2d.AddForce((player.transform.position - enragedboss.position) * franticfanthrust * 0.2f);
 
                         #endregion
 

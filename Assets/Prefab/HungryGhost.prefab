@@ -192,7 +192,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6985139326041681966, guid: 3fb39703e2d283e439c67d4a72bef281,
     type: 3}
   bulletForce: 1
-  startTimeBtwShots: 2
+  startTimeBtwShots: 5
 --- !u!95 &6519465389398181004
 Animator:
   serializedVersion: 3
@@ -203,7 +203,11 @@ Animator:
   m_GameObject: {fileID: 202615448723021585}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
+<<<<<<< Updated upstream
   m_Controller: {fileID: 9100000, guid: b722c8c2321445149a782353e159818a, type: 2}
+=======
+  m_Controller: {fileID: 9100000, guid: 74a700e9ea3e30046973d192ba3c15ab, type: 2}
+>>>>>>> Stashed changes
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
