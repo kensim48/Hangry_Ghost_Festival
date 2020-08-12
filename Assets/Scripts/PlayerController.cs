@@ -382,11 +382,10 @@ public class PlayerController : MonoBehaviour
     {
         int newWeapon = selectedItem.weaponidx + 1;
 
-        if (newWeapon != 0 && Time.time - lastPickupTime > 0.2f && GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore >= selectedItem.cost)
+        if (newWeapon != 0 && Time.time - lastPickupTime > 0.2f && GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore >= selectedItem.cost && addNewWeapon(newWeapon))
         {
             lastPickupTime = Time.time;
             GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore -= selectedItem.cost;
-            addNewWeapon(newWeapon);
         }
         if (selectedItem.weaponidx == 0)
         { //Whipcream
