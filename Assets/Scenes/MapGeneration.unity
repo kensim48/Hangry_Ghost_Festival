@@ -10354,6 +10354,12 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 429983208}
+    - target: {fileID: 1095199073893513128, guid: b5781e89b08a62f40a430641a1befb6e,
+        type: 3}
+      propertyPath: armsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3634362618982557625, guid: 0c23cbd4ab5a64a4a9a18e1d1289f891,
+        type: 3}
     - target: {fileID: 1095199073893513130, guid: b5781e89b08a62f40a430641a1befb6e,
         type: 3}
       propertyPath: m_Offset.y
