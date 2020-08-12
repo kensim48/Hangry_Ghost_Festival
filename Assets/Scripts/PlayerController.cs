@@ -297,7 +297,7 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < 8; i++)
         {
-            print(weaponInventory[i]);
+            // print(weaponInventory[i]);
             weaponSpriteLayer.transform.GetChild(i).GetComponent<Image>().sprite = weaponSpriteList[weaponInventory[i]];
         }
     }
@@ -382,7 +382,7 @@ public class PlayerController : MonoBehaviour
     {
         int newWeapon = selectedItem.weaponidx + 1;
 
-        if (newWeapon != 0 && Time.time - lastPickupTime > 2f)
+        if (newWeapon != 0 && Time.time - lastPickupTime > 0.2f && GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore >= selectedItem.cost)
         {
             lastPickupTime = Time.time;
             GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore -= selectedItem.cost;
