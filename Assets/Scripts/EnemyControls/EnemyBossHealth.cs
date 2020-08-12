@@ -10,7 +10,7 @@ public class EnemyBossHealth : MonoBehaviour
     private bool onHit = false;
     private float onHitTime;
 
-    private float onHitDuration = 1f;
+    private float onHitDuration = 1.2f;
     public delegate void NotifyBossEnemyDeath(string message);
     public static event NotifyBossEnemyDeath notifyBossDeath;
 

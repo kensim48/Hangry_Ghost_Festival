@@ -3824,8 +3824,8 @@ MonoBehaviour:
   blackbossRb2d: {fileID: 0}
   whitebossRb2d: {fileID: 0}
   spikeParent: {fileID: 1306916706}
-  showNumberOfSpikes: 15
-  fanthrust: 0.1
+  showNumberOfSpikes: 13
+  fanthrust: 0.2
   stoppingDistance: 0.5
   chaseSpeed: 40
   isBlackDead: 0
@@ -3834,7 +3834,7 @@ MonoBehaviour:
   spikeParent_enraged: {fileID: 1480728106}
   franticfanWaitDuration: 5
   franticfanMoveSpeed: 5
-  franticfanthrust: 0.1
+  franticfanthrust: 0.2
   enragedspeed: 8
   frantichitDuration: 20
   enragedidleDuration: 10

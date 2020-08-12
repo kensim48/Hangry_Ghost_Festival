@@ -451,6 +451,7 @@ public class EnemyBoss : MonoBehaviour
             isWhiteDead = true;
             isBlackDead = false;
         }
+        // Th following commented out line will set mode into the enraged phase
         enragedPhase = (int)EnragedPhase.enraged;
         BossDeathCount++;
     }
