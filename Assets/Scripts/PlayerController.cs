@@ -129,6 +129,8 @@ public class PlayerController : MonoBehaviour
         // Locking of player's body rotation
         transform.rotation = lastRotation;
         refreshWeaponSprites();
+        arm1 = weaponInventory[weaponSlot1];
+        arm2 = weaponInventory[weaponSlot2];
     }
     void FixedUpdate()
     {
@@ -232,6 +234,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot1] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
+                arm1Last = 99;
             }
             if (rightBoosterForce && arm2ExplosiveArmed)
             {
@@ -243,6 +246,7 @@ public class PlayerController : MonoBehaviour
                 weaponInventory[weaponSlot2] = 0;
                 refreshWeaponOrder();
                 refreshWeaponSprites();
+                arm2Last = 99;
             }
 
             // Runs attack and move if trigger is clicked in
@@ -376,8 +380,17 @@ public class PlayerController : MonoBehaviour
     //TODO: Deduct selectedItem.cost from inventory.
     public void updateShopItemSelection(ShopItem selectedItem)
     {
+        int newWeapon = selectedItem.weaponidx + 1;
+
+        if (newWeapon != 0 && Time.time - lastPickupTime > 2f)
+        {
+            lastPickupTime = Time.time;
+            GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore -= selectedItem.cost;
+            addNewWeapon(newWeapon);
+        }
         if (selectedItem.weaponidx == 0)
         { //Whipcream
+
             print("Player Controller: Whipcream " + selectedItem.cost.ToString());
         }
         else if (selectedItem.weaponidx == 1)
@@ -397,6 +410,10 @@ public class PlayerController : MonoBehaviour
         {
             print("Shop item recieved by Player controller but cant get weapon idx");
         }
+        // if (GameObject.FindGameObjectWithTag("Score").GetComponent<PlayerStats>().playerScore >= selectedItem.cost)
+        // {
+
+        // }
 
     }
 }

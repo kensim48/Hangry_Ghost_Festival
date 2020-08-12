@@ -19,10 +19,11 @@ public class EnemyProjectile : EnemyBase
         base.Start();
         chasePatrolState = 1; // Patrol
         timeBtwShots = startTimeBtwShots;
-        m_Animator = gameObject.GetComponent<Animator>();
+        m_Animator = gameObject.transform.GetChild(1).GetComponent<Animator>();
     }
     public void Shoot()
     {
+        m_Animator.SetBool("attacking", true);
         // Create bullet at fire point
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
@@ -47,6 +48,7 @@ public class EnemyProjectile : EnemyBase
                 // RotateBody();
                 timeBtwShots -= Time.deltaTime; // like a count down, once zero, spawn the projectile
             }
+            //m_Animator.SetBool("attacking", false);
         }
 
 
@@ -70,4 +72,5 @@ public class EnemyProjectile : EnemyBase
             m_Animator.SetTrigger("isHit");
         }
     }
+
 }

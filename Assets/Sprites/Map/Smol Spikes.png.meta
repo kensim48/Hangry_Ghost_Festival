@@ -1,0 +1,1010 @@
+fileFormatVersion: 2
+guid: 8ee4ff5510d1e8f4b8a302000cacfd98
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6004619764196325382
+    second: Smol Spikes_0
+  - first:
+      213: -538130658822972976
+    second: Smol Spikes_1
+  - first:
+      213: -1986385775316470250
+    second: Smol Spikes_2
+  - first:
+      213: 2345748411262927790
+    second: Smol Spikes_3
+  - first:
+      213: -1502981253650962110
+    second: Smol Spikes_4
+  - first:
+      213: 4336932318315374011
+    second: Smol Spikes_5
+  - first:
+      213: -237428517572104147
+    second: Smol Spikes_6
+  - first:
+      213: 5618184134344544704
+    second: Smol Spikes_7
+  - first:
+      213: -4444681148817116293
+    second: Smol Spikes_8
+  - first:
+      213: 6537959678222721155
+    second: Smol Spikes_9
+  - first:
+      213: -1359117220616113192
+    second: Smol Spikes_10
+  - first:
+      213: 2106103033815679366
+    second: Smol Spikes_11
+  - first:
+      213: 4543635118285269129
+    second: Smol Spikes_12
+  - first:
+      213: -874547039976889651
+    second: Smol Spikes_13
+  - first:
+      213: -258037390717106800
+    second: Smol Spikes_14
+  - first:
+      213: -3376064361790834584
+    second: Smol Spikes_15
+  - first:
+      213: 4026815196291673993
+    second: Smol Spikes_16
+  - first:
+      213: 2881384226818625395
+    second: Smol Spikes_17
+  - first:
+      213: -578220429650543732
+    second: Smol Spikes_18
+  - first:
+      213: -8501861697046979178
+    second: Smol Spikes_19
+  - first:
+      213: -2437633855888897911
+    second: Smol Spikes_20
+  - first:
+      213: 5965943657321543127
+    second: Smol Spikes_21
+  - first:
+      213: 7985747953921497658
+    second: Smol Spikes_22
+  - first:
+      213: 6248213965786800201
+    second: Smol Spikes_23
+  - first:
+      213: 2615910471182323837
+    second: Smol Spikes_24
+  - first:
+      213: -5117795251841626977
+    second: Smol Spikes_25
+  - first:
+      213: -5163293238978632860
+    second: Smol Spikes_26
+  - first:
+      213: -2081323678895684907
+    second: Smol Spikes_27
+  - first:
+      213: -472062539295613431
+    second: Smol Spikes_28
+  - first:
+      213: 1321800385902612528
+    second: Smol Spikes_29
+  - first:
+      213: -398087453232374777
+    second: Smol Spikes_30
+  - first:
+      213: 6621682598391848187
+    second: Smol Spikes_31
+  - first:
+      213: -8919373299719034443
+    second: Smol Spikes_32
+  - first:
+      213: -635036438413795477
+    second: Smol Spikes_33
+  - first:
+      213: 332636332455148254
+    second: Smol Spikes_34
+  - first:
+      213: -6055456073929453163
+    second: Smol Spikes_35
+  - first:
+      213: 3551826259276264138
+    second: Smol Spikes_36
+  - first:
+      213: 7741316606526860844
+    second: Smol Spikes_37
+  - first:
+      213: -3253092460539381885
+    second: Smol Spikes_38
+  - first:
+      213: -346009243256575150
+    second: Smol Spikes_39
+  - first:
+      213: 647936781380465287
+    second: Smol Spikes_40
+  - first:
+      213: 8605507258162991432
+    second: Smol Spikes_41
+  - first:
+      213: -6869899018893199574
+    second: Smol Spikes_42
+  - first:
+      213: -2701949932642010720
+    second: Smol Spikes_43
+  - first:
+      213: -2831387730862950093
+    second: Smol Spikes_44
+  - first:
+      213: -7420957197188958346
+    second: Smol Spikes_45
+  - first:
+      213: 3149542959240938005
+    second: Smol Spikes_46
+  - first:
+      213: 2428697846057967905
+    second: Smol Spikes_47
+  - first:
+      213: -6363548572416028193
+    second: Smol Spikes_48
+  - first:
+      213: 3020353092436507585
+    second: Smol Spikes_49
+  - first:
+      213: -5065802451453226774
+    second: Smol Spikes_50
+  - first:
+      213: -1427197318658414152
+    second: Smol Spikes_51
+  - first:
+      213: 3056082095915268585
+    second: Smol Spikes_52
+  - first:
+      213: 6314181353305154666
+    second: Smol Spikes_53
+  - first:
+      213: 3040282224689541711
+    second: Smol Spikes_54
+  - first:
+      213: -691983724250908305
+    second: Smol Spikes_55
+  - first:
+      213: -2742475661591508752
+    second: Smol Spikes_56
+  - first:
+      213: -6562371614652162721
+    second: Smol Spikes_57
+  - first:
+      213: -6873606645762909973
+    second: Smol Spikes_58
+  - first:
+      213: 6182110127234447457
+    second: Smol Spikes_59
+  - first:
+      213: 8042744939590512083
+    second: Smol Spikes_60
+  - first:
+      213: -8194249503660375762
+    second: Smol Spikes_61
+  - first:
+      213: -7704307335216117310
+    second: Smol Spikes_62
+  - first:
+      213: -5256809666635706609
+    second: Smol Spikes_63
+  - first:
+      213: 6007809803197707747
+    second: Smol Spikes_64
+  - first:
+      213: -1045642067869288140
+    second: Smol Spikes_65
+  - first:
+      213: -4698176710521324306
+    second: Smol Spikes_66
+  - first:
+      213: 3085150995121469063
+    second: Smol Spikes_67
+  - first:
+      213: 55116026279616227
+    second: Smol Spikes_68
+  - first:
+      213: 6334452234578559534
+    second: Smol Spikes_69
+  - first:
+      213: 1944836279810724893
+    second: Smol Spikes_70
+  - first:
+      213: 4626484693674081060
+    second: Smol Spikes_71
+  - first:
+      213: -8791612108655987342
+    second: Smol Spikes_72
+  - first:
+      213: 6927119980970262763
+    second: Smol Spikes_73
+  - first:
+      213: -201639824385184311
+    second: Smol Spikes_74
+  - first:
+      213: 451409255023506332
+    second: Smol Spikes_75
+  - first:
+      213: -450289639859661277
+    second: Smol Spikes_76
+  - first:
+      213: -5153546385515990166
+    second: Smol Spikes_77
+  - first:
+      213: 2165828376845244399
+    second: Smol Spikes_78
+  - first:
+      213: 5837159402780989083
+    second: Smol Spikes_79
+  - first:
+      213: 9044794419960101305
+    second: Smol Spikes_80
+  - first:
+      213: 7487012348650799522
+    second: Smol Spikes_81
+  - first:
+      213: 490182007806315397
+    second: Smol Spikes_82
+  - first:
+      213: -3207395066822631294
+    second: Smol Spikes_83
+  - first:
+      213: 8390030497352359647
+    second: Smol Spikes_84
+  - first:
+      213: -1906252176469280726
+    second: Smol Spikes_85
+  - first:
+      213: -528072370588059838
+    second: Smol Spikes_86
+  - first:
+      213: -4405330632034058224
+    second: Smol Spikes_87
+  - first:
+      213: 4142781270371789143
+    second: Smol Spikes_88
+  - first:
+      213: -6035208109627670897
+    second: Smol Spikes_89
+  - first:
+      213: 1547344583640081846
+    second: Smol Spikes_90
+  - first:
+      213: -4552266368420963549
+    second: Smol Spikes_91
+  - first:
+      213: 4759929393969340014
+    second: Smol Spikes_92
+  - first:
+      213: -2633116140915320185
+    second: Smol Spikes_93
+  - first:
+      213: 8020130803688652184
+    second: Smol Spikes_94
+  - first:
+      213: 2801226113439438313
+    second: Smol Spikes_95
+  - first:
+      213: 8426322685086391194
+    second: Smol Spikes_96
+  - first:
+      213: 8792925207083900388
+    second: Smol Spikes_97
+  - first:
+      213: -3729855719909098644
+    second: Smol Spikes_98
+  - first:
+      213: 4067534630218138837
+    second: Smol Spikes_99
+  - first:
+      213: 6373436852947968125
+    second: Smol Spikes_100
+  - first:
+      213: 1084326833297802435
+    second: Smol Spikes_101
+  - first:
+      213: 8565196682952317239
+    second: Smol Spikes_102
+  - first:
+      213: 5924761357084184752
+    second: Smol Spikes_103
+  - first:
+      213: 8545917441524089631
+    second: Smol Spikes_104
+  - first:
+      213: -5627561381373967790
+    second: Smol Spikes_105
+  - first:
+      213: -2592570510483118674
+    second: Smol Spikes_106
+  - first:
+      213: 998698765649189495
+    second: Smol Spikes_107
+  - first:
+      213: -6771192968924977658
+    second: Smol Spikes_108
+  - first:
+      213: -4453642847265937577
+    second: Smol Spikes_109
+  - first:
+      213: 666617696613106483
+    second: Smol Spikes_110
+  - first:
+      213: -8915405070181183683
+    second: Smol Spikes_111
+  - first:
+      213: -3235624093161625007
+    second: Smol Spikes_112
+  - first:
+      213: 1418629210167468090
+    second: Smol Spikes_113
+  - first:
+      213: -6013902650780807555
+    second: Smol Spikes_114
+  - first:
+      213: 1592015960811786834
+    second: Smol Spikes_115
+  - first:
+      213: 7222518887009860501
+    second: Smol Spikes_116
+  - first:
+      213: -8764033121513454596
+    second: Smol Spikes_117
+  - first:
+      213: 8063110679412226356
+    second: Smol Spikes_118
+  - first:
+      213: 5478744067346052619
+    second: Smol Spikes_119
+  - first:
+      213: 1547774621111085527
+    second: Smol Spikes_120
+  - first:
+      213: 5664994089150484455
+    second: Smol Spikes_121
+  - first:
+      213: -1936508058440670677
+    second: Smol Spikes_122
+  - first:
+      213: 7899552818465240683
+    second: Smol Spikes_123
+  - first:
+      213: -2104860824488061265
+    second: Smol Spikes_124
+  - first:
+      213: -4778323121107191243
+    second: Smol Spikes_125
+  - first:
+      213: -4399328297267453767
+    second: Smol Spikes_126
+  - first:
+      213: 6550111830456164244
+    second: Smol Spikes_127
+  - first:
+      213: 4178437392078385173
+    second: Smol Spikes_128
+  - first:
+      213: 3473800130367106278
+    second: Smol Spikes_129
+  - first:
+      213: 8884357004903309053
+    second: Smol Spikes_130
+  - first:
+      213: 3453468387603674706
+    second: Smol Spikes_131
+  - first:
+      213: 2333294305870221142
+    second: Smol Spikes_132
+  - first:
+      213: 5943555986066338143
+    second: Smol Spikes_133
+  - first:
+      213: -6205938955224372003
+    second: Smol Spikes_134
+  - first:
+      213: -5456562641145721706
+    second: Smol Spikes_135
+  - first:
+      213: 2360717107161229545
+    second: Smol Spikes_136
+  - first:
+      213: 6737278576351086437
+    second: Smol Spikes_137
+  - first:
+      213: 2749465734644543797
+    second: Smol Spikes_138
+  - first:
+      213: 34891791292268770
+    second: Smol Spikes_139
+  - first:
+      213: -5612542070036512426
+    second: Smol Spikes_140
+  - first:
+      213: -2138332755401804206
+    second: Smol Spikes_141
+  - first:
+      213: 149066366713180659
+    second: Smol Spikes_142
+  - first:
+      213: 9137039468911051780
+    second: Smol Spikes_143
+  - first:
+      213: 6347624678918674882
+    second: Smol Spikes_144
+  - first:
+      213: 353496033277968800
+    second: Smol Spikes_145
+  - first:
+      213: 1997615606891700928
+    second: Smol Spikes_146
+  - first:
+      213: -3451547043025033649
+    second: Smol Spikes_147
+  - first:
+      213: 261309272941408969
+    second: Smol Spikes_148
+  - first:
+      213: 5739097765025752979
+    second: Smol Spikes_149
+  - first:
+      213: -2710707131387608703
+    second: Smol Spikes_150
+  - first:
+      213: 4839856059499859355
+    second: Smol Spikes_151
+  - first:
+      213: 7623233146212419285
+    second: Smol Spikes_152
+  - first:
+      213: -5267341432527735637
+    second: Smol Spikes_153
+  - first:
+      213: -7758022082802784043
+    second: Smol Spikes_154
+  - first:
+      213: -7904979388680155024
+    second: Smol Spikes_155
+  - first:
+      213: -3446286729208522381
+    second: Smol Spikes_156
+  - first:
+      213: -1633905361157238304
+    second: Smol Spikes_157
+  - first:
+      213: 954522588609579150
+    second: Smol Spikes_158
+  - first:
+      213: -1155612807058083942
+    second: Smol Spikes_159
+  - first:
+      213: -1830826976669824588
+    second: Smol Spikes_160
+  - first:
+      213: 2558545000417469315
+    second: Smol Spikes_161
+  - first:
+      213: -3468943111945962106
+    second: Smol Spikes_162
+  - first:
+      213: 6653731989257012201
+    second: Smol Spikes_163
+  - first:
+      213: 7939376220571212081
+    second: Smol Spikes_164
+  - first:
+      213: -6433354974968348196
+    second: Smol Spikes_165
+  - first:
+      213: -3392610586532502515
+    second: Smol Spikes_166
+  - first:
+      213: 6964046568306521345
+    second: Smol Spikes_167
+  - first:
+      213: -2962691247271130121
+    second: Smol Spikes_168
+  - first:
+      213: -1846200228996373937
+    second: Smol Spikes_169
+  - first:
+      213: -2836582558155335525
+    second: Smol Spikes_170
+  - first:
+      213: -1108360501609426934
+    second: Smol Spikes_171
+  - first:
+      213: 8142356596609429256
+    second: Smol Spikes_172
+  - first:
+      213: 8031223379292059345
+    second: Smol Spikes_173
+  - first:
+      213: 109976954957562916
+    second: Smol Spikes_174
+  - first:
+      213: -5360148902189417237
+    second: Smol Spikes_175
+  - first:
+      213: 780722176645188016
+    second: Smol Spikes_176
+  - first:
+      213: -4588129503242604529
+    second: Smol Spikes_177
+  - first:
+      213: 8296824066237080464
+    second: Smol Spikes_178
+  - first:
+      213: 713530934960306339
+    second: Smol Spikes_179
+  - first:
+      213: 1261090459326643729
+    second: Smol Spikes_180
+  - first:
+      213: -5623455691184246808
+    second: Smol Spikes_181
+  - first:
+      213: -1025251902792172599
+    second: Smol Spikes_182
+  - first:
+      213: -572910968129339077
+    second: Smol Spikes_183
+  - first:
+      213: -8507561425188925325
+    second: Smol Spikes_184
+  - first:
+      213: 8353895952929100682
+    second: Smol Spikes_185
+  - first:
+      213: -3250574227262073591
+    second: Smol Spikes_186
+  - first:
+      213: 3130519505309618820
+    second: Smol Spikes_187
+  - first:
+      213: -4564776721296582316
+    second: Smol Spikes_188
+  - first:
+      213: -1791358194199299821
+    second: Smol Spikes_189
+  - first:
+      213: -3214979681555466281
+    second: Smol Spikes_190
+  - first:
+      213: 6743986448444052305
+    second: Smol Spikes_191
+  - first:
+      213: 6374704564849885308
+    second: Smol Spikes_192
+  - first:
+      213: 595499201777633849
+    second: Smol Spikes_193
+  - first:
+      213: 962446817945214113
+    second: Smol Spikes_194
+  - first:
+      213: 4347717236108604218
+    second: Smol Spikes_195
+  - first:
+      213: -5899835239124924719
+    second: Smol Spikes_196
+  - first:
+      213: -3412972069628554400
+    second: Smol Spikes_197
+  - first:
+      213: -3158315464409998567
+    second: Smol Spikes_198
+  - first:
+      213: 1281768468323870375
+    second: Smol Spikes_199
+  - first:
+      213: 8624151078560383097
+    second: Smol Spikes_200
+  - first:
+      213: -4314002188223903612
+    second: Smol Spikes_201
+  - first:
+      213: 1706543184127841643
+    second: Smol Spikes_202
+  - first:
+      213: 7870503170519542947
+    second: Smol Spikes_203
+  - first:
+      213: 6877609589183558426
+    second: Smol Spikes_204
+  - first:
+      213: -9176488570039235280
+    second: Smol Spikes_205
+  - first:
+      213: 4468010490511782283
+    second: Smol Spikes_206
+  - first:
+      213: 7403952109946969424
+    second: Smol Spikes_207
+  - first:
+      213: -4293520851422274689
+    second: Smol Spikes_208
+  - first:
+      213: 3245399784680664138
+    second: Smol Spikes_209
+  - first:
+      213: -3290892586226649890
+    second: Smol Spikes_210
+  - first:
+      213: 8855393925874450877
+    second: Smol Spikes_211
+  - first:
+      213: 5282080641238616466
+    second: Smol Spikes_212
+  - first:
+      213: 8331756439361351908
+    second: Smol Spikes_213
+  - first:
+      213: 7463094279169441639
+    second: Smol Spikes_214
+  - first:
+      213: -1941894041204047790
+    second: Smol Spikes_215
+  - first:
+      213: 8234065250636290467
+    second: Smol Spikes_216
+  - first:
+      213: 7672642488046544019
+    second: Smol Spikes_217
+  - first:
+      213: 8934366580472732324
+    second: Smol Spikes_218
+  - first:
+      213: 7122121248459441209
+    second: Smol Spikes_219
+  - first:
+      213: 6398917331408844179
+    second: Smol Spikes_220
+  - first:
+      213: 5141078495359216704
+    second: Smol Spikes_221
+  - first:
+      213: 4654962509298439440
+    second: Smol Spikes_222
+  - first:
+      213: 172962321634030695
+    second: Smol Spikes_223
+  - first:
+      213: 247347843368650627
+    second: Smol Spikes_224
+  - first:
+      213: -127328317339312258
+    second: Smol Spikes_225
+  - first:
+      213: -8633232770017027552
+    second: Smol Spikes_226
+  - first:
+      213: -8509192800601910271
+    second: Smol Spikes_227
+  - first:
+      213: -2008964732464428198
+    second: Smol Spikes_228
+  - first:
+      213: 7087000763752698882
+    second: Smol Spikes_229
+  - first:
+      213: 8805369985800824856
+    second: Smol Spikes_230
+  - first:
+      213: -6285433498646889925
+    second: Smol Spikes_231
+  - first:
+      213: 900313930356648513
+    second: Smol Spikes_232
+  - first:
+      213: -8927471975315789560
+    second: Smol Spikes_233
+  - first:
+      213: 1349138864014731227
+    second: Smol Spikes_234
+  - first:
+      213: -4560222094138367426
+    second: Smol Spikes_235
+  - first:
+      213: -9070474582098739967
+    second: Smol Spikes_236
+  - first:
+      213: 985212659429117093
+    second: Smol Spikes_237
+  - first:
+      213: 983756437503108501
+    second: Smol Spikes_238
+  - first:
+      213: 6597040329247282753
+    second: Smol Spikes_239
+  - first:
+      213: 3908782061463214692
+    second: Smol Spikes_240
+  - first:
+      213: -6762069054608722753
+    second: Smol Spikes_241
+  - first:
+      213: 7953018995952052407
+    second: Smol Spikes_242
+  - first:
+      213: 3006018982031691965
+    second: Smol Spikes_243
+  - first:
+      213: -4672556787008718815
+    second: Smol Spikes_244
+  - first:
+      213: 6489688577436883442
+    second: Smol Spikes_245
+  - first:
+      213: 7420980743827243334
+    second: Smol Spikes_246
+  - first:
+      213: 4092491560671723205
+    second: Smol Spikes_247
+  - first:
+      213: 7622351153511401544
+    second: Smol Spikes_248
+  - first:
+      213: 378807740757345366
+    second: Smol Spikes_249
+  - first:
+      213: -226285562183922823
+    second: Smol Spikes_250
+  - first:
+      213: 5153907671732257327
+    second: Smol Spikes_251
+  - first:
+      213: 5566228218257015557
+    second: Smol Spikes_252
+  - first:
+      213: -5324075414698641972
+    second: Smol Spikes_253
+  - first:
+      213: -148957323392391410
+    second: Smol Spikes_254
+  - first:
+      213: -7609175676452625000
+    second: Smol Spikes_255
+  - first:
+      213: -1374266342215225069
+    second: Smol Spikes_256
+  - first:
+      213: -7810709817170375704
+    second: Smol Spikes_257
+  - first:
+      213: 6586157146736884178
+    second: Smol Spikes_258
+  - first:
+      213: -4573436602838244039
+    second: Smol Spikes_259
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Smol Spikes_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af7c9c7632e4baca0800000000000000
+      internalID: -6004619764196325382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smol Spikes_1
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 300
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d91c16540d2888f0800000000000000
+      internalID: -538130658822972976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smol Spikes_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6167f5369a0fe64e0800000000000000
+      internalID: -1986385775316470250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smol Spikes_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 150
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea383c170c5cd8020800000000000000
+      internalID: 2345748411262927790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smol Spikes_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24920105386542be0800000000000000
+      internalID: -1502981253650962110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smol Spikes_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb5691827f0ef2c30800000000000000
+      internalID: 4336932318315374011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
