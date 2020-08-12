@@ -61,7 +61,6 @@ public class EnemyBoss : MonoBehaviour
     {
         franticfan,
         frantichit,
-        youneedjesus,
         idle
     }
 
@@ -158,11 +157,11 @@ public class EnemyBoss : MonoBehaviour
         // blackbossRb2d = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Rigidbody2D>();
         SetSpikesInvisible(spikeParent.transform);
         EnemyBossHealth.notifyBossDeath += updateBossDeath;
-        heiheiAnimator = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Animator>();
-        heiweapAnimator = GameObject.Find("HeiheiWeapon").GetComponent<Animator>();
+        // heiheiAnimator = GameObject.FindGameObjectWithTag("BlackBoss").GetComponent<Animator>();
+        // heiweapAnimator = GameObject.Find("HeiheiWeapon").GetComponent<Animator>();
 
-        baibaiAnimator = GameObject.FindGameObjectWithTag("WhiteBoss").GetComponent<Animator>();
-        baiweapAnimator = GameObject.Find("BaibaiWeapon").GetComponent<Animator>();
+        // baibaiAnimator = GameObject.FindGameObjectWithTag("WhiteBoss").GetComponent<Animator>();
+        // baiweapAnimator = GameObject.Find("BaibaiWeapon").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -464,7 +463,7 @@ public class EnemyBoss : MonoBehaviour
     }
     public void GenerateSpikes()
     {
-        while (!isSpikesGenerated)
+        if (!isSpikesGenerated)
         {
             print("Spikes Spawning");
             numberOfSpikes = spikeParent.transform.childCount;
@@ -473,11 +472,11 @@ public class EnemyBoss : MonoBehaviour
             {
                 int randomchild = Random.Range(0, numberOfSpikes);
                 // gameObject childspike = spikeParent.transform.GetChild(randomchild).gameObject;
-                while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
-                {
-                    // Keep getting new random int
-                    randomchild = Random.Range(0, numberOfSpikes);
-                }
+                // while (spikeParent.transform.GetChild(randomchild).gameObject.activeSelf == true)
+                // {
+                //     // Keep getting new random int
+                //     randomchild = Random.Range(0, numberOfSpikes);
+                // }
                 spikeParent.transform.GetChild(randomchild).gameObject.SetActive(true);
             }
             isSpikesGenerated = true;

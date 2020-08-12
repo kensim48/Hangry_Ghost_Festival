@@ -3825,19 +3825,19 @@ MonoBehaviour:
   whitebossRb2d: {fileID: 0}
   spikeParent: {fileID: 1306916706}
   showNumberOfSpikes: 15
-  fanthrust: 0.3
+  fanthrust: 0.1
   stoppingDistance: 0.5
   chaseSpeed: 40
   isBlackDead: 0
   isWhiteDead: 0
-  franticfanduration: 0
-  spikeParent_enraged: {fileID: 0}
-  franticfanWaitDuration: 0
-  franticfanMoveSpeed: 0
-  franticfanthrust: 0
-  enragedspeed: 0
-  frantichitDuration: 0
-  enragedidleDuration: 0
+  franticfanduration: 30
+  spikeParent_enraged: {fileID: 1480728106}
+  franticfanWaitDuration: 5
+  franticfanMoveSpeed: 5
+  franticfanthrust: 0.1
+  enragedspeed: 8
+  frantichitDuration: 20
+  enragedidleDuration: 10
   heiheiAnimator: {fileID: 0}
   heiweapAnimator: {fileID: 0}
   baibaiAnimator: {fileID: 0}
