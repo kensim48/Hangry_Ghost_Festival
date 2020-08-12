@@ -61,6 +61,7 @@ MonoBehaviour:
   noodleCost: 10
   popcornCost: 10
   bubbleteaCost: 10
+  places: []
 --- !u!1 &475243795
 GameObject:
   m_ObjectHideFlags: 0
